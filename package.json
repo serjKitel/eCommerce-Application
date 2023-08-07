@@ -44,5 +44,17 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1",
     "webpack-merge": "^5.9.0"
+  },
+  "dependencies": {
+    "@commercetools/history-sdk": "^3.4.2",
+    "@commercetools/importapi-sdk": "^4.6.2",
+    "@commercetools/ml-sdk": "^3.4.1",
+    "@commercetools/platform-sdk": "^4.11.0",
+    "@commercetools/sdk-client": "^3.0.0",
+    "@commercetools/sdk-client-v2": "^2.2.0",
+    "@commercetools/sdk-middleware-auth": "^7.0.1",
+    "@commercetools/sdk-middleware-http": "^7.0.3",
+    "@commercetools/typescript-sdk": "^0.0.22",
+    "dotenv": "^16.3.1"
   }
 }
