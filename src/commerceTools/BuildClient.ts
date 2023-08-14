@@ -1,29 +1,71 @@
-// import fetch from 'node-fetch';
-import { ClientBuilder, type AuthMiddlewareOptions, type HttpMiddlewareOptions } from '@commercetools/sdk-client-v2';
+import {
+  ClientBuilder,
+  type AuthMiddlewareOptions,
+  type HttpMiddlewareOptions,
+  PasswordAuthMiddlewareOptions,
+  AnonymousAuthMiddlewareOptions,
+} from '@commercetools/sdk-client-v2';
+import { API_COMMERCE, EXISTING_USER, PROJECT_KEY } from './const';
+import { myToken } from './MyToken';
 
 // Configure authMiddlewareOptions
-const authMiddlewareOptions: AuthMiddlewareOptions = {
-  host: 'https://auth.europe-west1.gcp.commercetools.com',
-  projectKey: 'ecommetcetools',
+export const authMiddlewareOptions: AuthMiddlewareOptions = {
+  host: API_COMMERCE.HOST,
+  projectKey: PROJECT_KEY,
   credentials: {
-    clientId: 'F38subK1AmNIa_vv9LTQmsap',
-    clientSecret: 'uN03mt7a9R8we2wnyDGMTSBjVXGFmq9v',
+    clientId: API_COMMERCE.CLIENT_ID,
+    clientSecret: API_COMMERCE.CLIENT_SECRET,
   },
-  scopes: [
-    'create_anonymous_token:ecommetcetools manage_my_profile:ecommetcetools manage_my_business_units:ecommetcetools manage_my_orders:ecommetcetools manage_my_payments:ecommetcetools manage_my_quote_requests:ecommetcetools view_published_products:ecommetcetools view_categories:ecommetcetools manage_my_quotes:ecommetcetools manage_my_shopping_lists:ecommetcetools view_products:ecommetcetools',
-  ],
+  scopes: API_COMMERCE.SCOPE,
   fetch,
 };
 
 // Configure httpMiddlewareOptions
-const httpMiddlewareOptions: HttpMiddlewareOptions = {
-  host: 'https://api.europe-west1.gcp.commercetools.com',
+export const httpMiddlewareOptions: HttpMiddlewareOptions = {
+  host: API_COMMERCE.API,
   fetch,
 };
 
-// Export the ClientBuilder
-export const ctpClient = new ClientBuilder()
+//---------------------------------------
+const optionsAnonym: AnonymousAuthMiddlewareOptions = {
+  host: API_COMMERCE.HOST,
+  projectKey: PROJECT_KEY,
+  credentials: {
+    clientId: API_COMMERCE.CLIENT_ID,
+    clientSecret: API_COMMERCE.CLIENT_SECRET,
+    anonymousId: 'anonymous_id=2',
+  },
+  scopes: API_COMMERCE.SCOPE,
+  fetch,
+};
+
+export const clientAnonym = new ClientBuilder()
+  .withProjectKey(PROJECT_KEY)
   .withClientCredentialsFlow(authMiddlewareOptions)
+  .withAnonymousSessionFlow(optionsAnonym)
   .withHttpMiddleware(httpMiddlewareOptions)
-  .withLoggerMiddleware()
+  .build();
+
+//-------------------------------------------
+const optionsAuth: PasswordAuthMiddlewareOptions = {
+  host: API_COMMERCE.HOST,
+  projectKey: PROJECT_KEY,
+  credentials: {
+    clientId: API_COMMERCE.CLIENT_ID,
+    clientSecret: API_COMMERCE.CLIENT_SECRET,
+    user: {
+      username: EXISTING_USER.email,
+      password: EXISTING_USER.password,
+    },
+  },
+  tokenCache: myToken,
+  scopes: API_COMMERCE.SCOPE,
+  fetch,
+};
+
+export const clientAuth = new ClientBuilder()
+  .withProjectKey(PROJECT_KEY)
+  .withClientCredentialsFlow(authMiddlewareOptions)
+  .withPasswordFlow(optionsAuth)
+  .withHttpMiddleware(httpMiddlewareOptions)
   .build();

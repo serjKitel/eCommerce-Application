@@ -1,17 +1,38 @@
 import { createApiBuilderFromCtpClient } from '@commercetools/platform-sdk';
-import { ctpClient } from './BuildClient';
+import { clientAnonym, clientAuth } from './BuildClient';
+import { EXISTING_USER, PROJECT_KEY } from './const';
 
-// Create apiRoot from the imported ClientBuilder and include your Project key
-const apiRoot = createApiBuilderFromCtpClient(ctpClient).withProjectKey({ projectKey: 'ecommetcetools' });
+//------------------------------
+export const getApiRootAnonym = () => createApiBuilderFromCtpClient(clientAnonym);
 
-// Withdrawing the name of the product from the trade
-export function getProjectDetails() {
-  apiRoot
-    .products()
-    .get()
-    .execute()
-    .then(({ body }) => {
-      const bodyEl = document.querySelector('.details') as HTMLElement;
-      bodyEl.innerHTML = JSON.stringify(body.results[0].masterData.current.name);
-    });
-}
+export const getCustomerAnonym = async () => {
+  try {
+    const answer = await getApiRootAnonym()
+      .withProjectKey({ projectKey: PROJECT_KEY })
+      .get()
+      .execute();
+    return answer;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+//---------------------------
+export const getApiRootPass = () => createApiBuilderFromCtpClient(clientAuth);
+
+export const getCustomerAuth = async () => {
+  try {
+    const answer = await getApiRootPass()
+      .withProjectKey({ projectKey: PROJECT_KEY })
+      .me()
+      .login()
+      .post({
+        body: EXISTING_USER,
+      })
+      .execute();
+
+    return answer;
+  } catch (e) {
+    console.log(e);
+  }
+};
