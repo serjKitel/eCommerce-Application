@@ -1,6 +1,10 @@
-import { getProjectDetails } from './commerceTools/Client';
+import './style.css';
+import { logoElement } from './common/components/atoms/logo-component/logoComponent';
+import { NavigationMenu } from './common/components/molecules/navigation';
 
-const btn = document.querySelector('.button') as HTMLElement;
-btn.addEventListener('click', () => {
-  getProjectDetails();
-});
+document.body.appendChild(logoElement);
+
+window.onload = () => {
+  const navigationMenuElement = NavigationMenu();
+  document.body.appendChild(navigationMenuElement);
+};
