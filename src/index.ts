@@ -1,6 +1,10 @@
-import { getProjectDetails } from './commerceTools/Client';
+import './style.css';
+import { createHeaderLogo } from './common/components/molecules/header-logo/headerLogo';
+import { createHeader } from './common/components/organisms/header/header';
 
-const btn = document.querySelector('.button') as HTMLElement;
-btn.addEventListener('click', () => {
-  getProjectDetails();
-});
+window.onload = () => {
+  const headerLogo = createHeaderLogo();
+  document.body.appendChild(headerLogo);
+  const header = createHeader();
+  document.body.appendChild(header);
+};
