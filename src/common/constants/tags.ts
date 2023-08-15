@@ -6,4 +6,11 @@ export const TAGS: Record<string, string> = {
   ul: 'ul',
   div: 'div',
   header: 'header',
+  input: 'input',
+  label: 'label',
+  span: 'span',
+};
+
+export const CLASSES: Record<string, string> = {
+  input: 'input',
 };
