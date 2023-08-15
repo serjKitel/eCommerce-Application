@@ -1,8 +1,8 @@
-import { createElement } from '../../utils/createElement';
-import { TAGS } from '../../constants/tags';
-import { createHeaderLogo } from '../molecules/header-logo';
-import { NavigationMenu } from '../molecules/navigation';
-import { createHeaderLogIn } from '../molecules/header-log-in/headerLogIn';
+import { createElement } from '../../../utils/createElement';
+import { TAGS } from '../../../constants/tags';
+import { createHeaderLogo } from '../../molecules/header-logo';
+import { NavigationMenu } from '../../molecules/navigation';
+import { createHeaderLogIn } from '../../molecules/header-log-in/headerLogIn';
 
 export const createHeader = () => {
   const headerElement = createElement({
