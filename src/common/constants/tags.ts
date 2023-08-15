@@ -4,4 +4,5 @@ export const TAGS: Record<string, string> = {
   img: 'img',
   nav: 'nav',
   ul: 'ul',
+  div: 'div',
 };

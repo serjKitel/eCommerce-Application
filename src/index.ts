@@ -1,10 +1,10 @@
 import './style.css';
-import { logoElement } from './common/components/atoms/logo-component/logoComponent';
 import { NavigationMenu } from './common/components/molecules/navigation';
-
-document.body.appendChild(logoElement);
+import { createHeaderLogo } from './common/components/molecules/header-logo/headerLogo';
 
 window.onload = () => {
+  const headerLogo = createHeaderLogo();
+  document.body.appendChild(headerLogo);
   const navigationMenuElement = NavigationMenu();
   document.body.appendChild(navigationMenuElement);
 };
