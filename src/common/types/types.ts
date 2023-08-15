@@ -1,4 +1,4 @@
 export interface HeaderMenuItem {
-    text: string;
-    href: string;
+  text: string;
+  href: string;
 }

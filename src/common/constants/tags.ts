@@ -5,4 +5,5 @@ export const TAGS: Record<string, string> = {
   nav: 'nav',
   ul: 'ul',
   div: 'div',
+  header: 'header',
 };
