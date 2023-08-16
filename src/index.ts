@@ -1,14 +1,11 @@
 import './style.css';
-import { createHeaderLogo } from './common/components/molecules/header-logo/headerLogo';
 import { createHeader } from './common/components/organisms/header/header';
-import { createInputBlock } from './common/components/molecules/input-block/input-block';
-import { labelAttrEmail } from './common/components/atoms/label/label';
-import { inputAttrEmail } from './common/components/atoms/input/input';
+import { createMainAuth } from './common/components/organisms/main-auth/main-auth';
 
 window.onload = () => {
-  const headerLogo = createHeaderLogo();
-  document.body.appendChild(headerLogo);
   const header = createHeader();
   document.body.appendChild(header);
-  document.body.appendChild(createInputBlock(labelAttrEmail, inputAttrEmail));
+
+  const mainAuth = createMainAuth();
+  document.body.appendChild(mainAuth);
 };

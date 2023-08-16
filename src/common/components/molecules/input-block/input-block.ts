@@ -5,7 +5,7 @@ import { inputElement } from '../../atoms/input/input';
 import { labelElement } from '../../atoms/label/label';
 
 export const createInputBlock = (
-  attrLabel: { [key: string]: string }, attrInput: { [key: string]: string }
+  attrLabel: { [key: string]: string }, attrInput: { [key: string]: string }, text: string
 ) => {
   const inputBlockElement = createElement({
     tag: TAGS.div,
@@ -13,7 +13,7 @@ export const createInputBlock = (
   });
 
   const label = labelElement(attrLabel);
-  label.textContent = 'Email';
+  label.textContent = text;
 
   inputBlockElement.appendChild(label);
   inputBlockElement.appendChild(inputElement(attrInput));

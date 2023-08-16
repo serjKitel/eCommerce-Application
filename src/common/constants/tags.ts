@@ -9,8 +9,8 @@ export const TAGS: Record<string, string> = {
   input: 'input',
   label: 'label',
   span: 'span',
-};
-
-export const CLASSES: Record<string, string> = {
-  input: 'input',
+  form: 'form',
+  h1: 'h1',
+  button: 'button',
+  main: 'main',
 };

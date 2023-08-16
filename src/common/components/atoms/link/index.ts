@@ -1,0 +1,1 @@
+export { linkElement } from './link';
