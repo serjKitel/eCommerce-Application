@@ -5,7 +5,7 @@ import { logInElement } from '../../atoms/log-in-component';
 export const createHeaderLogIn = () => {
   const headerLogInElement = createElement({
     tag: TAGS.div,
-    className: 'header__logo',
+    className: 'header__log-in',
   });
 
   const logInLinkAttributes = {

@@ -92,3 +92,58 @@ h6 {
 .logo__link {
   text-decoration: none;
 }
+
+/* .page__not-found {
+  display: flex;
+  justify-content: space-between;
+} */
+
+.page__not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 85vh; 
+}
+
+.page__not-found__items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page__not-found__item {
+  font-size: 333px;
+  color:#270c0c;
+}
+
+.page__not-found__text {
+  font-size: 44px;
+  color: #270c0c;
+}
+
+.page__not-found__links {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  /* align-items: center; */
+}
+
+.page__not-found__link {
+  font-size: 24px;
+  color: #270c0c;
+  text-decoration: none;
+  /* margin-right: 111px; */
+}
+
+.main__inner {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+}
+
+.main__inner-text {
+  font-size: 44px;
+  color: #270c0c;
+}

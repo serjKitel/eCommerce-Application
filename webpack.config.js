@@ -45,6 +45,10 @@ const baseConfig = {
                     from: path.resolve(__dirname, 'src/common/assets/icons'),
                     to: 'icons',
                 },
+                {
+                    from: path.resolve(__dirname, 'src/common/assets/images'),
+                    to: 'images',
+                },
             ],
         })
     ],

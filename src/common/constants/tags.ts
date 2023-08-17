@@ -6,4 +6,6 @@ export const TAGS: Record<string, string> = {
   ul: 'ul',
   div: 'div',
   header: 'header',
+  main: 'main',
+  p: 'p',
 };
