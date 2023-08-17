@@ -9,7 +9,7 @@ const isValidateProperlyFormatEmail = (email: string): boolean => {
   return re.test(email);
 };
 
-const isHasEmailDomain = (email: string): boolean => {
+const isContainsEmailDomain = (email: string): boolean => {
   const domain = email.split('@')[1];
   if (!domain) {
     return false;
@@ -17,16 +17,18 @@ const isHasEmailDomain = (email: string): boolean => {
   return true;
 };
 
-const isHasEmailDoggy = (email: string): boolean => email.includes('@');
+const isContainsEmailDoggy = (email: string): boolean => email.includes('@');
 
 export const isValidateEmaill = (email: string, errorEl: HTMLElement): boolean => {
-  if (!isHasEmailDoggy(email)) {
+  if (!isContainsEmailDoggy(email)) {
     errorEl.textContent = ErrorsEmail.emailDoggy;
     return false;
-  } if (!isHasEmailDomain(email)) {
+  }
+  if (!isContainsEmailDomain(email)) {
     errorEl.textContent = ErrorsEmail.emailDomen;
     return false;
-  } if (!isValidateProperlyFormatEmail(email)) {
+  }
+  if (!isValidateProperlyFormatEmail(email)) {
     errorEl.textContent = ErrorsEmail.emailFormat;
     return false;
   }
