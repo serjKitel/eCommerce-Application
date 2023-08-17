@@ -6,6 +6,7 @@ import { labelAttrEmail, labelAttrPass } from '../../atoms/label/label';
 import { inputAttrEmail, inputAttrPass } from '../../atoms/input/input';
 import { LABEL_EMAIL, LABEL_PASS } from '../../../constants/common';
 import { createBtnsAuth } from '../btns-auth/btns-auth';
+import { isValidateEmaill } from '../../../utils/ValidationEmail';
 
 const formAttributes = {
   method: METHODS.post,
@@ -20,11 +21,18 @@ export const createFormAuth = () => {
   });
 
   const btnsAuth = createBtnsAuth();
-  const inputEmail = createInputBlock(labelAttrEmail, inputAttrEmail, LABEL_EMAIL);
-  const inputPass = createInputBlock(labelAttrPass, inputAttrPass, LABEL_PASS);
+  const inputBlockEmail = createInputBlock(
+    labelAttrEmail, inputAttrEmail, LABEL_EMAIL,
+  );
+  const inputBlockPass = createInputBlock(labelAttrPass, inputAttrPass, LABEL_PASS);
 
-  formElement.appendChild(inputEmail);
-  formElement.appendChild(inputPass);
+  inputBlockEmail.querySelector('input')?.addEventListener('change', function () {
+    const errorEl = inputBlockEmail.querySelector('span');
+    isValidateEmaill(this.value, errorEl!);
+  });
+
+  formElement.appendChild(inputBlockEmail);
+  formElement.appendChild(inputBlockPass);
   formElement.appendChild(btnsAuth);
 
   return formElement;

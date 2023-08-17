@@ -17,9 +17,11 @@ export const createInputBlock = (
   const label = labelElement(attrLabel);
   label.textContent = text;
 
+  const error = errorInputElement();
+
   inputBlockElement.appendChild(label);
   inputBlockElement.appendChild(inputElement(attrInput));
-  inputBlockElement.appendChild(errorInputElement);
+  inputBlockElement.appendChild(error);
 
   return inputBlockElement;
 };
