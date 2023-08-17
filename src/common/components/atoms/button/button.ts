@@ -6,6 +6,10 @@ export const formBtnAttr = {
   form: 'form-auth',
 };
 
+export const formBtnPass = {
+  type: 'button',
+};
+
 export const buttonElement = (attr: { [key: string]: string }) => createElement({
   tag: TAGS.button,
   className: 'form__button button',

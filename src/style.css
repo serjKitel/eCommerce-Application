@@ -157,6 +157,7 @@ p {
 .input__block {
   display: flex;
   flex-direction: column;
+	position: relative;
 }
 
 .label {
@@ -235,4 +236,29 @@ p {
   transition: all 0.2s ease-in;
   border-color: transparent;
   cursor: pointer;
+}
+
+.password-view__btn {
+	position: absolute;
+	right: 20px;
+	border: none;
+	cursor: pointer;
+	top: 58px;
+	padding: 0;
+}
+
+.password-view__btn img:first-child {
+	display: block;
+}
+
+.password-view__btn img:last-child {
+	display: none;
+}
+
+.password-view__btn.active img:first-child {
+	display: none;
+}
+
+.password-view__btn.active img:last-child {
+	display: block;
 }

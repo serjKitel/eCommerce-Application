@@ -8,6 +8,8 @@ import { LABEL_EMAIL, LABEL_PASS } from '../../../constants/common';
 import { createBtnsAuth } from '../btns-auth/btns-auth';
 import { isValidateEmaill } from '../../../utils/ValidationEmail';
 import { isValidatePassword } from '../../../utils/ValidationPassword';
+import { createBtnTogglePass } from '../button-pass/button.pass';
+// import { createBtnTogglePass } from '../button-pass/button.pass';
 
 const formAttributes = {
   method: METHODS.post,
@@ -24,13 +26,16 @@ export const createFormAuth = () => {
   const btnsAuth = createBtnsAuth();
   const inputBlockEmail = createInputBlock(labelAttrEmail, inputAttrEmail, LABEL_EMAIL);
   const inputBlockPass = createInputBlock(labelAttrPass, inputAttrPass, LABEL_PASS);
+  const btnPassword = createBtnTogglePass();
 
-  inputBlockEmail.querySelector('input')?.addEventListener('change', function () {
+  inputBlockPass.appendChild(btnPassword);
+
+  inputBlockEmail.querySelector('input')?.addEventListener('input', function () {
     const errorEl = inputBlockEmail.querySelector('div');
     isValidateEmaill(this.value, errorEl!);
   });
 
-  inputBlockPass.querySelector('input')?.addEventListener('change', function () {
+  inputBlockPass.querySelector('input')?.addEventListener('input', function () {
     const errorEl = inputBlockPass.querySelector('div');
     isValidatePassword(this.value, errorEl!);
   });
