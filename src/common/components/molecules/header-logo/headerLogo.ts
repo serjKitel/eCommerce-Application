@@ -1,6 +1,7 @@
 import { TAGS } from '../../../constants/tags';
 import { createElement } from '../../../utils/createElement';
-import { logoElement } from '../../atoms/logo-component/logoComponent';
+// import { logoElement } from '../../atoms/logo-component/logoComponent';
+import { logoElement } from '../../atoms/logo-component';
 
 export const createHeaderLogo = () => {
   const headerLogoElement = createElement({

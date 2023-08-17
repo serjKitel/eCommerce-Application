@@ -1,7 +1,7 @@
 import { createElement } from '../../../utils/createElement';
 import { TAGS } from '../../../constants/tags';
 import { HEADER_MENU_ITEMS } from './constants';
-import { NavItem } from '../../atoms/nav-item/navItem';
+import { NavItem } from '../../atoms/nav-item';
 
 export const NavigationMenu = () => {
   const navElement = createElement({
