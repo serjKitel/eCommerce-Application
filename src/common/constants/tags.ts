@@ -8,4 +8,10 @@ export const TAGS: Record<string, string> = {
   header: 'header',
   main: 'main',
   p: 'p',
+  input: 'input',
+  label: 'label',
+  span: 'span',
+  form: 'form',
+  h1: 'h1',
+  button: 'button',
 };

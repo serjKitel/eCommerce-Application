@@ -103,7 +103,7 @@ h6 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 85vh; 
+  height: 85vh;
 }
 
 .page__not-found__items {
@@ -114,7 +114,7 @@ h6 {
 
 .page__not-found__item {
   font-size: 333px;
-  color:#270c0c;
+  color: #270c0c;
 }
 
 .page__not-found__text {
@@ -138,12 +138,96 @@ h6 {
 
 .main__inner {
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  row-gap: 60px;
 }
 
 .main__inner-text {
   font-size: 44px;
   color: #270c0c;
+}
+
+.input__block {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 20px;
+  line-height: 130%;
+  margin-bottom: 16px;
+}
+
+.input {
+  margin-bottom: 10px;
+  font-size: 16px;
+  padding: 16px 10px;
+  border: none;
+  background-color: #f0f0f0;
+  border-radius: 0;
+}
+
+.input__error {
+  font-size: 16px;
+  color: red;
+  line-height: 130%;
+  padding-left: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.form .input__block:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 32px;
+  text-transform: uppercase;
+  line-height: 130%;
+  margin-bottom: 40px;
+}
+
+.form__button {
+  color: #ffffff;
+  font-size: 16px;
+  padding: 16px 24px;
+  background-color: #181414;
+  border: 0;
+  width: 140px;
+}
+
+.form__button:hover {
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.form__btns {
+  display: flex;
+  column-gap: 32px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.main__inner {
+  padding: 140px 100px;
+}
+
+.link {
+  font-size: 20px;
+  border-bottom: 1px solid;
+  color: #181414;
+  text-decoration: none;
+}
+
+.link:hover {
+  transition: all 0.2s ease-in;
+  border-color: transparent;
+  cursor: pointer;
 }
