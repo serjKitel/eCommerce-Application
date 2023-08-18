@@ -1,0 +1,1 @@
+export { createHeaderLogo } from './headerLogo';
