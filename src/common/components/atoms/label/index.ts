@@ -1,1 +1,0 @@
-export { LabelElement } from './label';

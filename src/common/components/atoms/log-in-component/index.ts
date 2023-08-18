@@ -1,1 +1,0 @@
-export { LogInComponent } from './logInComponent';
