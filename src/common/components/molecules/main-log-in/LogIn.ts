@@ -1,5 +1,6 @@
 import { createElement } from '../../../utils/createElement';
 import { TAGS } from '../../../constants/tags';
+import { createFormAuth } from '../form-auth';
 
 export const createLoginPage = () => {
   const mainElement = createElement({
@@ -23,7 +24,9 @@ export const createLoginPage = () => {
 
   innerTextElement.textContent = 'Страница для авторизации (Log In)';
 
+  const formAuth = createFormAuth();
   mainInnerElement.appendChild(innerTextElement);
+  mainInnerElement.appendChild(formAuth);
   containerElement.appendChild(mainInnerElement);
   mainElement.appendChild(containerElement);
 
