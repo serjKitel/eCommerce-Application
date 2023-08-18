@@ -1,1 +1,1 @@
-export { labelElement } from './label';
+export { LabelElement } from './label';

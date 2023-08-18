@@ -1,4 +1,4 @@
-import { createAboutUsPage } from '../../common/components/molecules/about/about';
+import { createAboutUsPage } from '@organism/about/about';
 
 export const renderAboutUsPage = () => {
   // const headerElement = createHeader();

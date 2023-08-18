@@ -6,6 +6,16 @@
         "strict": true,
         "noImplicitAny": true,
         "skipLibCheck": true,
-				"moduleResolution":"node",
+        "moduleResolution": "node",
+        "baseUrl": ".",
+        "paths": {
+            "@atoms/*": ["src/common/components/atoms/*"],
+            "@molecules/*": ["src/common/components/molecules/*"],
+            "@organism/*": ["src/common/components/molecules/*"],
+            "@utils/*": ["src/common/utils/*"],
+            "@assets/*": ["src/common/assets/*"],
+            "@constants/*": ["src/common/constants/*"],
+            "@types/*": ["src/common/types/*"],
+        }
     }
 }

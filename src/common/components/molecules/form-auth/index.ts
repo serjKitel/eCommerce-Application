@@ -1,1 +1,1 @@
-export { createFormAuth } from './form-auth';
+export { FormAuth } from './formAuth';

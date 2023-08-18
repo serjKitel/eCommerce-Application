@@ -1,4 +1,4 @@
-import { HeaderMenuItem } from '../../../types/types';
+import { HeaderMenuItem } from '@types/types';
 
 export const HEADER_MENU_ITEMS: HeaderMenuItem[] = [
   { text: 'Главная', href: '#home' },

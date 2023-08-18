@@ -1,8 +1,8 @@
-import { createElement } from '../../../utils/createElement';
-import { TAGS } from '../../../constants/tags';
+import { createElement } from '@utils/createElement';
+import { TAGS } from '@constants/tags';
 import { clickToggleViewPass } from './helpers';
 
-export const createBtnTogglePass = () => {
+export const ButtonPassword = () => {
   const btnPass = createElement({
     tag: TAGS.button,
     className: 'password-view__btn',
