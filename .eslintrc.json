@@ -22,6 +22,10 @@
     ],
     "rules": {
         "import/prefer-default-export": "off",
-        "@typescript-eslint/no-explicit-any": 2
+        "@typescript-eslint/no-explicit-any": 2,
+        "function-paren-newline": "off",
+        "no-param-reassign": "off",
+        "import/no-relative-parent-imports": "error",
+        "no-unused-vars": "error"
     }
 }

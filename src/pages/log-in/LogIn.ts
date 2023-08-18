@@ -1,9 +1,11 @@
 // import { createHeader } from '../../common/components/organisms/header';
-import { createLoginPage } from '../../common/components/molecules/main-log-in/LogIn';
+// eslint-disable-next-line import/no-relative-parent-imports
+
+import { LoginPage } from '@organism/main-log-in/logIn';
 
 export const renderLogInPage = () => {
   // const headerElement = createHeader();
-  const logInPage = createLoginPage();
+  const logInPage = LoginPage();
   const mainElement = document.querySelector('main');
 
   if (mainElement) {

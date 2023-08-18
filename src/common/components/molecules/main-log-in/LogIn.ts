@@ -1,7 +1,8 @@
-import { createElement } from '../../../utils/createElement';
-import { TAGS } from '../../../constants/tags';
+import { createElement } from '@utils/createElement';
+import { TAGS } from '@constants/tags';
+import { FormAuth } from '@organism/form-auth';
 
-export const createLoginPage = () => {
+export const LoginPage = () => {
   const mainElement = createElement({
     tag: TAGS.main,
   });
@@ -23,7 +24,9 @@ export const createLoginPage = () => {
 
   innerTextElement.textContent = 'Страница для авторизации (Log In)';
 
+  const formAuth = FormAuth();
   mainInnerElement.appendChild(innerTextElement);
+  mainInnerElement.appendChild(formAuth);
   containerElement.appendChild(mainInnerElement);
   mainElement.appendChild(containerElement);
 

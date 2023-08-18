@@ -1,10 +1,11 @@
-import { createElement } from '../../../utils/createElement';
-import { TAGS } from '../../../constants/tags';
-import { createHeaderLogo } from '../../molecules/header-logo';
-import { NavigationMenu } from '../../molecules/navigation';
-import { createHeaderLogIn } from '../../molecules/header-log-in/headerLogIn';
+import { createElement } from '@utils/createElement';
+import { TAGS } from '@constants/tags';
 
-export const createHeader = () => {
+import { NavigationMenu } from '@organism/navigation';
+import { HeaderLogo } from '@organism/header-logo';
+import { HeaderLogIn } from '@organism/header-log-in';
+
+export const Header = () => {
   const headerElement = createElement({
     tag: TAGS.header,
     className: 'header',
@@ -20,7 +21,7 @@ export const createHeader = () => {
     className: 'header__inner',
   });
 
-  const headerLogoElement = createHeaderLogo();
+  const headerLogoElement = HeaderLogo();
   headerInnerElement.appendChild(headerLogoElement);
 
   const navigationElement = NavigationMenu();
@@ -29,7 +30,7 @@ export const createHeader = () => {
   containerElement.appendChild(headerInnerElement);
   headerElement.appendChild(containerElement);
 
-  const headerLogInElement = createHeaderLogIn();
+  const headerLogInElement = HeaderLogIn();
   headerInnerElement.appendChild(headerLogInElement);
 
   return headerElement;
