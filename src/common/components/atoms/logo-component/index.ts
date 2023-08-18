@@ -1,1 +1,0 @@
-export { logoElement } from './logoComponent';

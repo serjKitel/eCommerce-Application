@@ -1,1 +1,0 @@
-export { inputElement } from './input';
