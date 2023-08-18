@@ -1,1 +1,0 @@
-export { buttonElement } from './button';
