@@ -1,1 +1,1 @@
-export { title } from './title';
+export { Title } from './title';

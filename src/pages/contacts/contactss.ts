@@ -1,4 +1,4 @@
-import { createContactsPage } from '../../common/components/molecules/contacts/contacts';
+import { createContactsPage } from '@molecules/contacts/contacts';
 
 export const renderContactsPage = () => {
   // const headerElement = createHeader();

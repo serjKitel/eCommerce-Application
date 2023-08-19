@@ -1,5 +1,5 @@
-import { TAGS } from '../../../constants/tags';
-import { createElement } from '../../../utils/createElement';
+import { TAGS } from '@constants/tags';
+import { createElement } from '@utils/createElement';
 
 export const inputAttrEmail = {
   name: 'email',
@@ -16,7 +16,7 @@ export const inputAttrPass = {
   autocomplete: 'off',
 };
 
-export const inputElement = (attr: { [key: string]: string }) => createElement({
+export const Input = (attr: { [key: string]: string }) => createElement({
   tag: TAGS.input,
   className: 'input',
   attributes: attr,

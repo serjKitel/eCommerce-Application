@@ -1,8 +1,8 @@
-import { createMainPage } from '../../common/components/molecules/main-page/MainPage';
+import { MainPage } from '@molecules/main-page/MainPage';
 
 export const renderMainPage = () => {
   // const headerElement = createHeader();
-  const mainPage = createMainPage();
+  const mainPage = MainPage();
   const mainElement = document.querySelector('main');
 
   if (mainElement) {

@@ -1,4 +1,4 @@
-import { createGalleryPage } from '../../common/components/molecules/gallery/gallery';
+import { createGalleryPage } from '@molecules/gallery/gallery';
 
 export const renderGalleryPage = () => {
   // const headerElement = createHeader();

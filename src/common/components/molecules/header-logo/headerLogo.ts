@@ -1,9 +1,8 @@
-import { TAGS } from '../../../constants/tags';
-import { createElement } from '../../../utils/createElement';
-// import { logoElement } from '../../atoms/logo-component/logoComponent';
-import { logoElement } from '../../atoms/logo-component';
+import { TAGS } from '@constants/tags';
+import { createElement } from '@utils/createElement';
+import { Logo } from '@atoms/logo-component';
 
-export const createHeaderLogo = () => {
+export const HeaderLogo = () => {
   const headerLogoElement = createElement({
     tag: TAGS.div,
     className: 'header__logo',
@@ -19,7 +18,7 @@ export const createHeaderLogo = () => {
     attributes: logoLinkAttributes,
   });
 
-  logoLinkElement.appendChild(logoElement);
+  logoLinkElement.appendChild(Logo);
   headerLogoElement.appendChild(logoLinkElement);
 
   return headerLogoElement;

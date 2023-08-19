@@ -1,1 +1,1 @@
-export { linkElement } from './link';
+export { Link } from './link';
