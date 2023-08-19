@@ -1,5 +1,5 @@
-import { TAGS } from '../constants/tags';
-import { createElement } from './createElement';
+import { TAGS } from '@constants/tags';
+import { createElement } from '@utils/createElement';
 
 enum ErrorsPassword {
   passwordLength = '\nПароль должен быть не менее 8 символов',

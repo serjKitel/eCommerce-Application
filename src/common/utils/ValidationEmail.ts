@@ -19,7 +19,7 @@ const isContainsEmailDomain = (email: string): boolean => {
 
 const isContainsEmailDoggy = (email: string): boolean => email.includes('@');
 
-export const isValidateEmaill = (email: string, errorEl: HTMLElement): boolean => {
+export const isValidateEmail = (email: string, errorEl: HTMLElement): boolean => {
   if (!isContainsEmailDoggy(email)) {
     errorEl.textContent = ErrorsEmail.emailDoggy;
     return false;

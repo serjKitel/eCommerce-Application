@@ -1,1 +1,1 @@
-export { createBtnsAuth } from './btns-auth';
+export { AuthButtons } from './authButtons';

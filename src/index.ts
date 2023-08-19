@@ -1,6 +1,6 @@
 import './style.css';
-import { createHeader } from './common/components/organisms/header/header';
-import { createMainPage } from './common/components/molecules/main-page/MainPage';
+import { Header } from './common/components/organisms/header/header';
+import { MainPage } from './common/components/molecules/main-page/MainPage';
 import { renderLogInPage } from './pages/log-in/LogIn';
 import { renderMainPage } from './pages/main/main';
 import { renderCatalogPage } from './pages/catalog/catalog';
@@ -10,8 +10,8 @@ import { renderContactsPage } from './pages/contacts/contactss';
 import { renderNotFoundPage } from './pages/not-found-page/notFoundPage';
 
 window.onload = () => {
-  const headerElement = createHeader();
-  const mainPage = createMainPage();
+  const headerElement = Header();
+  const mainPage = MainPage();
 
   document.body.appendChild(headerElement);
   document.body.appendChild(mainPage);

@@ -1,1 +1,1 @@
-export { createInputBlock } from './input-block';
+export { InputBlock } from './inputBlock';

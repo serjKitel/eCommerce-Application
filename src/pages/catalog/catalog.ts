@@ -1,4 +1,4 @@
-import { createCatalogPage } from '../../common/components/molecules/catalog/catalog';
+import { createCatalogPage } from '@molecules/catalog/catalog';
 
 export const renderCatalogPage = () => {
   // const headerElement = createHeader();

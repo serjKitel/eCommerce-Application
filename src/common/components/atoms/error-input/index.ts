@@ -1,1 +1,1 @@
-export { errorInputElement } from './errorInput';
+export { ErrorInput } from './errorInput';

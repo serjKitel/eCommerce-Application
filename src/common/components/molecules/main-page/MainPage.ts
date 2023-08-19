@@ -1,7 +1,7 @@
-import { createElement } from '../../../utils/createElement';
-import { TAGS } from '../../../constants/tags';
+import { createElement } from '@utils/createElement';
+import { TAGS } from '@constants/tags';
 
-export const createMainPage = () => {
+export const MainPage = () => {
   const mainElement = createElement({
     tag: TAGS.main,
   });

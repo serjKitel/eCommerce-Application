@@ -1,5 +1,5 @@
-import { TAGS } from '../../../constants/tags';
-import { createElement } from '../../../utils/createElement';
+import { TAGS } from '@constants/tags';
+import { createElement } from '@utils/createElement';
 
 export const formBtnAttr = {
   type: 'submit',
@@ -10,7 +10,7 @@ export const formBtnPass = {
   type: 'button',
 };
 
-export const buttonElement = (attr: { [key: string]: string }) => createElement({
+export const Button = (attr: { [key: string]: string }) => createElement({
   tag: TAGS.button,
   className: 'form__button button',
   attributes: attr,

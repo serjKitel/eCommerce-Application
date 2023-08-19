@@ -1,5 +1,5 @@
-import { createElement } from '../../../utils/createElement';
-import { TAGS } from '../../../constants/tags';
+import { createElement } from '@utils/createElement';
+import { TAGS } from '@constants/tags';
 
 export const createAboutUsPage = () => {
   const mainElement = createElement({
@@ -29,3 +29,4 @@ export const createAboutUsPage = () => {
 
   return mainElement;
 };
+// TODO move to about page

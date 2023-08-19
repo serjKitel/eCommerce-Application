@@ -1,1 +1,1 @@
-export { createHeaderLogIn } from './headerLogIn';
+export { HeaderLogIn } from './headerLogIn';
