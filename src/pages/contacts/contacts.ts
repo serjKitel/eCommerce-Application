@@ -1,11 +1,7 @@
-// import { createHeader } from '../../common/components/organisms/header';
-// eslint-disable-next-line import/no-relative-parent-imports
-
 import { createElement } from '@utils/createElement';
 import { TAGS } from '@constants/tags';
-import { FormAuth } from '@molecules/form-auth';
 
-export const LogInPage = () => {
+export const renderContactsPage = () => {
   const mainElement = document.querySelector('main');
 
   if (mainElement) {
@@ -26,11 +22,9 @@ export const LogInPage = () => {
       className: 'main__inner-text',
     });
 
-    innerTextElement.textContent = 'Страница для авторизации (Log In)';
+    innerTextElement.textContent = 'Наши контакты';
 
-    const formAuth = FormAuth();
     mainInnerElement.appendChild(innerTextElement);
-    mainInnerElement.appendChild(formAuth);
     containerElement.appendChild(mainInnerElement);
     mainElement.appendChild(containerElement);
   }
