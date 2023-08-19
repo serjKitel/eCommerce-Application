@@ -5,3 +5,4 @@ export const LABEL_PASS = 'Пароль';
 export const AUTH = 'Вход';
 export const AUTH_BTN = 'Войти';
 export const REGISTATION = 'Зарегистрироваться';
+export const ERROR_AUTH_MSG = 'Неправильный логин или пароль';

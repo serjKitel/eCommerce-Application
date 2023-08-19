@@ -7,6 +7,8 @@ import { createApiBuilderFromCtpClient } from '@commercetools/platform-sdk';
 import { API_COMMERCE, PROJECT_KEY } from './const';
 import { authMiddlewareOptions, httpMiddlewareOptions } from './buildClient';
 import { myToken } from './Token';
+import { ERROR_AUTH_MSG } from '@constants/common';
+import { addErrorAuth } from '@utils/errorAuth';
 
 export function authorizationFunc(USER: { email: string; password: string }) {
   const optionsAuth: PasswordAuthMiddlewareOptions = {
@@ -46,7 +48,7 @@ export function authorizationFunc(USER: { email: string; password: string }) {
         .execute();
       return answer;
     } catch (e) {
-      console.log('Неправильный логин или пароль');
+			addErrorAuth();
     }
   };
 	getCustomerAuth().then(() => {

@@ -9,6 +9,8 @@ import { METHODS } from '@constants/methods';
 import { TAGS } from '@constants/tags';
 import { createElement } from '@utils/createElement';
 import { InputBlock } from '@molecules/input-block';
+import { removeErrorAuth } from '@utils/errorAuth';
+// import { removeErrorAuth } from '@utils/errorAuth';
 
 const formAttributes = {
   method: METHODS.post,
@@ -32,11 +34,19 @@ export const FormAuth = () => {
   inputBlockEmail.querySelector('input')?.addEventListener('input', function () {
     const errorEl = inputBlockEmail.querySelector('div');
     isValidateEmail(this.value, errorEl!);
+    const formAuth = document.getElementById('form-auth');
+    if (formAuth?.className === 'form error') {
+      removeErrorAuth();
+    }
   });
 
   inputBlockPass.querySelector('input')?.addEventListener('input', function () {
     const errorEl = inputBlockPass.querySelector('div');
+    const formAuth = document.getElementById('form-auth');
     isValidatePassword(this.value, errorEl!);
+    if (formAuth?.className === 'form error') {
+      removeErrorAuth();
+    }
   });
 
   formElement.appendChild(inputBlockEmail);

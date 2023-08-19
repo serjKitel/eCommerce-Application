@@ -262,3 +262,27 @@ p {
 .password-view__btn.active img:last-child {
   display: block;
 }
+
+.main__error {
+	display: none;
+	font-size: 24px;
+		color: red;
+		line-height: 130%;
+		padding-left: 10px;
+}
+
+#form-auth.error .main__error {
+	display: block;
+}
+
+#form-auth.error .input {
+	border: 2px solid red;
+}
+
+#form-auth.error .label {
+	color: red;
+}
+
+.main__error.error {
+	display: block;
+}

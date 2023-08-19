@@ -4,9 +4,9 @@
 import { createElement } from '@utils/createElement';
 import { TAGS } from '@constants/tags';
 import { FormAuth } from '@molecules/form-auth';
+import { ERROR_AUTH_MSG } from '@constants/common';
 import { authorizationFunc } from '../../commerceTools/authorization';
 import { renderMainPage } from '../main/main';
-import { myToken } from '../../commerceTools/Token';
 
 export const LogInPage = () => {
   const mainElement = document.querySelector('main');
@@ -29,6 +29,12 @@ export const LogInPage = () => {
       className: 'main__inner-text',
     });
 
+    const errorAuth = createElement({
+      tag: TAGS.p,
+      className: 'main__error',
+    });
+    errorAuth.textContent = ERROR_AUTH_MSG;
+
     innerTextElement.textContent = 'Страница для авторизации (Log In)';
 
     const formAuth = FormAuth();
@@ -50,11 +56,11 @@ export const LogInPage = () => {
           renderMainPage();
           window.location.hash = '#home';
         }
-        console.log(myToken.get());
       });
     });
 
     mainInnerElement.appendChild(innerTextElement);
+    mainInnerElement.appendChild(errorAuth);
     mainInnerElement.appendChild(formAuth);
     containerElement.appendChild(mainInnerElement);
     mainElement.appendChild(containerElement);
