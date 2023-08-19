@@ -8,7 +8,8 @@ import { API_COMMERCE, PROJECT_KEY } from './const';
 import { authMiddlewareOptions, httpMiddlewareOptions } from './buildClient';
 import { myToken } from './Token';
 import { ERROR_AUTH_MSG } from '@constants/common';
-import { addErrorAuth } from '@utils/errorAuth';
+import { ERROR } from '@constants/methods';
+import { checkForm, toggleErrorAuth } from '@utils/checkForm';
 
 export function authorizationFunc(USER: { email: string; password: string }) {
   const optionsAuth: PasswordAuthMiddlewareOptions = {
@@ -48,26 +49,27 @@ export function authorizationFunc(USER: { email: string; password: string }) {
         .execute();
       return answer;
     } catch (e) {
-			addErrorAuth();
+      toggleErrorAuth(ERROR.add);
+      checkForm(ERROR.add);
     }
   };
-	getCustomerAuth().then(() => {
-      const authorization: string = `Bearer ${myToken.get().token}`;
-      const options: ExistingTokenMiddlewareOptions = {
-        force: true,
-      };
+  getCustomerAuth().then(() => {
+    const authorization: string = `Bearer ${myToken.get().token}`;
+    const options: ExistingTokenMiddlewareOptions = {
+      force: true,
+    };
 
-      const client = new ClientBuilder()
-        .withProjectKey(PROJECT_KEY)
-        .withClientCredentialsFlow(authMiddlewareOptions)
-        .withExistingTokenFlow(authorization, options)
-        .withHttpMiddleware(httpMiddlewareOptions)
-        .build();
+    const client = new ClientBuilder()
+      .withProjectKey(PROJECT_KEY)
+      .withClientCredentialsFlow(authMiddlewareOptions)
+      .withExistingTokenFlow(authorization, options)
+      .withHttpMiddleware(httpMiddlewareOptions)
+      .build();
 
-      const getApiTokenRoot = () => createApiBuilderFromCtpClient(client);
+    const getApiTokenRoot = () => createApiBuilderFromCtpClient(client);
 
-      return getApiTokenRoot;
-    });
+    return getApiTokenRoot;
+  });
 
   return getCustomerAuth();
 }

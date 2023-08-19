@@ -31,21 +31,27 @@ const isLength = (password: string): boolean => password.length >= 8;
 export const isValidatePassword = (password: string, errorEl: HTMLElement): boolean => {
   const errors: string[] = [];
   errorEl.innerHTML = '';
+  let isValid: boolean = true;
 
   if (!isLength(password)) {
     errors.push(ErrorsPassword.passwordLength);
+    isValid = false;
   }
   if (!isContainsLowerLetter(password)) {
     errors.push(ErrorsPassword.passwordLowerLetter);
+    isValid = false;
   }
   if (!isContainsUpperLetter(password)) {
     errors.push(ErrorsPassword.passwordUpperLetter);
+    isValid = false;
   }
   if (!isContainsNumber(password)) {
     errors.push(ErrorsPassword.passwordNumber);
+    isValid = false;
   }
   if (isContainsTrim(password)) {
     errors.push(ErrorsPassword.passwordTrim);
+    isValid = false;
   }
 
   errors.forEach((error) => {
@@ -55,5 +61,5 @@ export const isValidatePassword = (password: string, errorEl: HTMLElement): bool
     err.textContent = error;
     errorEl.appendChild(err);
   });
-  return false;
+  return isValid;
 };

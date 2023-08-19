@@ -4,6 +4,7 @@ import { createElement } from '@utils/createElement';
 export const formBtnAttr = {
   type: 'submit',
   form: 'form-auth',
+  disabled: 'disabled',
 };
 
 export const formBtnPass = {
