@@ -5,6 +5,8 @@ import { createElement } from '@utils/createElement';
 import { TAGS } from '@constants/tags';
 import { FormAuth } from '@molecules/form-auth';
 import { authorizationFunc } from '../../commerceTools/authorization';
+import { renderMainPage } from '../main/main';
+import { myToken } from '../../commerceTools/Token';
 
 export const LogInPage = () => {
   const mainElement = document.querySelector('main');
@@ -44,7 +46,11 @@ export const LogInPage = () => {
 
       const clientAuth = authorizationFunc(USER);
       clientAuth.then((data) => {
-        console.log(data);
+        if (data?.statusCode === 200) {
+          renderMainPage();
+          window.location.hash = '#home';
+        }
+        console.log(myToken.get());
       });
     });
 

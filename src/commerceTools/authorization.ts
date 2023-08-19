@@ -46,10 +46,10 @@ export function authorizationFunc(USER: { email: string; password: string }) {
         .execute();
       return answer;
     } catch (e) {
-      console.log(e);
+      console.log('Неправильный логин или пароль');
     }
-
-    getCustomerAuth().then(() => {
+  };
+	getCustomerAuth().then(() => {
       const authorization: string = `Bearer ${myToken.get().token}`;
       const options: ExistingTokenMiddlewareOptions = {
         force: true,
@@ -66,7 +66,6 @@ export function authorizationFunc(USER: { email: string; password: string }) {
 
       return getApiTokenRoot;
     });
-  };
 
   return getCustomerAuth();
 }
