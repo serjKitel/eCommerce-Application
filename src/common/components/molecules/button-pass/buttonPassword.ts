@@ -30,7 +30,9 @@ export const ButtonPassword = () => {
   btnPass.appendChild(imgView);
   btnPass.appendChild(imgClose);
 
-  btnPass.addEventListener('click', function () { clickToggleViewPass(this); });
+  btnPass.addEventListener('click', function () {
+    clickToggleViewPass(this);
+  });
 
   return btnPass;
 };

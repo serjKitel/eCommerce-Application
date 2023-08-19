@@ -1,16 +1,31 @@
-import { createAboutUsPage } from '@molecules/about/about';
+import { TAGS } from '@constants/tags';
+import { createElement } from '@utils/createElement';
 
 export const renderAboutUsPage = () => {
-  // const headerElement = createHeader();
-  const aboutUsPage = createAboutUsPage();
   const mainElement = document.querySelector('main');
 
   if (mainElement) {
     mainElement.innerHTML = '';
-  }
 
-  // document.body.appendChild(headerElement);
-  if (mainElement) {
-    mainElement.appendChild(aboutUsPage);
+    const containerElement = createElement({
+      tag: TAGS.div,
+      className: 'container',
+    });
+
+    const mainInnerElement = createElement({
+      tag: TAGS.div,
+      className: 'main__inner',
+    });
+
+    const innerTextElement = createElement({
+      tag: TAGS.p,
+      className: 'main__inner-text',
+    });
+
+    innerTextElement.textContent = 'Информация о нас';
+
+    mainInnerElement.appendChild(innerTextElement);
+    containerElement.appendChild(mainInnerElement);
+    mainElement.appendChild(containerElement);
   }
 };

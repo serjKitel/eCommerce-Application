@@ -1,5 +1,5 @@
 // import { HeaderMenuItem } from '@types/types';
-import { HeaderMenuItem } from '@types/types';
+import { HeaderMenuItem } from '@types/commonTypes';
 
 export const HEADER_MENU_ITEMS: HeaderMenuItem[] = [
   { text: 'Главная', href: '#home' },

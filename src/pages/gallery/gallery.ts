@@ -1,16 +1,31 @@
-import { createGalleryPage } from '@molecules/gallery/gallery';
+import { createElement } from '@utils/createElement';
+import { TAGS } from '@constants/tags';
 
 export const renderGalleryPage = () => {
-  // const headerElement = createHeader();
-  const galleryPage = createGalleryPage();
   const mainElement = document.querySelector('main');
 
   if (mainElement) {
     mainElement.innerHTML = '';
-  }
 
-  // document.body.appendChild(headerElement);
-  if (mainElement) {
-    mainElement.appendChild(galleryPage);
+    const containerElement = createElement({
+      tag: TAGS.div,
+      className: 'container',
+    });
+
+    const mainInnerElement = createElement({
+      tag: TAGS.div,
+      className: 'main__inner',
+    });
+
+    const innerTextElement = createElement({
+      tag: TAGS.p,
+      className: 'main__inner-text',
+    });
+
+    innerTextElement.textContent = 'Галерея';
+
+    mainInnerElement.appendChild(innerTextElement);
+    containerElement.appendChild(mainInnerElement);
+    mainElement.appendChild(containerElement);
   }
 };

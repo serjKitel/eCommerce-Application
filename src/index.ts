@@ -1,16 +1,17 @@
 import './style.css';
+import { MainPage } from '@molecules/main-page/MainPage';
 import { Header } from './common/components/organisms/header/header';
-import { MainPage } from './common/components/molecules/main-page/MainPage';
-import { renderLogInPage } from './pages/log-in/LogIn';
+import { LogInPage } from './pages/log-in/LogIn';
 import { renderMainPage } from './pages/main/main';
 import { renderCatalogPage } from './pages/catalog/catalog';
 import { renderAboutUsPage } from './pages/about/about';
 import { renderGalleryPage } from './pages/gallery/gallery';
-import { renderContactsPage } from './pages/contacts/contactss';
+import { renderContactsPage } from './pages/contacts/contacts';
 import { renderNotFoundPage } from './pages/not-found-page/notFoundPage';
 
 window.onload = () => {
   const headerElement = Header();
+
   const mainPage = MainPage();
 
   document.body.appendChild(headerElement);
@@ -30,7 +31,7 @@ window.onload = () => {
     } else if (currentHash === '#contacts') {
       renderContactsPage();
     } else if (currentHash === '#login') {
-      renderLogInPage();
+      LogInPage();
     } else {
       renderNotFoundPage();
     }
@@ -46,7 +47,7 @@ window.onload = () => {
 
   if (logInDiv) {
     logInDiv.addEventListener('click', () => {
-      renderLogInPage();
+      LogInPage();
     });
   }
 

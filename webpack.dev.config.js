@@ -4,6 +4,7 @@ module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
+    // clientLogLevel: 'error',
     static: {
       directory: path.join(__dirname, '../dist'),
     },

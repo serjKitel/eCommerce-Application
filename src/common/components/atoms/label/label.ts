@@ -9,7 +9,8 @@ export const labelAttrPass = {
   for: 'password',
 };
 
-export const LabelElement = (attr: { [key: string]: string }) => createElement({ // move in Input
+export const LabelElement = (attr: { [key: string]: string }) => createElement({
+  // move in Input
   tag: TAGS.label,
   className: 'label',
   attributes: attr,
