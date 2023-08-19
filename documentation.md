@@ -38,3 +38,30 @@ Once your task branch is ready and tests pass, create a pull request against the
 
 Trello Task Management
 After creating a pull request, move the corresponding task in Trello to the "Review" status and add a comment with the link to the pull request.
+
+Naming conventions and folder structure for common files and folders in a project
+When organizing your project files and folders, it is essential to follow specific naming conventions and maintain a consistent folder structure. This approach ensures better readability and maintainability. Here are some recommended guidelines for naming common files and folders in your project:
+
+Folders
+Folder names should be in lowercase and use hyphen-separated words. This naming style is known as kebab-case.
+Example: nav-item.
+
+Files
+File names should start with an uppercase letter and use camel case (also known as Pascal case). In this naming style, each word starts with an uppercase letter, and there are no delimiters (such as hyphens) between the words.
+Example: NavItem.ts.
+
+Functions
+Function names should also start with an uppercase letter and use camel case.
+Example: NavItem.
+
+Folder Structure
+Each folder must contain an index.ts file that exports functions or components related to the folder's purpose. In our example, NavItem is the name of the function that creates a common element:
+
+Content of index.ts
+The index.ts file should re-export the function or component from the corresponding source file. In our example:
+
+```typescript
+export { NavItem } from './NavItem';
+
+
+This single Markdown file combines the naming conventions and folder structure information, providing beginners with a comprehensive guide to organize their project files and folders.
