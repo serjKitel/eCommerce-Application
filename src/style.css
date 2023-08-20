@@ -79,15 +79,9 @@ p {
   transition: color 0.3s linear;
 }
 
-.nav__link:after {
-  content: '';
-  display: block;
-  opacity: 0;
-  width: 100%;
-  height: 3px;
-  background: #bd6f3c;
-  position: absolute;
-  transition: opacity 0.3s linear;
+.navbar {
+  background-color: transparent;
+  display: none;
 }
 
 .header__navigation {
@@ -98,10 +92,25 @@ p {
   text-decoration: none;
 }
 
-/* .page__not-found {
+.menu__log-in {
   display: flex;
-  justify-content: space-between;
-} */
+  flex-direction: column;
+  display: none;
+}
+
+.menu__log-in.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu__log-in.active .log__in-link {
+  color: #ffffff;
+}
+
+.log__in-link {
+  text-decoration: none;
+  color: #ffffff;
+}
 
 .page__not-found {
   display: flex;
@@ -130,7 +139,7 @@ p {
 .page__not-found__links {
   display: flex;
   justify-content: space-between;
-  width: 40%;
+  /* width: 40%; */
   /* align-items: center; */
 }
 
@@ -138,7 +147,7 @@ p {
   font-size: 24px;
   color: #270c0c;
   text-decoration: none;
-  /* margin-right: 111px; */
+  padding: 0 100px 0 100px;
 }
 
 .main__inner {
@@ -289,4 +298,89 @@ p {
 
 .main__error.error {
   display: block;
+}
+
+/* media queries */
+
+@media (max-width: 1100px) {
+  .main__inner-text {
+    font-size: 30px;
+  }
+
+  .page__not-found__item {
+    font-size: 222px;
+  }
+
+  .page__not-found__img {
+    height: 222px;
+    width: 224px;
+  }
+
+  .page__not-found__link {
+    font-size: 18px;
+  }
+
+}
+
+@media (max-width: 850px) {
+
+  .page__not-found__links {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .main__inner {
+    padding: 80px 20px;
+  }
+
+  .header__navigation {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 33%;
+    height: auto;
+    padding: 15px;
+    background-color: #270c0c;
+    transform: translateY(-105%);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s;
+    opacity: 0.95;
+    z-index: 9999999;
+}
+
+.header__navigation.active {
+    transform: translateY(0);
+}
+
+  .navbar {
+    display: block;
+  }
+}
+
+@media (max-width: 440px) {
+
+  .form {
+    width: 100%;
+  }
+
+  .main__inner {
+    padding: 60px 10px;
+  }
+
+  .main__inner-text {
+    font-size: 25px;
+  }
+
+}
+
+@media (max-width: 350px) {
+
+  .main__inner-text {
+    font-size: 20px;
+  }
+
 }

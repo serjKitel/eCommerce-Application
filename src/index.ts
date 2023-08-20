@@ -8,6 +8,7 @@ import { renderAboutUsPage } from './pages/about/about';
 import { renderGalleryPage } from './pages/gallery/gallery';
 import { renderContactsPage } from './pages/contacts/contacts';
 import { renderNotFoundPage } from './pages/not-found-page/notFoundPage';
+import { renderRegistrationPage } from './pages/registration/registration';
 
 window.onload = () => {
   const headerElement = Header();
@@ -17,39 +18,45 @@ window.onload = () => {
   document.body.appendChild(headerElement);
   document.body.appendChild(mainPage);
 
-  window.addEventListener('hashchange', () => {
-    const currentHash = window.location.hash;
+  const handleHashChange = (hash: string) => {
+    localStorage.setItem('currentPageHash', hash);
 
-    if (currentHash === '#home') {
+    if (hash === '#home') {
       renderMainPage();
-    } else if (currentHash === '#catalog') {
+    } else if (hash === '#catalog') {
       renderCatalogPage();
-    } else if (currentHash === '#about') {
+    } else if (hash === '#about') {
       renderAboutUsPage();
-    } else if (currentHash === '#gallery') {
+    } else if (hash === '#gallery') {
       renderGalleryPage();
-    } else if (currentHash === '#contacts') {
+    } else if (hash === '#contacts') {
       renderContactsPage();
-    } else if (currentHash === '#login') {
+    } else if (hash === '#login') {
       LogInPage();
+    } else if (hash === '#registration') {
+      renderRegistrationPage();
     } else {
       renderNotFoundPage();
     }
+  };
+
+  const savedHash = localStorage.getItem('currentPageHash');
+  if (savedHash) {
+    window.location.hash = savedHash;
+    handleHashChange(savedHash);
+  }
+
+  window.addEventListener('hashchange', () => {
+    const currentHash = window.location.hash;
+    handleHashChange(currentHash);
   });
 
-  const logInDiv = document.querySelector('.header__log-in');
   const logoDiv = document.querySelector('.header__logo');
   const homeLink = document.querySelector('.nav__link[href="#home"]');
   const catalogLink = document.querySelector('.nav__link[href="#catalog"]');
   const aboutUsLink = document.querySelector('.nav__link[href="#about"]');
   const galleryLink = document.querySelector('.nav__link[href="#gallery"]');
   const contactsLink = document.querySelector('.nav__link[href="#contacts"]');
-
-  if (logInDiv) {
-    logInDiv.addEventListener('click', () => {
-      LogInPage();
-    });
-  }
 
   if (logoDiv) {
     logoDiv.addEventListener('click', () => {

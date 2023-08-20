@@ -3,7 +3,7 @@ import { createElement } from '@utils/createElement';
 import { LOGO_ALT_TEXT } from '@constants/common';
 
 const logoAttributes = {
-  src: './icons/logo2.svg',
+  src: './icons/logo.svg',
   alt: LOGO_ALT_TEXT,
 };
 
