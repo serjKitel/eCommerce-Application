@@ -2,28 +2,7 @@ import { createElement } from '@utils/createElement';
 import { TAGS } from '@constants/tags';
 import { FormAuth } from '@molecules/form-auth';
 import { ERROR_AUTH_MSG } from '@constants/common';
-import { STATUS_CODE } from '@constants/methods';
-import { authorizationFunc } from '../../commerceTools/authorization';
-import { renderMainPage } from '../main/main';
-
-function submitAuthForm(): void {
-  const inputEmail = document.querySelector('[name="email"]') as HTMLInputElement;
-  const inputPass = document.querySelector('[name="password"]') as HTMLInputElement;
-
-  const USER = {
-    email: inputEmail.value,
-    password: inputPass.value,
-  };
-
-  const clientAuth = authorizationFunc(USER);
-
-  clientAuth.then((data) => {
-    if (data?.statusCode === STATUS_CODE.success) {
-      renderMainPage();
-      window.location.hash = '#home';
-    }
-  });
-}
+import { submitAuthForm } from './helpers';
 
 export const LogInPage = () => {
   const mainElement = document.querySelector('main');
