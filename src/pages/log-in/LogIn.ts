@@ -52,7 +52,7 @@ export const LogInPage = () => {
     });
     errorAuth.textContent = ERROR_AUTH_MSG;
 
-    innerTextElement.textContent = 'Страница для авторизации (Log In)';
+    innerTextElement.textContent = 'Страница для авторизации';
 
     const formAuth = FormAuth();
 

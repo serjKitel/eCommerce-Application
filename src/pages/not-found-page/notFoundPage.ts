@@ -19,7 +19,8 @@ export const renderNotFoundPage = () => {
 
     const notFoundTextElement = createElement({
       tag: TAGS.p,
-      className: 'page__not-found__text',
+      // className: 'page__not-found__text',
+      className: 'main__inner-text',
     });
 
     notFoundTextElement.innerText = 'К сожалению, такой страницы не существует.';

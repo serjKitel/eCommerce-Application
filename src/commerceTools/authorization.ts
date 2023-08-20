@@ -5,7 +5,7 @@ import {
 } from '@commercetools/sdk-client-v2';
 import { createApiBuilderFromCtpClient } from '@commercetools/platform-sdk';
 import { API_COMMERCE, PROJECT_KEY } from './const';
-import { authMiddlewareOptions, httpMiddlewareOptions } from './buildClient';
+import { authMiddlewareOptions, httpMiddlewareOptions } from './BuildClient';
 import { myToken } from './Token';
 import { ERROR_AUTH_MSG } from '@constants/common';
 import { ERROR } from '@constants/methods';

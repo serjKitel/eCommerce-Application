@@ -27,5 +27,25 @@ export const NavigationMenu = () => {
 
   navElement.appendChild(ulElement);
 
+  // const navLinks = document.querySelectorAll('.nav__link');
+
+  navElement.addEventListener('click', () => {
+    navElement.classList.remove('active');
+  });
+
+  document.addEventListener('click', (event) => {
+    const { target } = event;
+
+    if (target instanceof HTMLElement) {
+      if (
+        !target.closest('.header__navigation')
+        && !target.closest('.nav__link')
+        && !target.closest('.navbar')
+      ) {
+        navElement.classList.remove('active');
+      }
+    }
+  });
+
   return navElement;
 };
