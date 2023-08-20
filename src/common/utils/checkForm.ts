@@ -1,21 +1,21 @@
 export function toggleErrorAuth(method: string): void {
-  const formAuth = document.getElementById('form-auth');
+  const form = document.querySelector('.form');
   const errorBlock = document.querySelector('.main__error');
 
   if (method === 'remove') {
-    formAuth?.classList.remove('error');
+    form?.classList.remove('error');
     errorBlock?.classList.remove('error');
   } else if (method === 'add') {
-    formAuth?.classList.add('error');
+    form?.classList.add('error');
     errorBlock?.classList.add('error');
   }
 }
 
-export function checkForm(errorMethod: string, isEmail?: boolean, isPass?: boolean): void {
+export function checkForm(errorMethod: string, ...args: boolean[]): void {
   toggleErrorAuth(errorMethod);
-  if (isEmail && isPass) {
-    document.querySelector('.form__button')?.removeAttribute('disabled');
+  if (args?.includes(false)) {
+    document.querySelector('.form__button')?.setAttribute('disabled', 'disabled');
     return;
   }
-  document.querySelector('.form__button')?.setAttribute('disabled', 'disabled');
+  document.querySelector('.form__button')?.removeAttribute('disabled');
 }

@@ -25,11 +25,11 @@ export const LogInPage = () => {
       className: 'main__inner-text',
     });
 
-    const errorAuth = createElement({
+    const error = createElement({
       tag: TAGS.p,
       className: 'main__error',
     });
-    errorAuth.textContent = ERROR_AUTH_MSG;
+    error.textContent = ERROR_AUTH_MSG;
 
     innerTextElement.textContent = 'Страница для авторизации';
 
@@ -41,7 +41,7 @@ export const LogInPage = () => {
     });
 
     mainInnerElement.appendChild(innerTextElement);
-    mainInnerElement.appendChild(errorAuth);
+    mainInnerElement.appendChild(error);
     mainInnerElement.appendChild(formAuth);
     containerElement.appendChild(mainInnerElement);
     mainElement.appendChild(containerElement);

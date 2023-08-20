@@ -23,7 +23,7 @@ export const HeaderLogIn = () => {
     },
   });
 
-  registrationLinkElement.textContent = 'Зарегистрироваться';
+  registrationLinkElement.textContent = 'Регистрация';
 
   registrationLinkElement.addEventListener('click', () => {
     menuLogInElement.classList.remove('active');

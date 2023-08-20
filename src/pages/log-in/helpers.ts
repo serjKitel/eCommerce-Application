@@ -2,6 +2,8 @@ import { STATUS_CODE } from '@constants/methods';
 import { authorizationFunc } from '../../commerceTools/authorization';
 import { renderMainPage } from '../main/main';
 
+export let isAuthorizat: boolean = false;
+
 export function submitAuthForm(): void {
   const inputEmail = document.querySelector('[name="email"]') as HTMLInputElement;
   const inputPass = document.querySelector('[name="password"]') as HTMLInputElement;
@@ -17,6 +19,7 @@ export function submitAuthForm(): void {
     if (data?.statusCode === STATUS_CODE.success) {
       renderMainPage();
       window.location.hash = '#home';
+      isAuthorizat = true;
     }
   });
 }

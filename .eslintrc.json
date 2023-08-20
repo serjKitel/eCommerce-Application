@@ -26,7 +26,8 @@
         "function-paren-newline": "off",
         "no-param-reassign": "off",
         // "import/no-relative-parent-imports": "error",
-        "no-unused-vars": "error",
-				"consistent-return": "off"
+        "no-unused-vars": "off",
+				"consistent-return": "off",
+				"import/no-mutable-exports": "off"
     }
 }

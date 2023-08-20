@@ -36,13 +36,13 @@ export const FormAuth = () => {
   inputBlockEmail.querySelector('input')?.addEventListener('input', function () {
     const errorEl = inputBlockEmail.querySelector('div');
     isEmail = isValidateEmail(this.value, errorEl!);
-    checkForm(ERROR.remove, isEmail, isPass);
+    checkForm(ERROR.remove, isEmail);
   });
 
   inputBlockPass.querySelector('input')?.addEventListener('input', function () {
     const errorEl = inputBlockPass.querySelector('div');
     isPass = isValidatePassword(this.value, errorEl!);
-    checkForm(ERROR.remove, isEmail, isPass);
+    checkForm(ERROR.remove, isPass);
   });
 
   formElement.appendChild(inputBlockEmail);

@@ -223,7 +223,7 @@ p {
   padding: 16px 24px;
   background-color: #181414;
   border: 0;
-  width: 140px;
+  width: fit-content;
 }
 
 .form__button:disabled {
