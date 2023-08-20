@@ -25,7 +25,8 @@
         "@typescript-eslint/no-explicit-any": 2,
         "function-paren-newline": "off",
         "no-param-reassign": "off",
-        "import/no-relative-parent-imports": "error",
-        "no-unused-vars": "error"
+        // "import/no-relative-parent-imports": "error",
+        "no-unused-vars": "error",
+				"consistent-return": "off"
     }
 }

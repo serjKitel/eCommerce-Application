@@ -5,10 +5,11 @@ import { inputAttrEmail, inputAttrPass } from '@atoms/input/input';
 import { LABEL_EMAIL, LABEL_PASS } from '@constants/common';
 import { AuthButtons } from '@molecules/btns-auth';
 import { ButtonPassword } from '@molecules/button-pass';
-import { METHODS } from '@constants/methods';
+import { ERROR, METHODS } from '@constants/methods';
 import { TAGS } from '@constants/tags';
 import { createElement } from '@utils/createElement';
 import { InputBlock } from '@molecules/input-block';
+import { checkForm } from '@utils/checkForm';
 
 const formAttributes = {
   method: METHODS.post,
@@ -29,14 +30,19 @@ export const FormAuth = () => {
 
   inputBlockPass.appendChild(btnPassword);
 
+  let isEmail: boolean = false;
+  let isPass: boolean = false;
+
   inputBlockEmail.querySelector('input')?.addEventListener('input', function () {
     const errorEl = inputBlockEmail.querySelector('div');
-    isValidateEmail(this.value, errorEl!);
+    isEmail = isValidateEmail(this.value, errorEl!);
+    checkForm(ERROR.remove, isEmail, isPass);
   });
 
   inputBlockPass.querySelector('input')?.addEventListener('input', function () {
     const errorEl = inputBlockPass.querySelector('div');
-    isValidatePassword(this.value, errorEl!);
+    isPass = isValidatePassword(this.value, errorEl!);
+    checkForm(ERROR.remove, isEmail, isPass);
   });
 
   formElement.appendChild(inputBlockEmail);
