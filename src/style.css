@@ -92,10 +92,19 @@ p {
   text-decoration: none;
 }
 
+.header__log-in {
+	position: relative;
+}
+
 .menu__log-in {
-  display: flex;
   flex-direction: column;
   display: none;
+	position: absolute;
+	padding: 20px;
+	row-gap: 16px;
+	top: 85px;
+	right: -20px;
+	background: #270c0c;
 }
 
 .menu__log-in.active {
@@ -299,6 +308,7 @@ p {
 .main__error.error {
   display: block;
 }
+
 
 /* media queries */
 
