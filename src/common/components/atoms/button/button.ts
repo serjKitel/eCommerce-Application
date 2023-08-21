@@ -11,6 +11,12 @@ export const formBtnPass = {
   type: 'button',
 };
 
+export const formRegBtnAttr = {
+  type: 'submit',
+  form: 'form-reg',
+  disabled: 'disabled',
+};
+
 export const Button = (attr: { [key: string]: string }) => createElement({
   tag: TAGS.button,
   className: 'form__button button',

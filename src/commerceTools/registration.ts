@@ -1,75 +1,35 @@
-import {
-  ClientBuilder,
-  ExistingTokenMiddlewareOptions,
-  PasswordAuthMiddlewareOptions,
-} from '@commercetools/sdk-client-v2';
-import { createApiBuilderFromCtpClient } from '@commercetools/platform-sdk';
-import { API_COMMERCE, PROJECT_KEY } from './const';
-import { authMiddlewareOptions, httpMiddlewareOptions } from './BuildClient';
-import { myToken } from './Token';
-import { ERROR } from '@constants/methods';
-import { checkForm, toggleErrorAuth } from '@utils/checkForm';
+import { ClientBuilder } from "@commercetools/sdk-client-v2";
+import { authMiddlewareOptions, httpMiddlewareOptions } from "./BuildClient";
+import { PROJECT_KEY } from "./const";
+import { createApiBuilderFromCtpClient } from "@commercetools/platform-sdk";
+import { IRegistration } from "@types/commonTypes";
 
 
-export function authorizationFunc(USER: { email: string; password: string }) {
-  const optionsAuth: PasswordAuthMiddlewareOptions = {
-    host: API_COMMERCE.HOST,
-    projectKey: PROJECT_KEY,
-    credentials: {
-      clientId: API_COMMERCE.CLIENT_ID,
-      clientSecret: API_COMMERCE.CLIENT_SECRET,
-      user: {
-        username: USER.email,
-        password: USER.password,
-      },
-    },
-    tokenCache: myToken,
-    scopes: API_COMMERCE.SCOPE,
-    fetch,
-  };
+export function registrationFunc(USER: IRegistration) {
+	const ctpClient = new ClientBuilder()
+  .withProjectKey(PROJECT_KEY)
+  .withClientCredentialsFlow(authMiddlewareOptions)
+  .withHttpMiddleware(httpMiddlewareOptions)
+  .withLoggerMiddleware()
+  .build();
 
-  const clientAuth = new ClientBuilder()
-    .withProjectKey(PROJECT_KEY)
-    .withClientCredentialsFlow(authMiddlewareOptions)
-    .withPasswordFlow(optionsAuth)
-    .withHttpMiddleware(httpMiddlewareOptions)
-    .build();
+	const apiRoot = createApiBuilderFromCtpClient(ctpClient)
+  .withProjectKey({ projectKey: PROJECT_KEY });
 
-  const getApiRootPass = () => createApiBuilderFromCtpClient(clientAuth);
+	const regClient = async () => {
+		try {
+			const answer = await apiRoot
+			.me()
+			.signup()
+			.post({
+				body: USER
+			})
+			.execute();
+			return answer;
+		} catch(e) {
+			console.log(e);
+		}
+	}
 
-  const getCustomerAuth = async () => {
-    try {
-      const answer = await getApiRootPass()
-        .withProjectKey({ projectKey: PROJECT_KEY })
-        .me()
-        .login()
-        .post({
-          body: USER,
-        })
-        .execute();
-      return answer;
-    } catch (e) {
-      toggleErrorAuth(ERROR.add);
-      checkForm(ERROR.add);
-    }
-  };
-  getCustomerAuth().then(() => {
-    const authorization: string = `Bearer ${myToken.get().token}`;
-    const options: ExistingTokenMiddlewareOptions = {
-      force: true,
-    };
-
-    const client = new ClientBuilder()
-      .withProjectKey(PROJECT_KEY)
-      .withClientCredentialsFlow(authMiddlewareOptions)
-      .withExistingTokenFlow(authorization, options)
-      .withHttpMiddleware(httpMiddlewareOptions)
-      .build();
-
-    const getApiTokenRoot = () => createApiBuilderFromCtpClient(client);
-
-    return getApiTokenRoot;
-  });
-
-  return getCustomerAuth();
+	return regClient();
 }

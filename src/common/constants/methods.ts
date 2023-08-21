@@ -10,4 +10,5 @@ export const ERROR: Record<string, string> = {
 
 export const STATUS_CODE: Record<string, number> = {
   success: 200,
+  successReg: 201,
 };

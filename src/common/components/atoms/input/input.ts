@@ -31,25 +31,25 @@ export const inputAttrSurname = {
 export const inputAttrDate = {
   name: 'date',
   type: 'date',
-  id: 'id',
+  id: 'date',
 };
 
 export const inputAttrStreet = {
   name: 'street',
   type: 'text',
-  id: 'id',
+  id: 'street',
 };
 
 export const inputAttrTown = {
   name: 'town',
   type: 'text',
-  id: 'id',
+  id: 'town',
 };
 
 export const inputAttrIndex = {
   name: 'index',
   type: 'text',
-  id: 'id',
+  id: 'index',
 };
 
 export const inputAttrCountry = {

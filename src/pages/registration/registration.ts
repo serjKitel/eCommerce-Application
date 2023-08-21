@@ -2,6 +2,7 @@ import { ERROR_AUTH_MSG } from '@constants/common';
 import { TAGS } from '@constants/tags';
 import { FormReg } from '@molecules/form-reg';
 import { createElement } from '@utils/createElement';
+import { submitRegForm } from './helpers';
 
 export const renderRegistrationPage = () => {
   const mainElement = document.querySelector('main');
@@ -33,6 +34,10 @@ export const renderRegistrationPage = () => {
     innerTextElement.textContent = 'Страница для регистрации';
 
     const formReg = FormReg();
+    formReg.addEventListener('submit', (event) => {
+      event.preventDefault();
+      submitRegForm();
+    });
 
     mainInnerElement.appendChild(innerTextElement);
     mainInnerElement.appendChild(error);

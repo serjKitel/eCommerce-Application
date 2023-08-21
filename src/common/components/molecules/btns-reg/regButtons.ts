@@ -1,6 +1,6 @@
 import { createElement } from '@utils/createElement';
 import { TAGS } from '@constants/tags';
-import { Button, formBtnAttr } from '@atoms/button/button';
+import { Button, formRegBtnAttr } from '@atoms/button/button';
 import { AUTH_BTN, REGISTATION } from '@constants/common';
 import { Link } from '@atoms/link';
 import { attrAuth } from '@atoms/link/link';
@@ -11,7 +11,7 @@ export const RegButtons = () => {
     className: 'form__btns',
   });
 
-  const buttonSubmit = Button(formBtnAttr);
+  const buttonSubmit = Button(formRegBtnAttr);
   buttonSubmit.textContent = REGISTATION;
 
   const buttonReg = Link(attrAuth);
