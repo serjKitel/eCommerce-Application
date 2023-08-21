@@ -1,6 +1,6 @@
 import { STATUS_CODE } from '@constants/methods';
-import { renderMainPage } from '../main/main';
-import { registrationFunc } from '../../commerceTools/registration';
+import { registrationFunc } from '@commerceTools/registration';
+import { renderMainPage } from '@pages/main/main';
 
 export let isAuthorizat: boolean = false;
 

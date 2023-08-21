@@ -19,6 +19,8 @@ module.exports = {
       '@assets': path.resolve(__dirname, 'src/common/assets'),
       '@types': path.resolve(__dirname, 'src/common/types'),
       '@constants': path.resolve(__dirname, 'src/common/constants'),
+			'@commereceTools': path.resolve(__dirname, 'src/commereceTools'),
+			'@pages': path.resolve(__dirname, 'src/pages'),
     },
   },
 };

@@ -16,6 +16,8 @@
             "@assets/*": ["src/common/assets/*"],
             "@constants/*": ["src/common/constants/*"],
             "@types/*": ["src/common/types/*"],
+            "@commerceTools/*": ["src/commerceTools/*"],
+						 "@pages/*": ["src/pages/*"]
         }
     }
 }

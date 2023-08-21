@@ -1,6 +1,6 @@
 import { STATUS_CODE } from '@constants/methods';
-import { authorizationFunc } from '../../commerceTools/authorization';
-import { renderMainPage } from '../main/main';
+import { authorizationFunc } from '@commerceTools/authorization';
+import { renderMainPage } from '@pages/main/main';
 
 export let isAuthorizat: boolean = false;
 
