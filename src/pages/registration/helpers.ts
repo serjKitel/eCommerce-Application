@@ -20,7 +20,6 @@ export function submitRegForm(): void {
   const clientReg = registrationFunc(USER);
 
   clientReg.then((data) => {
-    console.log(data);
     if (data?.statusCode === STATUS_CODE.successReg) {
       renderMainPage();
       window.location.hash = '#home';

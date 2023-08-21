@@ -1,7 +1,7 @@
-import { isValidateEmail } from '@utils/ValidationEmail';
-import { isValidatePassword } from '@utils/ValidationPassword';
-import { labelAttrEmail, labelAttrPass } from '@atoms/label/label';
-import { inputAttrEmail, inputAttrPass } from '@atoms/input/input';
+import { isValidateEmail } from '@utils/validation/validationEmail';
+import { isValidatePassword } from '@utils/validation/validationPassword';
+import { labelAttrEmail, labelAttrPass } from '@atoms/label/consts';
+import { inputAttrEmail, inputAttrPass } from '@atoms/input/consts';
 import { LABEL_EMAIL, LABEL_PASS } from '@constants/common';
 import { AuthButtons } from '@molecules/btns-auth';
 import { ButtonPassword } from '@molecules/button-pass';
@@ -9,7 +9,8 @@ import { ERROR, METHODS } from '@constants/methods';
 import { TAGS } from '@constants/tags';
 import { createElement } from '@utils/createElement';
 import { InputBlock } from '@molecules/input-block';
-import { checkForm } from '@utils/checkForm';
+import { checkForm } from '@utils/validation/checkForm';
+import { validateInput } from '@utils/validation/helpers';
 
 const formAttributes = {
   method: METHODS.post,
@@ -24,8 +25,10 @@ export const FormAuth = () => {
   });
 
   const btnsAuth = AuthButtons();
-  const inputBlockEmail = InputBlock(labelAttrEmail, inputAttrEmail, LABEL_EMAIL);
-  const inputBlockPass = InputBlock(labelAttrPass, inputAttrPass, LABEL_PASS);
+  const inputBlockEmail = InputBlock(labelAttrEmail, inputAttrEmail, LABEL_EMAIL) as HTMLElement;
+  const inputBlockPass = InputBlock(
+    labelAttrPass, inputAttrPass, LABEL_PASS,
+  ) as HTMLElement;
   const btnPassword = ButtonPassword();
 
   inputBlockPass.appendChild(btnPassword);
@@ -33,16 +36,14 @@ export const FormAuth = () => {
   let isEmail: boolean = false;
   let isPass: boolean = false;
 
-  inputBlockEmail.querySelector('input')?.addEventListener('input', function () {
-    const errorEl = inputBlockEmail.querySelector('div');
-    isEmail = isValidateEmail(this.value, errorEl!);
-    checkForm(ERROR.remove, isEmail);
+  inputBlockEmail.querySelector('input')?.addEventListener('input', () => {
+    isEmail = validateInput(inputBlockEmail, isValidateEmail);
+    checkForm(ERROR.remove, isEmail, isPass);
   });
 
-  inputBlockPass.querySelector('input')?.addEventListener('input', function () {
-    const errorEl = inputBlockPass.querySelector('div');
-    isPass = isValidatePassword(this.value, errorEl!);
-    checkForm(ERROR.remove, isPass);
+  inputBlockPass.querySelector('input')?.addEventListener('input', () => {
+    isPass = validateInput(inputBlockPass, isValidatePassword);
+    checkForm(ERROR.remove, isEmail, isPass);
   });
 
   formElement.appendChild(inputBlockEmail);

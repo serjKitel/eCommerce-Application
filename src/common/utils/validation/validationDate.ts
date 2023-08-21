@@ -1,13 +1,6 @@
-import { TAGS } from '@constants/tags';
-import { createElement } from './createElement';
-
-enum ErrorsDate {
-  dateYear = '\nВам меньше 18 лет',
-  dateFormat = '\nДата введена неверно',
-}
-
-const minAge: number = 18;
-const startDat: string = '1950-01-01';
+import { IInputCheck } from '@types/commonTypes';
+import { ErrorsDate, minAge, startDat } from './consts';
+import { showErrors } from './helpers';
 
 const isValidAge = (dateString: string) => {
   const today: Date = new Date();
@@ -33,27 +26,21 @@ function isDateInRange(dateString: string) {
   return true;
 }
 
-export const isValidateDate = (date: string, errorEl: HTMLElement): boolean => {
+export const isValidateDate = (data: IInputCheck): boolean => {
   const errors: string[] = [];
-  errorEl.innerHTML = '';
+  data.errorEl.innerHTML = '';
   let isValid: boolean = true;
 
-  if (!isValidAge(date)) {
+  if (!isValidAge(data.value)) {
     errors.push(ErrorsDate.dateYear);
     isValid = false;
   }
 
-  if (!isDateInRange(date)) {
+  if (!isDateInRange(data.value)) {
     errors.push(ErrorsDate.dateFormat);
     isValid = false;
   }
 
-  errors.forEach((error) => {
-    const err = createElement({
-      tag: TAGS.p,
-    });
-    err.textContent = error;
-    errorEl.appendChild(err);
-  });
+  showErrors(errors, data.errorEl);
   return isValid;
 };

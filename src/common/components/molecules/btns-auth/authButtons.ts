@@ -1,9 +1,10 @@
 import { createElement } from '@utils/createElement';
 import { TAGS } from '@constants/tags';
-import { Button, formBtnAttr } from '@atoms/button/button';
+import { Button } from '@atoms/button/button';
 import { AUTH_BTN, REGISTATION } from '@constants/common';
 import { Link } from '@atoms/link';
-import { attrReg } from '@atoms/link/link';
+import { formBtnAttr } from '@atoms/button/consts';
+import { attrReg } from '@atoms/link/consts';
 
 export const AuthButtons = () => {
   const btnsAuth = createElement({

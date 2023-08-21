@@ -8,10 +8,11 @@ import { API_COMMERCE, PROJECT_KEY } from './const';
 import { authMiddlewareOptions, httpMiddlewareOptions } from './BuildClient';
 import { myToken } from './Token';
 import { ERROR } from '@constants/methods';
-import { checkForm, toggleErrorAuth } from '@utils/checkForm';
+import { checkForm, toggleErrorAuth } from '@utils/validation/checkForm';
+import { IAuthorization } from '@types/commonTypes';
 
 
-export function authorizationFunc(USER: { email: string; password: string }) {
+export function authorizationFunc(USER: IAuthorization) {
   const optionsAuth: PasswordAuthMiddlewareOptions = {
     host: API_COMMERCE.HOST,
     projectKey: PROJECT_KEY,

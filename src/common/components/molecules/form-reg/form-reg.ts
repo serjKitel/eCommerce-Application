@@ -1,15 +1,15 @@
-import { isValidateEmail } from '@utils/ValidationEmail';
-import { isValidatePassword } from '@utils/ValidationPassword';
+import { isValidateEmail } from '@utils/validation/validationEmail';
+import { isValidatePassword } from '@utils/validation/validationPassword';
 import {
   labelAttrCountry,
   labelAttrDate, labelAttrEmail, labelAttrIndex, labelAttrName, labelAttrPass,
   labelAttrStreet, labelAttrSurname, labelAttrTown,
-} from '@atoms/label/label';
+} from '@atoms/label/consts';
 import {
   inputAttrCountry,
   inputAttrDate, inputAttrEmail, inputAttrIndex, inputAttrName, inputAttrPass,
   inputAttrStreet, inputAttrSurname, inputAttrTown,
-} from '@atoms/input/input';
+} from '@atoms/input/consts';
 import {
   LABEL_COUNTRY,
   LABEL_DATE, LABEL_EMAIL, LABEL_INDEX, LABEL_NAME, LABEL_PASS, LABEL_STREET, LABEL_SURNAME,
@@ -20,11 +20,12 @@ import { ERROR, METHODS } from '@constants/methods';
 import { TAGS } from '@constants/tags';
 import { createElement } from '@utils/createElement';
 import { InputBlock } from '@molecules/input-block';
-import { checkForm } from '@utils/checkForm';
+import { checkForm } from '@utils/validation/checkForm';
 import { RegButtons } from '@molecules/btns-reg/regButtons';
-import { isValidateText } from '@utils/validationText';
-import { isValidateDate } from '@utils/validationDate';
-import { isValidateLength } from '@utils/validationLength';
+import { isValidateText } from '@utils/validation/validationText';
+import { isValidateDate } from '@utils/validation/validationDate';
+import { isValidateLength } from '@utils/validation/validationLength';
+import { validateInput } from '@utils/validation/helpers';
 
 const formAttributes = {
   method: METHODS.post,
@@ -39,15 +40,23 @@ export const FormReg = () => {
   });
 
   const btnsAuth = RegButtons();
-  const inputBlockEmail = InputBlock(labelAttrEmail, inputAttrEmail, LABEL_EMAIL);
-  const inputBlockPass = InputBlock(labelAttrPass, inputAttrPass, LABEL_PASS);
-  const inputBlockName = InputBlock(labelAttrName, inputAttrName, LABEL_NAME);
-  const inputBlockSurname = InputBlock(labelAttrSurname, inputAttrSurname, LABEL_SURNAME);
-  const inputBlockDate = InputBlock(labelAttrDate, inputAttrDate, LABEL_DATE);
-  const inputBlockStreet = InputBlock(labelAttrStreet, inputAttrStreet, LABEL_STREET);
-  const inputBlockTown = InputBlock(labelAttrTown, inputAttrTown, LABEL_TOWN);
-  const inputBlockIndex = InputBlock(labelAttrIndex, inputAttrIndex, LABEL_INDEX);
-  const inputBlockCountry = InputBlock(labelAttrCountry, inputAttrCountry, LABEL_COUNTRY);
+  const inputBlockEmail = InputBlock(labelAttrEmail, inputAttrEmail, LABEL_EMAIL) as HTMLElement;
+  const inputBlockPass = InputBlock(labelAttrPass, inputAttrPass, LABEL_PASS) as HTMLElement;
+  const inputBlockName = InputBlock(labelAttrName, inputAttrName, LABEL_NAME) as HTMLElement;
+  const inputBlockSurname = InputBlock(
+    labelAttrSurname, inputAttrSurname, LABEL_SURNAME,
+  ) as HTMLElement;
+  const inputBlockDate = InputBlock(labelAttrDate, inputAttrDate, LABEL_DATE) as HTMLElement;
+  const inputBlockStreet = InputBlock(
+    labelAttrStreet, inputAttrStreet, LABEL_STREET,
+  ) as HTMLElement;
+  const inputBlockTown = InputBlock(
+    labelAttrTown, inputAttrTown, LABEL_TOWN,
+  ) as HTMLElement;
+  const inputBlockIndex = InputBlock(labelAttrIndex, inputAttrIndex, LABEL_INDEX) as HTMLElement;
+  const inputBlockCountry = InputBlock(
+    labelAttrCountry, inputAttrCountry, LABEL_COUNTRY,
+  ) as HTMLElement;
   const btnPassword = ButtonPassword();
 
   inputBlockPass.appendChild(btnPassword);
@@ -62,73 +71,64 @@ export const FormReg = () => {
   let isCountry: boolean = false;
   let isInde: boolean = false;
 
-  inputBlockEmail.querySelector('input')?.addEventListener('input', function () {
-    const errorEl = inputBlockEmail.querySelector('div');
-    isEmail = isValidateEmail(this.value, errorEl!);
+  inputBlockEmail.querySelector('input')?.addEventListener('input', () => {
+    isEmail = validateInput(inputBlockEmail, isValidateEmail);
     checkForm(
       ERROR.remove, isEmail, isPass, isName, isSurname, isDate, isTown, isStreet, isCountry, isInde,
     );
   });
 
-  inputBlockPass.querySelector('input')?.addEventListener('input', function () {
-    const errorEl = inputBlockPass.querySelector('div');
-    isPass = isValidatePassword(this.value, errorEl!);
+  inputBlockPass.querySelector('input')?.addEventListener('input', () => {
+    isPass = validateInput(inputBlockPass, isValidatePassword);
     checkForm(
       ERROR.remove, isEmail, isPass, isName, isSurname, isDate, isTown, isStreet, isCountry, isInde,
     );
   });
 
-  inputBlockName.querySelector('input')?.addEventListener('input', function () {
-    const errorEl = inputBlockName.querySelector('div');
-    isName = isValidateText(this.value, errorEl!);
+  inputBlockName.querySelector('input')?.addEventListener('input', () => {
+    isName = validateInput(inputBlockName, isValidateText);
     checkForm(
       ERROR.remove, isEmail, isPass, isName, isSurname, isDate, isTown, isStreet, isCountry, isInde,
     );
   });
 
-  inputBlockSurname.querySelector('input')?.addEventListener('input', function () {
-    const errorEl = inputBlockSurname.querySelector('div');
-    isSurname = isValidateText(this.value, errorEl!);
+  inputBlockSurname.querySelector('input')?.addEventListener('input', () => {
+    isSurname = validateInput(inputBlockSurname, isValidateText);
     checkForm(
       ERROR.remove, isEmail, isPass, isName, isSurname, isDate, isTown, isStreet, isCountry, isInde,
     );
   });
 
-  inputBlockDate.querySelector('input')?.addEventListener('input', function () {
-    const errorEl = inputBlockDate.querySelector('div');
-    isDate = isValidateDate(this.value, errorEl!);
+  inputBlockDate.querySelector('input')?.addEventListener('input', () => {
+    isDate = validateInput(inputBlockDate, isValidateDate);
     checkForm(
       ERROR.remove, isEmail, isPass, isName, isSurname, isDate, isTown, isStreet, isCountry, isInde,
     );
   });
 
-  inputBlockStreet.querySelector('input')?.addEventListener('input', function () {
-    const errorEl = inputBlockStreet.querySelector('div');
-    isStreet = isValidateLength(this.value, errorEl!);
+  inputBlockStreet.querySelector('input')?.addEventListener('input', () => {
+    isStreet = validateInput(inputBlockStreet, isValidateLength);
     checkForm(
       ERROR.remove, isEmail, isPass, isName, isSurname, isDate, isTown, isStreet, isCountry, isInde,
     );
   });
 
-  inputBlockTown.querySelector('input')?.addEventListener('input', function () {
-    const errorEl = inputBlockTown.querySelector('div');
-    isTown = isValidateText(this.value, errorEl!);
+  inputBlockTown.querySelector('input')?.addEventListener('input', () => {
+    isTown = validateInput(inputBlockTown, isValidateText);
     checkForm(
       ERROR.remove, isEmail, isPass, isName, isSurname, isDate, isTown, isStreet, isCountry, isInde,
     );
   });
 
-  inputBlockIndex.querySelector('input')?.addEventListener('input', function () {
-    const errorEl = inputBlockIndex.querySelector('div');
-    isInde = isValidateLength(this.value, errorEl!);
+  inputBlockIndex.querySelector('input')?.addEventListener('input', () => {
+    isInde = validateInput(inputBlockIndex, isValidateLength);
     checkForm(
       ERROR.remove, isEmail, isPass, isName, isSurname, isDate, isTown, isStreet, isCountry, isInde,
     );
   });
 
-  inputBlockCountry.querySelector('input')?.addEventListener('input', function () {
-    const errorEl = inputBlockCountry.querySelector('div');
-    isCountry = isValidateText(this.value, errorEl!);
+  inputBlockCountry.querySelector('input')?.addEventListener('input', () => {
+    isCountry = validateInput(inputBlockCountry, isValidateText);
     checkForm(
       ERROR.remove, isEmail, isPass, isName, isSurname, isDate, isTown, isStreet, isCountry, isInde,
     );
