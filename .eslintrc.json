@@ -26,6 +26,7 @@
         "function-paren-newline": "off",
         "no-param-reassign": "off",
         "import/no-relative-parent-imports": "error",
-				"import/no-mutable-exports": "off"
+				"import/no-mutable-exports": "off",
+				"max-len": ["error", { "code": 120}]
     }
 }

@@ -369,6 +369,24 @@ p {
   .navbar {
     display: block;
   }
+
+  .page__not-found__item {
+    font-size: 180px;
+  }
+
+  .page__not-found__img {
+    height: 180px;
+    width: 182px;
+  }
+
+  .main__inner-text {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .page__not-found__link {
+    padding: 0 60px 0 60px;
+  }
 }
 
 @media (max-width: 440px) {
@@ -387,6 +405,18 @@ p {
   .form__btns {
     flex-direction: column;
     row-gap: 20px;
+  }
+  .page__not-found__item {
+    font-size: 130px;
+  }
+
+  .page__not-found__img {
+    height: 130px;
+    width: 132px;
+  }
+
+  .page__not-found__link {
+    padding: 0 40px 0 40px;
   }
 }
 
