@@ -26,9 +26,7 @@ export const FormAuth = () => {
 
   const btnsAuth = AuthButtons();
   const inputBlockEmail = InputBlock(labelAttrEmail, inputAttrEmail, LABEL_EMAIL) as HTMLElement;
-  const inputBlockPass = InputBlock(
-    labelAttrPass, inputAttrPass, LABEL_PASS,
-  ) as HTMLElement;
+  const inputBlockPass = InputBlock(labelAttrPass, inputAttrPass, LABEL_PASS) as HTMLElement;
   const btnPassword = ButtonPassword();
 
   inputBlockPass.appendChild(btnPassword);

@@ -3,6 +3,7 @@ import { authMiddlewareOptions, httpMiddlewareOptions } from './BuildClient';
 import { PROJECT_KEY } from './const';
 import { createApiBuilderFromCtpClient } from '@commercetools/platform-sdk';
 import { IRegistration } from '@types/commonTypes';
+import { STATUS_CODE } from '@constants/methods';
 
 export function registrationFunc(USER: IRegistration) {
   const ctpClient = new ClientBuilder()
@@ -24,8 +25,15 @@ export function registrationFunc(USER: IRegistration) {
         })
         .execute();
       return answer;
-    } catch (e) {
-      console.log(e);
+    } catch (err: any) {
+      const errorBlock = document.querySelector('.main__error') as HTMLElement;
+      errorBlock.classList.add('error');
+      if (err.statusCode === STATUS_CODE.clientError) {
+        errorBlock.innerHTML = 'Пользователь с такой почтой уже зарегистрирован';
+        document.querySelector('[name="email"]')?.classList.add('error');
+      } else if (String(err.statusCode)[0] === '5') {
+        errorBlock.innerHTML = 'Ошибка на стороне сервера. Повторите попытку позже';
+      }
     }
   };
 

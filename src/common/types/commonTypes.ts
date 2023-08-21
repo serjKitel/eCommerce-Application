@@ -4,19 +4,19 @@ export interface HeaderMenuItem {
 }
 
 export interface IRegistration {
-  email: string,
-  password: string,
-  firstName: string,
-  lastName: string
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
 }
 
 export interface IAuthorization {
-  email: string,
-  password: string
+  email: string;
+  password: string;
 }
 
 export interface IInputCheck {
-  value: string,
-  errorEl: HTMLElement,
-  number?: number
+  value: string;
+  errorEl: HTMLElement;
+  number?: number;
 }

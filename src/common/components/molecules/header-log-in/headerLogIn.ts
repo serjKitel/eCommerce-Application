@@ -47,10 +47,7 @@ export const HeaderLogIn = () => {
     const { target } = event;
 
     if (target instanceof HTMLElement) {
-      if (
-        !target.closest('.header__log-in')
-        && !target.closest('.log__in-link')
-      ) {
+      if (!target.closest('.header__log-in') && !target.closest('.log__in-link')) {
         menuLogInElement.classList.remove('active');
       }
     }

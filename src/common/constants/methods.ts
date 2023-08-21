@@ -16,4 +16,6 @@ export const ACTION_METHOD: Record<string, string> = {
 export const STATUS_CODE: Record<string, number> = {
   success: 200,
   successReg: 201,
+  clientError: 400,
+  serverError: 500,
 };

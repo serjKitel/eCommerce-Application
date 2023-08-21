@@ -37,11 +37,7 @@ export const NavigationMenu = () => {
     const { target } = event;
 
     if (target instanceof HTMLElement) {
-      if (
-        !target.closest('.header__navigation')
-        && !target.closest('.nav__link')
-        && !target.closest('.navbar')
-      ) {
+      if (!target.closest('.header__navigation') && !target.closest('.nav__link') && !target.closest('.navbar')) {
         navElement.classList.remove('active');
       }
     }

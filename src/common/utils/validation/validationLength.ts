@@ -5,6 +5,7 @@ export const showMsgMinLength = (number: number) => `Поле должно со�
 export const isLength = (password: string, number: number): boolean => password.length >= number;
 
 export const isValidateLength = (data: IInputCheck): boolean => {
+  data.number = 1;
   if (!isLength(data.value, data.number!)) {
     data.errorEl.textContent = showMsgMinLength(data.number!);
     return false;
