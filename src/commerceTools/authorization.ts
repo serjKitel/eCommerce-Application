@@ -7,11 +7,16 @@ import { createApiBuilderFromCtpClient } from '@commercetools/platform-sdk';
 import { API_COMMERCE, PROJECT_KEY } from './const';
 import { authMiddlewareOptions, httpMiddlewareOptions } from './BuildClient';
 import { myToken } from './Token';
-import { ERROR_AUTH_MSG } from '@constants/common';
-import { ERROR } from '@constants/methods';
-import { checkForm, toggleErrorAuth } from '@utils/checkForm';
+import { IAuthorization } from '../common/types/commonTypes';
+import { checkForm, toggleErrorAuth } from '../common/utils/validation/checkForm';
+import { ERROR } from '../common/constants/methods';
+// import { ERROR } from '@constants/methods';
+// import { checkForm, toggleErrorAuth } from '@utils/validation/checkForm';
+// import { IAuthorization } from '@types/commonTypes';
 
-export function authorizationFunc(USER: { email: string; password: string }) {
+export let isAuthorizat = false;
+
+export function authorizationFunc(USER: IAuthorization) {
   const optionsAuth: PasswordAuthMiddlewareOptions = {
     host: API_COMMERCE.HOST,
     projectKey: PROJECT_KEY,
@@ -39,6 +44,7 @@ export function authorizationFunc(USER: { email: string; password: string }) {
 
   const getCustomerAuth = async () => {
     try {
+			isAuthorizat = true;
       const answer = await getApiRootPass()
         .withProjectKey({ projectKey: PROJECT_KEY })
         .me()

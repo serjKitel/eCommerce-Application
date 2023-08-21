@@ -1,6 +1,11 @@
-import { createElement } from '@utils/createElement';
-import { TAGS } from '@constants/tags';
-import { NavItem } from '@atoms/nav-item';
+// import { createElement } from '@utils/createElement';
+// import { TAGS } from '@constants/tags';
+// import { NavItem } from '@atoms/nav-item';
+// import { HEADER_MENU_ITEMS } from './constants';
+
+import { TAGS } from '../../../constants/tags';
+import { createElement } from '../../../utils/createElement';
+import { NavItem } from '../../atoms/nav-item';
 import { HEADER_MENU_ITEMS } from './constants';
 
 export const NavigationMenu = () => {
@@ -37,11 +42,7 @@ export const NavigationMenu = () => {
     const { target } = event;
 
     if (target instanceof HTMLElement) {
-      if (
-        !target.closest('.header__navigation')
-        && !target.closest('.nav__link')
-        && !target.closest('.navbar')
-      ) {
+      if (!target.closest('.header__navigation') && !target.closest('.nav__link') && !target.closest('.navbar')) {
         navElement.classList.remove('active');
       }
     }

@@ -1,6 +1,10 @@
-import { TAGS } from '@constants/tags';
-import { createElement } from '@utils/createElement';
-import { LogInComponent } from '@atoms/log-in-component';
+// import { TAGS } from '@constants/tags';
+// import { createElement } from '@utils/createElement';
+// import { LogInComponent } from '@atoms/log-in-component';
+
+import { TAGS } from '../../../constants/tags';
+import { createElement } from '../../../utils/createElement';
+import { LogInComponent } from '../../atoms/log-in-component';
 
 export const HeaderLogIn = () => {
   const headerLogInElement = createElement({
@@ -47,10 +51,7 @@ export const HeaderLogIn = () => {
     const { target } = event;
 
     if (target instanceof HTMLElement) {
-      if (
-        !target.closest('.header__log-in')
-        && !target.closest('.log__in-link')
-      ) {
+      if (!target.closest('.header__log-in') && !target.closest('.log__in-link')) {
         menuLogInElement.classList.remove('active');
       }
     }

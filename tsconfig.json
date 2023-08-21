@@ -1,21 +1,23 @@
 {
-    "compilerOptions": {
-        "target": "es2016",
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "strict": true,
-        "noImplicitAny": true,
-        "skipLibCheck": true,
-        "moduleResolution": "node",
-        "baseUrl": ".",
-        "paths": {
-            "@atoms/*": ["src/common/components/atoms/*"],
-            "@molecules/*": ["src/common/components/molecules/*"],
-            "@organisms/*": ["src/common/components/organisms/*"],
-            "@utils/*": ["src/common/utils/*"],
-            "@assets/*": ["src/common/assets/*"],
-            "@constants/*": ["src/common/constants/*"],
-            "@types/*": ["src/common/types/*"],
-        }
-    }
+  "compilerOptions": {
+    "target": "es2016",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    // "baseUrl": ".",
+    // "paths": {
+    //   "@atoms/*": ["src/common/components/atoms/*"],
+    //   "@molecules/*": ["src/common/components/molecules/*"],
+    //   "@organisms/*": ["src/common/components/organisms/*"],
+    //   "@utils/*": ["src/common/utils/*"],
+    //   "@assets/*": ["src/common/assets/*"],
+    //   "@constants/*": ["src/common/constants/*"],
+    //   "@types/*": ["src/common/types/*"],
+    //   "@commerceTools/*": ["src/commerceTools/*"],
+    //   "@pages/*": ["src/pages/*"]
+    // }
+  }
 }

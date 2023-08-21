@@ -1,6 +1,10 @@
-import { TAGS } from '@constants/tags';
-import { createElement } from '@utils/createElement';
-import { MenuComponent } from '@atoms/menu';
+// import { TAGS } from '@constants/tags';
+// import { createElement } from '@utils/createElement';
+// import { MenuComponent } from '@atoms/menu';
+
+import { TAGS } from '../../../constants/tags';
+import { createElement } from '../../../utils/createElement';
+import { MenuComponent } from '../../atoms/menu';
 
 export const ButtonMenu = () => {
   const headerMenuElement = createElement({

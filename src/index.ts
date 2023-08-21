@@ -1,14 +1,29 @@
-import './style.css';
-import { MainPage } from '@molecules/main-page/MainPage';
-import { Header } from './common/components/organisms/header/header';
+// import './style.css';
+// import { MainPage } from '@molecules/main-page/MainPage';
+// import { isRegist } from '@commerceTools/registration';
+// import { isAuthorizat } from '@commerceTools/authorization';
+// import { Header } from './common/components/organisms/header/header';
+// import { LogInPage } from './pages/log-in/LogIn';
+// import { renderMainPage } from './pages/main/main';
+// import { renderCatalogPage } from './pages/catalog/catalog';
+// import { renderAboutUsPage } from './pages/about/about';
+// import { renderGalleryPage } from './pages/gallery/gallery';
+// import { renderContactsPage } from './pages/contacts/contacts';
+// import { renderNotFoundPage } from './pages/not-found-page/notFoundPage';
+// import { renderRegistrationPage } from './pages/registration/registration';
+
+import { isAuthorizat } from './commerceTools/authorization';
+import { MainPage } from './common/components/molecules/main-page/MainPage';
+import { Header } from './common/components/organisms/header';
+import { renderAboutUsPage } from './pages/about/about';
+import { renderCatalogPage } from './pages/catalog/catalog';
+import { renderContactsPage } from './pages/contacts/contacts';
+import { renderGalleryPage } from './pages/gallery/gallery';
 import { LogInPage } from './pages/log-in/LogIn';
 import { renderMainPage } from './pages/main/main';
-import { renderCatalogPage } from './pages/catalog/catalog';
-import { renderAboutUsPage } from './pages/about/about';
-import { renderGalleryPage } from './pages/gallery/gallery';
-import { renderContactsPage } from './pages/contacts/contacts';
 import { renderNotFoundPage } from './pages/not-found-page/notFoundPage';
 import { renderRegistrationPage } from './pages/registration/registration';
+import { isRegist } from './commerceTools/registration';
 
 window.onload = () => {
   const headerElement = Header();
@@ -31,8 +46,13 @@ window.onload = () => {
       renderGalleryPage();
     } else if (hash === '#contacts') {
       renderContactsPage();
+    } else if (isAuthorizat && hash === '#login') {
+      renderMainPage();
+      window.location.hash = 'home';
     } else if (hash === '#login') {
       LogInPage();
+    } else if (isRegist && hash === 'registration') {
+      renderRegistrationPage();
     } else if (hash === '#registration') {
       renderRegistrationPage();
     } else {

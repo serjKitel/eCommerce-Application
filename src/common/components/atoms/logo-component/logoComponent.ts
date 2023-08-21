@@ -1,6 +1,10 @@
-import { TAGS } from '@constants/tags';
-import { createElement } from '@utils/createElement';
-import { LOGO_ALT_TEXT } from '@constants/common';
+// import { TAGS } from '@constants/tags';
+// import { createElement } from '@utils/createElement';
+// import { LOGO_ALT_TEXT } from '@constants/common';
+
+import { LOGO_ALT_TEXT } from '../../../constants/common';
+import { TAGS } from '../../../constants/tags';
+import { createElement } from '../../../utils/createElement';
 
 const logoAttributes = {
   src: './icons/logo.svg',

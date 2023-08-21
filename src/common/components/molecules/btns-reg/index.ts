@@ -1,0 +1,1 @@
+export { RegButtons } from './regButtons';

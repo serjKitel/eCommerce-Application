@@ -1,5 +1,7 @@
-import { createElement } from '@utils/createElement';
-import { TAGS } from '@constants/tags';
+// import { createElement } from '@utils/createElement';
+// import { TAGS } from '@constants/tags';
+import { TAGS } from '../../../constants/tags';
+import { createElement } from '../../../utils/createElement';
 import { clickToggleViewPass } from './helpers';
 
 export const ButtonPassword = () => {
@@ -30,8 +32,8 @@ export const ButtonPassword = () => {
   btnPass.appendChild(imgView);
   btnPass.appendChild(imgClose);
 
-  btnPass.addEventListener('click', function () {
-    clickToggleViewPass(this);
+  btnPass.addEventListener('click', () => {
+    clickToggleViewPass(btnPass);
   });
 
   return btnPass;

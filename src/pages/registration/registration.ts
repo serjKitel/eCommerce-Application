@@ -1,5 +1,14 @@
-import { TAGS } from '@constants/tags';
-import { createElement } from '@utils/createElement';
+// import { ERROR_AUTH_MSG } from '@constants/common';
+// import { TAGS } from '@constants/tags';
+// import { FormReg } from '@molecules/form-reg';
+// import { createElement } from '@utils/createElement';
+// import { submitRegForm } from './helpers';
+
+import { FormReg } from '../../common/components/molecules/form-reg';
+import { ERROR_AUTH_MSG } from '../../common/constants/common';
+import { TAGS } from '../../common/constants/tags';
+import { createElement } from '../../common/utils/createElement';
+import { submitRegForm } from './helpers';
 
 export const renderRegistrationPage = () => {
   const mainElement = document.querySelector('main');
@@ -22,9 +31,23 @@ export const renderRegistrationPage = () => {
       className: 'main__inner-text',
     });
 
+    const error = createElement({
+      tag: TAGS.p,
+      className: 'main__error',
+    });
+    error.textContent = ERROR_AUTH_MSG;
+
     innerTextElement.textContent = 'Страница для регистрации';
 
+    const formReg = FormReg();
+    formReg.addEventListener('submit', (event: Event) => {
+      event.preventDefault();
+      submitRegForm();
+    });
+
     mainInnerElement.appendChild(innerTextElement);
+    mainInnerElement.appendChild(error);
+    mainInnerElement.appendChild(formReg);
     containerElement.appendChild(mainInnerElement);
     mainElement.appendChild(containerElement);
   }
