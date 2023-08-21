@@ -11,6 +11,8 @@ import { ERROR } from '@constants/methods';
 import { checkForm, toggleErrorAuth } from '@utils/validation/checkForm';
 import { IAuthorization } from '@types/commonTypes';
 
+export let isAuthorizat = false;
+
 export function authorizationFunc(USER: IAuthorization) {
   const optionsAuth: PasswordAuthMiddlewareOptions = {
     host: API_COMMERCE.HOST,
@@ -39,6 +41,7 @@ export function authorizationFunc(USER: IAuthorization) {
 
   const getCustomerAuth = async () => {
     try {
+			isAuthorizat = true;
       const answer = await getApiRootPass()
         .withProjectKey({ projectKey: PROJECT_KEY })
         .me()

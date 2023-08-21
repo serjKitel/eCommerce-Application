@@ -1,5 +1,7 @@
 import './style.css';
 import { MainPage } from '@molecules/main-page/MainPage';
+import { isRegist } from '@commerceTools/registration';
+import { isAuthorizat } from '@commerceTools/authorization';
 import { Header } from './common/components/organisms/header/header';
 import { LogInPage } from './pages/log-in/LogIn';
 import { renderMainPage } from './pages/main/main';
@@ -31,8 +33,13 @@ window.onload = () => {
       renderGalleryPage();
     } else if (hash === '#contacts') {
       renderContactsPage();
+    } else if (isAuthorizat && hash === '#login') {
+      renderMainPage();
+      window.location.hash = 'home';
     } else if (hash === '#login') {
       LogInPage();
+    } else if (isRegist && hash === 'registration') {
+      renderRegistrationPage();
     } else if (hash === '#registration') {
       renderRegistrationPage();
     } else {

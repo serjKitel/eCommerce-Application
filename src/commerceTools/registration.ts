@@ -5,6 +5,8 @@ import { createApiBuilderFromCtpClient } from '@commercetools/platform-sdk';
 import { IRegistration } from '@types/commonTypes';
 import { STATUS_CODE } from '@constants/methods';
 
+let isRegist = false;
+
 export function registrationFunc(USER: IRegistration) {
   const ctpClient = new ClientBuilder()
     .withProjectKey(PROJECT_KEY)
@@ -24,6 +26,7 @@ export function registrationFunc(USER: IRegistration) {
           body: USER,
         })
         .execute();
+				isRegist = true;
       return answer;
     } catch (err: any) {
       const errorBlock = document.querySelector('.main__error') as HTMLElement;
