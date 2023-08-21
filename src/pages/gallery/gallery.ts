@@ -1,5 +1,8 @@
-import { createElement } from '@utils/createElement';
-import { TAGS } from '@constants/tags';
+// import { createElement } from '@utils/createElement';
+// import { TAGS } from '@constants/tags';
+
+import { TAGS } from '../../common/constants/tags';
+import { createElement } from '../../common/utils/createElement';
 
 export const renderGalleryPage = () => {
   const mainElement = document.querySelector('main');

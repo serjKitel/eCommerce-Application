@@ -1,6 +1,10 @@
-import { registrationFunc } from '@commerceTools/registration';
-import { STATUS_CODE } from '@constants/methods';
-import { renderMainPage } from '@pages/main/main';
+// import { registrationFunc } from '@commerceTools/registration';
+// import { STATUS_CODE } from '@constants/methods';
+// import { renderMainPage } from '@pages/main/main';
+
+import { registrationFunc } from '../../commerceTools/registration';
+import { STATUS_CODE } from '../../common/constants/methods';
+import { renderMainPage } from '../main/main';
 
 export let isAuthorizat: boolean = false;
 
@@ -24,6 +28,7 @@ export function submitRegForm(): void {
       renderMainPage();
       window.location.hash = '#home';
       isAuthorizat = true;
+      alert('Вы успешно зарегистрировались!');
     }
   });
 }

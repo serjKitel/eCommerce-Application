@@ -1,4 +1,7 @@
-import { IInputCheck } from '@types/commonTypes';
+// import { IInputCheck } from '@types/commonTypes';
+// import { ErrorsEmail } from './consts';
+
+import { IInputCheck } from '../../types/commonTypes';
 import { ErrorsEmail } from './consts';
 
 const isValidateProperlyFormatEmail = (email: string): boolean => {

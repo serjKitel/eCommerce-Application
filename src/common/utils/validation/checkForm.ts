@@ -1,4 +1,6 @@
-import { ACTION_METHOD } from '@constants/methods';
+// import { ACTION_METHOD } from '@constants/methods';
+
+import { ACTION_METHOD } from '../../constants/methods';
 
 export function toggleErrorAuth(method: string): void {
   const form = document.querySelector('.form');

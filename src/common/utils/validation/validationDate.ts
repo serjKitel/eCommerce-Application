@@ -1,4 +1,8 @@
-import { IInputCheck } from '@types/commonTypes';
+// import { IInputCheck } from '@types/commonTypes';
+// import { ErrorsDate, minAge, startDat } from './consts';
+// import { showErrors } from './helpers';
+
+import { IInputCheck } from '../../types/commonTypes';
 import { ErrorsDate, minAge, startDat } from './consts';
 import { showErrors } from './helpers';
 

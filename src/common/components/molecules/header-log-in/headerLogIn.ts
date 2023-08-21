@@ -1,6 +1,10 @@
-import { TAGS } from '@constants/tags';
-import { createElement } from '@utils/createElement';
-import { LogInComponent } from '@atoms/log-in-component';
+// import { TAGS } from '@constants/tags';
+// import { createElement } from '@utils/createElement';
+// import { LogInComponent } from '@atoms/log-in-component';
+
+import { TAGS } from '../../../constants/tags';
+import { createElement } from '../../../utils/createElement';
+import { LogInComponent } from '../../atoms/log-in-component';
 
 export const HeaderLogIn = () => {
   const headerLogInElement = createElement({

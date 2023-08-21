@@ -1,8 +1,14 @@
-import { TAGS } from '@constants/tags';
-import { createElement } from '@utils/createElement';
-import { LabelElement } from '@atoms/label';
-import { Input } from '@atoms/input';
-import { ErrorInput } from '@atoms/error-input';
+// import { TAGS } from '@constants/tags';
+// import { createElement } from '@utils/createElement';
+// import { LabelElement } from '@atoms/label';
+// import { Input } from '@atoms/input';
+// import { ErrorInput } from '@atoms/error-input';
+
+import { TAGS } from '../../../constants/tags';
+import { createElement } from '../../../utils/createElement';
+import { ErrorInput } from '../../atoms/error-input';
+import { Input } from '../../atoms/input';
+import { LabelElement } from '../../atoms/label';
 
 export const InputBlock = (
   attrLabel: { [key: string]: string },

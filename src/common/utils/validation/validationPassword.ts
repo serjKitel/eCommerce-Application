@@ -1,7 +1,8 @@
-import { IInputCheck } from '@types/commonTypes';
+// import { IInputCheck } from '@types/commonTypes';
 import { isLength, showMsgMinLength } from './validationLength';
 import { ErrorsPassword } from './consts';
 import { showErrors } from './helpers';
+import { IInputCheck } from '../../types/commonTypes';
 
 const isContainsLowerLetter = (password: string): boolean => {
   const re = /[a-z]/g;

@@ -1,7 +1,13 @@
-import { createElement } from '@utils/createElement';
-import { TAGS } from '@constants/tags';
-import { FormAuth } from '@molecules/form-auth';
-import { ERROR_AUTH_MSG } from '@constants/common';
+// import { createElement } from '@utils/createElement';
+// import { TAGS } from '@constants/tags';
+// import { FormAuth } from '@molecules/form-auth';
+// import { ERROR_AUTH_MSG } from '@constants/common';
+// import { submitAuthForm } from './helpers';
+
+import { FormAuth } from '../../common/components/molecules/form-auth';
+import { ERROR_AUTH_MSG } from '../../common/constants/common';
+import { TAGS } from '../../common/constants/tags';
+import { createElement } from '../../common/utils/createElement';
 import { submitAuthForm } from './helpers';
 
 export const LogInPage = () => {
@@ -35,7 +41,7 @@ export const LogInPage = () => {
 
     const formAuth = FormAuth();
 
-    formAuth.addEventListener('submit', (event) => {
+    formAuth.addEventListener('submit', (event: Event) => {
       event.preventDefault();
       submitAuthForm();
     });

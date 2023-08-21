@@ -1,10 +1,18 @@
-import { createElement } from '@utils/createElement';
-import { TAGS } from '@constants/tags';
-import { Button } from '@atoms/button/button';
-import { AUTH_BTN, REGISTATION } from '@constants/common';
-import { Link } from '@atoms/link';
-import { formRegBtnAttr } from '@atoms/button/consts';
-import { attrAuth } from '@atoms/link/consts';
+// import { createElement } from '@utils/createElement';
+// import { TAGS } from '@constants/tags';
+// import { Button } from '@atoms/button/button';
+// import { AUTH_BTN, REGISTATION } from '@constants/common';
+// import { Link } from '@atoms/link';
+// import { formRegBtnAttr } from '@atoms/button/consts';
+// import { attrAuth } from '@atoms/link/consts';
+
+import { AUTH_BTN, REGISTATION } from '../../../constants/common';
+import { TAGS } from '../../../constants/tags';
+import { createElement } from '../../../utils/createElement';
+import { Button } from '../../atoms/button';
+import { formRegBtnAttr } from '../../atoms/button/consts';
+import { Link } from '../../atoms/link';
+import { attrAuth } from '../../atoms/link/consts';
 
 export const RegButtons = () => {
   const btnsAuth = createElement({

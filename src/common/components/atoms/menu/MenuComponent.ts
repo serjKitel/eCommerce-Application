@@ -1,6 +1,10 @@
-import { TAGS } from '@constants/tags';
-import { createElement } from '@utils/createElement';
-import { MENU_ALT_TEXT } from '@constants/common';
+// import { TAGS } from '@constants/tags';
+// import { createElement } from '@utils/createElement';
+// import { MENU_ALT_TEXT } from '@constants/common';
+
+import { MENU_ALT_TEXT } from '../../../constants/common';
+import { TAGS } from '../../../constants/tags';
+import { createElement } from '../../../utils/createElement';
 
 const menuAttributes = {
   src: './icons/menu6.svg',

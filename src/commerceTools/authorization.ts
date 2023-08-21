@@ -7,9 +7,12 @@ import { createApiBuilderFromCtpClient } from '@commercetools/platform-sdk';
 import { API_COMMERCE, PROJECT_KEY } from './const';
 import { authMiddlewareOptions, httpMiddlewareOptions } from './BuildClient';
 import { myToken } from './Token';
-import { ERROR } from '@constants/methods';
-import { checkForm, toggleErrorAuth } from '@utils/validation/checkForm';
-import { IAuthorization } from '@types/commonTypes';
+import { IAuthorization } from '../common/types/commonTypes';
+import { checkForm, toggleErrorAuth } from '../common/utils/validation/checkForm';
+import { ERROR } from '../common/constants/methods';
+// import { ERROR } from '@constants/methods';
+// import { checkForm, toggleErrorAuth } from '@utils/validation/checkForm';
+// import { IAuthorization } from '@types/commonTypes';
 
 export let isAuthorizat = false;
 

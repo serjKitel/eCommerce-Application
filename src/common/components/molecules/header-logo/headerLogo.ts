@@ -1,6 +1,10 @@
-import { TAGS } from '@constants/tags';
-import { createElement } from '@utils/createElement';
-import { Logo } from '@atoms/logo-component';
+// import { TAGS } from '@constants/tags';
+// import { createElement } from '@utils/createElement';
+// import { Logo } from '@atoms/logo-component';
+
+import { TAGS } from '../../../constants/tags';
+import { createElement } from '../../../utils/createElement';
+import { Logo } from '../../atoms/logo-component';
 
 export const HeaderLogo = () => {
   const headerLogoElement = createElement({

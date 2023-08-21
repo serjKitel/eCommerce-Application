@@ -1,7 +1,13 @@
-import { ERROR_AUTH_MSG } from '@constants/common';
-import { TAGS } from '@constants/tags';
-import { FormReg } from '@molecules/form-reg';
-import { createElement } from '@utils/createElement';
+// import { ERROR_AUTH_MSG } from '@constants/common';
+// import { TAGS } from '@constants/tags';
+// import { FormReg } from '@molecules/form-reg';
+// import { createElement } from '@utils/createElement';
+// import { submitRegForm } from './helpers';
+
+import { FormReg } from '../../common/components/molecules/form-reg';
+import { ERROR_AUTH_MSG } from '../../common/constants/common';
+import { TAGS } from '../../common/constants/tags';
+import { createElement } from '../../common/utils/createElement';
 import { submitRegForm } from './helpers';
 
 export const renderRegistrationPage = () => {
@@ -34,7 +40,7 @@ export const renderRegistrationPage = () => {
     innerTextElement.textContent = 'Страница для регистрации';
 
     const formReg = FormReg();
-    formReg.addEventListener('submit', (event) => {
+    formReg.addEventListener('submit', (event: Event) => {
       event.preventDefault();
       submitRegForm();
     });

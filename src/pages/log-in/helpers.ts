@@ -1,6 +1,10 @@
-import { STATUS_CODE } from '@constants/methods';
-import { authorizationFunc } from '@commerceTools/authorization';
-import { renderMainPage } from '@pages/main/main';
+// import { STATUS_CODE } from '@constants/methods';
+// import { authorizationFunc } from '@commerceTools/authorization';
+// import { renderMainPage } from '@pages/main/main';
+
+import { authorizationFunc } from '../../commerceTools/authorization';
+import { STATUS_CODE } from '../../common/constants/methods';
+import { renderMainPage } from '../main/main';
 
 export let isAuthorizat: boolean = false;
 
@@ -20,6 +24,7 @@ export function submitAuthForm(): void {
       renderMainPage();
       window.location.hash = '#home';
       isAuthorizat = true;
+      alert('Вы авторизировались!');
     }
   });
 }

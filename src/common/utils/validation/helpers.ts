@@ -1,6 +1,10 @@
-import { TAGS } from '@constants/tags';
-import { IInputCheck } from '@types/commonTypes';
-import { createElement } from '@utils/createElement';
+// import { TAGS } from '@constants/tags';
+// import { IInputCheck } from '@types/commonTypes';
+// import { createElement } from '@utils/createElement';
+
+import { TAGS } from '../../constants/tags';
+import { IInputCheck } from '../../types/commonTypes';
+import { createElement } from '../createElement';
 
 export const showErrors = (errors: string[], errorEl: HTMLElement) => {
   errors.forEach((error) => {

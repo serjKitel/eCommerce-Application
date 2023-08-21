@@ -1,6 +1,11 @@
-import { createElement } from '@utils/createElement';
-import { TAGS } from '@constants/tags';
-import { NavItem } from '@atoms/nav-item';
+// import { createElement } from '@utils/createElement';
+// import { TAGS } from '@constants/tags';
+// import { NavItem } from '@atoms/nav-item';
+// import { HEADER_MENU_ITEMS } from './constants';
+
+import { TAGS } from '../../../constants/tags';
+import { createElement } from '../../../utils/createElement';
+import { NavItem } from '../../atoms/nav-item';
 import { HEADER_MENU_ITEMS } from './constants';
 
 export const NavigationMenu = () => {

@@ -1,5 +1,8 @@
-import { createElement } from '@utils/createElement';
-import { TAGS } from '@constants/tags';
+// import { createElement } from '@utils/createElement';
+// import { TAGS } from '@constants/tags';
+
+import { TAGS } from '../../../constants/tags';
+import { createElement } from '../../../utils/createElement';
 
 export const MainPage = () => {
   const mainElement = createElement({

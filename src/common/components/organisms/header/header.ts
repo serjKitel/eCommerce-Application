@@ -1,9 +1,15 @@
-import { createElement } from '@utils/createElement';
-import { TAGS } from '@constants/tags';
+// import { createElement } from '@utils/createElement';
+// import { TAGS } from '@constants/tags';
 
-import { NavigationMenu } from '@molecules/navigation';
-import { HeaderLogo } from '@molecules/header-logo';
-import { HeaderLogIn } from '@molecules/header-log-in';
+import { TAGS } from '../../../constants/tags';
+import { createElement } from '../../../utils/createElement';
+import { HeaderLogIn } from '../../molecules/header-log-in';
+import { HeaderLogo } from '../../molecules/header-logo';
+import { NavigationMenu } from '../../molecules/navigation';
+
+// import { NavigationMenu } from '@molecules/navigation';
+// import { HeaderLogo } from '@molecules/header-logo';
+// import { HeaderLogIn } from '@molecules/header-log-in';
 
 export const Header = () => {
   const headerElement = createElement({

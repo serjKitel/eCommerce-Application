@@ -1,5 +1,8 @@
-import { TAGS } from '@constants/tags';
-import { createElement } from '@utils/createElement';
+// import { TAGS } from '@constants/tags';
+// import { createElement } from '@utils/createElement';
+
+import { TAGS } from '../../common/constants/tags';
+import { createElement } from '../../common/utils/createElement';
 
 export const renderAboutUsPage = () => {
   const mainElement = document.querySelector('main');

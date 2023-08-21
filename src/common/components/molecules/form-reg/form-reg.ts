@@ -1,49 +1,74 @@
-import { isValidateEmail } from '@utils/validation/validationEmail';
-import { isValidatePassword } from '@utils/validation/validationPassword';
+// import { isValidateEmail } from '@utils/validation/validationEmail';
+// import { isValidatePassword } from '@utils/validation/validationPassword';
+// import {
+//   labelAttrCountry,
+//   labelAttrDate,
+//   labelAttrEmail,
+//   labelAttrIndex,
+//   labelAttrName,
+//   labelAttrPass,
+//   labelAttrStreet,
+//   labelAttrSurname,
+//   labelAttrTown,
+// } from '@atoms/label/consts';
+// import {
+//   inputAttrCountry,
+//   inputAttrDate,
+//   inputAttrEmail,
+//   inputAttrIndex,
+//   inputAttrName,
+//   inputAttrPass,
+//   inputAttrStreet,
+//   inputAttrSurname,
+//   inputAttrTown,
+// } from '@atoms/input/consts';
+// import {
+//   LABEL_COUNTRY,
+//   LABEL_DATE,
+//   LABEL_EMAIL,
+//   LABEL_INDEX,
+//   LABEL_NAME,
+//   LABEL_PASS,
+//   LABEL_STREET,
+//   LABEL_SURNAME,
+//   LABEL_TOWN,
+// } from '@constants/common';
+// import { ButtonPassword } from '@molecules/button-pass';
+// import { ERROR, METHODS } from '@constants/methods';
+// import { TAGS } from '@constants/tags';
+// import { createElement } from '@utils/createElement';
+// import { InputBlock } from '@molecules/input-block';
+// import { checkForm } from '@utils/validation/checkForm';
+// import { RegButtons } from '@molecules/btns-reg/regButtons';
+// import { isValidateText } from '@utils/validation/validationText';
+// import { isValidateDate } from '@utils/validation/validationDate';
+// import { isValidateLength } from '@utils/validation/validationLength';
+// import { validateInput } from '@utils/validation/helpers';
+
 import {
-  labelAttrCountry,
-  labelAttrDate,
-  labelAttrEmail,
-  labelAttrIndex,
-  labelAttrName,
-  labelAttrPass,
-  labelAttrStreet,
-  labelAttrSurname,
-  labelAttrTown,
-} from '@atoms/label/consts';
+  LABEL_COUNTRY, LABEL_DATE, LABEL_EMAIL, LABEL_INDEX, LABEL_NAME, LABEL_PASS, LABEL_STREET, LABEL_SURNAME, LABEL_TOWN,
+} from '../../../constants/common';
+import { ERROR, METHODS } from '../../../constants/methods';
+import { TAGS } from '../../../constants/tags';
+import { createElement } from '../../../utils/createElement';
+import { checkForm } from '../../../utils/validation/checkForm';
+import { validateInput } from '../../../utils/validation/helpers';
+import { isValidateDate } from '../../../utils/validation/validationDate';
+import { isValidateEmail } from '../../../utils/validation/validationEmail';
+import { isValidateLength } from '../../../utils/validation/validationLength';
+import { isValidatePassword } from '../../../utils/validation/validationPassword';
+import { isValidateText } from '../../../utils/validation/validationText';
 import {
-  inputAttrCountry,
-  inputAttrDate,
-  inputAttrEmail,
-  inputAttrIndex,
-  inputAttrName,
-  inputAttrPass,
-  inputAttrStreet,
-  inputAttrSurname,
-  inputAttrTown,
-} from '@atoms/input/consts';
+  inputAttrCountry, inputAttrDate, inputAttrEmail, inputAttrIndex, inputAttrName,
+  inputAttrPass, inputAttrStreet, inputAttrSurname, inputAttrTown,
+} from '../../atoms/input/consts';
 import {
-  LABEL_COUNTRY,
-  LABEL_DATE,
-  LABEL_EMAIL,
-  LABEL_INDEX,
-  LABEL_NAME,
-  LABEL_PASS,
-  LABEL_STREET,
-  LABEL_SURNAME,
-  LABEL_TOWN,
-} from '@constants/common';
-import { ButtonPassword } from '@molecules/button-pass';
-import { ERROR, METHODS } from '@constants/methods';
-import { TAGS } from '@constants/tags';
-import { createElement } from '@utils/createElement';
-import { InputBlock } from '@molecules/input-block';
-import { checkForm } from '@utils/validation/checkForm';
-import { RegButtons } from '@molecules/btns-reg/regButtons';
-import { isValidateText } from '@utils/validation/validationText';
-import { isValidateDate } from '@utils/validation/validationDate';
-import { isValidateLength } from '@utils/validation/validationLength';
-import { validateInput } from '@utils/validation/helpers';
+  labelAttrCountry, labelAttrDate, labelAttrEmail, labelAttrIndex, labelAttrName, labelAttrPass,
+  labelAttrStreet, labelAttrSurname, labelAttrTown,
+} from '../../atoms/label/consts';
+import { RegButtons } from '../btns-reg';
+import { ButtonPassword } from '../button-pass';
+import { InputBlock } from '../input-block';
 
 const formAttributes = {
   method: METHODS.post,

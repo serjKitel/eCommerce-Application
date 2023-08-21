@@ -1,7 +1,8 @@
-import { IInputCheck } from '@types/commonTypes';
+// import { IInputCheck } from '@types/commonTypes';
 import { isLength, showMsgMinLength } from './validationLength';
 import { ErrorsText } from './consts';
 import { showErrors } from './helpers';
+import { IInputCheck } from '../../types/commonTypes';
 
 const isContainsLetter = (str: string) => {
   const re = /^[a-zA-Zа-яА-ЯёЁ]+$/;

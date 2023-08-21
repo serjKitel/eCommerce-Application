@@ -1,16 +1,30 @@
-import { isValidateEmail } from '@utils/validation/validationEmail';
-import { isValidatePassword } from '@utils/validation/validationPassword';
-import { labelAttrEmail, labelAttrPass } from '@atoms/label/consts';
-import { inputAttrEmail, inputAttrPass } from '@atoms/input/consts';
-import { LABEL_EMAIL, LABEL_PASS } from '@constants/common';
-import { AuthButtons } from '@molecules/btns-auth';
-import { ButtonPassword } from '@molecules/button-pass';
-import { ERROR, METHODS } from '@constants/methods';
-import { TAGS } from '@constants/tags';
-import { createElement } from '@utils/createElement';
-import { InputBlock } from '@molecules/input-block';
-import { checkForm } from '@utils/validation/checkForm';
-import { validateInput } from '@utils/validation/helpers';
+// import { isValidateEmail } from '@utils/validation/validationEmail';
+// import { isValidatePassword } from '@utils/validation/validationPassword';
+// import { labelAttrEmail, labelAttrPass } from '@atoms/label/consts';
+// import { inputAttrEmail, inputAttrPass } from '@atoms/input/consts';
+// import { LABEL_EMAIL, LABEL_PASS } from '@constants/common';
+// import { AuthButtons } from '@molecules/btns-auth';
+// import { ButtonPassword } from '@molecules/button-pass';
+// import { ERROR, METHODS } from '@constants/methods';
+// import { TAGS } from '@constants/tags';
+// import { createElement } from '@utils/createElement';
+// import { InputBlock } from '@molecules/input-block';
+// import { checkForm } from '@utils/validation/checkForm';
+// import { validateInput } from '@utils/validation/helpers';
+
+import { LABEL_EMAIL, LABEL_PASS } from '../../../constants/common';
+import { ERROR, METHODS } from '../../../constants/methods';
+import { TAGS } from '../../../constants/tags';
+import { createElement } from '../../../utils/createElement';
+import { checkForm } from '../../../utils/validation/checkForm';
+import { validateInput } from '../../../utils/validation/helpers';
+import { isValidateEmail } from '../../../utils/validation/validationEmail';
+import { isValidatePassword } from '../../../utils/validation/validationPassword';
+import { inputAttrEmail, inputAttrPass } from '../../atoms/input/consts';
+import { labelAttrEmail, labelAttrPass } from '../../atoms/label/consts';
+import { AuthButtons } from '../btns-auth';
+import { ButtonPassword } from '../button-pass';
+import { InputBlock } from '../input-block';
 
 const formAttributes = {
   method: METHODS.post,

@@ -1,4 +1,6 @@
-import { IInputCheck } from '@types/commonTypes';
+// import { IInputCheck } from '@types/commonTypes';
+
+import { IInputCheck } from '../../types/commonTypes';
 
 export const showMsgMinLength = (number: number) => `Поле должно содержать минимум ${number} символов`;
 

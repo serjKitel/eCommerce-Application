@@ -1,4 +1,6 @@
-import { MainPage } from '@molecules/main-page/MainPage';
+// import { MainPage } from '@molecules/main-page/MainPage';
+
+import { MainPage } from '../../common/components/molecules/main-page/MainPage';
 
 export const renderMainPage = () => {
   const mainPage = MainPage();

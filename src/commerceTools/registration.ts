@@ -2,10 +2,12 @@ import { ClientBuilder } from '@commercetools/sdk-client-v2';
 import { authMiddlewareOptions, httpMiddlewareOptions } from './BuildClient';
 import { PROJECT_KEY } from './const';
 import { createApiBuilderFromCtpClient } from '@commercetools/platform-sdk';
-import { IRegistration } from '@types/commonTypes';
-import { STATUS_CODE } from '@constants/methods';
+import { IRegistration } from '../common/types/commonTypes';
+import { STATUS_CODE } from '../common/constants/methods';
+// import { IRegistration } from '@types/commonTypes';
+// import { STATUS_CODE } from '@constants/methods';
 
-let isRegist = false;
+export let isRegist = false;
 
 export function registrationFunc(USER: IRegistration) {
   const ctpClient = new ClientBuilder()
