@@ -28,7 +28,7 @@ export function registrationFunc(USER: IRegistration) {
           body: USER,
         })
         .execute();
-				isRegist = true;
+      isRegist = true;
       return answer;
     } catch (err: any) {
       const errorBlock = document.querySelector('.main__error') as HTMLElement;

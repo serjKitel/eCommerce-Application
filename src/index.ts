@@ -1,4 +1,3 @@
-// import './style.css';
 // import { MainPage } from '@molecules/main-page/MainPage';
 // import { isRegist } from '@commerceTools/registration';
 // import { isAuthorizat } from '@commerceTools/authorization';
@@ -12,6 +11,7 @@
 // import { renderNotFoundPage } from './pages/not-found-page/notFoundPage';
 // import { renderRegistrationPage } from './pages/registration/registration';
 
+import './style.css';
 import { isAuthorizat } from './commerceTools/authorization';
 import { MainPage } from './common/components/molecules/main-page/MainPage';
 import { Header } from './common/components/organisms/header';
