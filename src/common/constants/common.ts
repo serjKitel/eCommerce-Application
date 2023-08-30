@@ -14,3 +14,5 @@ export const LABEL_STREET = 'Улица';
 export const LABEL_TOWN = 'Город';
 export const LABEL_INDEX = 'Почтовый индекс';
 export const LABEL_COUNTRY = 'Страна';
+
+export const ITEMS_PER_PAGE = 9;

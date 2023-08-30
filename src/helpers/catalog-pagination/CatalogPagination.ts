@@ -1,7 +1,8 @@
 import { createElement } from '../../common/utils/createElement';
 import { TAGS } from '../../common/constants/tags';
 import { itemData } from '../../common/constants/itemData';
-import { displayPage } from '../catalog-cards/CatalogCards';
+import { ITEMS_PER_PAGE } from '../../common/constants/common';
+import { displayPage } from '../catalog-cards/helper';
 
 export const CatalogPagination = () => {
   const buttonsContainer = createElement({
@@ -11,7 +12,7 @@ export const CatalogPagination = () => {
 
   const btnLeft2 = createElement({
     tag: TAGS.button,
-    className: 'btn__catalog-slide left2',
+    className: 'btn__catalog-slide left2 btn__disabled',
     textContent: '<<',
   });
 
@@ -19,7 +20,7 @@ export const CatalogPagination = () => {
 
   const btnLeft1 = createElement({
     tag: TAGS.button,
-    className: 'btn__catalog-slide left1',
+    className: 'btn__catalog-slide left1 btn__disabled',
     textContent: '<',
   });
 
@@ -33,26 +34,25 @@ export const CatalogPagination = () => {
 
   buttonsContainer.appendChild(btnPageNumber);
 
-  const btnRight2 = createElement({
+  const btnRight1 = createElement({
     tag: TAGS.button,
     className: 'btn__catalog-slide right1',
     textContent: '>',
   });
 
-  buttonsContainer.appendChild(btnRight2);
+  buttonsContainer.appendChild(btnRight1);
 
-  const btnRight1 = createElement({
+  const btnRight2 = createElement({
     tag: TAGS.button,
     className: 'btn__catalog-slide right2',
     textContent: '>>',
   });
 
-  buttonsContainer.appendChild(btnRight1);
+  buttonsContainer.appendChild(btnRight2);
 
   let currentPage = 1;
-  const itemsPerPage = 9;
   const totalItems = itemData.length;
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
 
   const updatePageNumber = (pageNumber: number) => {
     if (btnPageNumber) {
@@ -62,41 +62,29 @@ export const CatalogPagination = () => {
 
   const updatePaginationButtons = () => {
     if (currentPage === 1) {
-      if (btnLeft1 !== null) {
-        btnLeft1.classList.add('btn__disabled');
-      }
-      if (btnLeft2 !== null) {
-        btnLeft2.classList.add('btn__disabled');
-      }
+      btnLeft1.classList.add('btn__disabled');
+      btnLeft2.classList.add('btn__disabled');
+      btnRight1.classList.remove('btn__disabled');
+      btnRight2.classList.remove('btn__disabled');
     } else if (currentPage === totalPages) {
-      if (btnRight1 !== null) {
-        btnRight1.classList.add('btn__disabled');
-      }
-      if (btnRight2 !== null) {
-        btnRight2.classList.add('btn__disabled');
-      }
+      btnLeft1.classList.remove('btn__disabled');
+      btnLeft2.classList.remove('btn__disabled');
+      btnRight1.classList.add('btn__disabled');
+      btnRight2.classList.add('btn__disabled');
     } else {
-      if (btnLeft1 !== null) {
-        btnLeft1.classList.remove('btn__disabled');
-      }
-      if (btnLeft2 !== null) {
-        btnLeft2.classList.remove('btn__disabled');
-      }
-      if (btnRight1 !== null) {
-        btnRight1.classList.remove('btn__disabled');
-      }
-      if (btnRight2 !== null) {
-        btnRight2.classList.remove('btn__disabled');
-      }
+      btnLeft1.classList.remove('btn__disabled');
+      btnLeft2.classList.remove('btn__disabled');
+      btnRight1.classList.remove('btn__disabled');
+      btnRight2.classList.remove('btn__disabled');
     }
+    updatePageNumber(currentPage);
   };
 
   btnLeft1.addEventListener('click', () => {
     if (currentPage > 1) {
-      const q = document.querySelector('.catalog__items') as HTMLElement;
+      const cards = document.querySelector('.catalog__cards') as HTMLElement;
       currentPage -= 1;
-      updatePageNumber(currentPage);
-      displayPage(q, currentPage);
+      displayPage(cards, currentPage);
       updatePaginationButtons();
     }
   });
@@ -104,26 +92,23 @@ export const CatalogPagination = () => {
   btnRight1.addEventListener('click', () => {
     if (currentPage < totalPages) {
       currentPage += 1;
-      const q = document.querySelector('.catalog__items') as HTMLElement;
-      updatePageNumber(currentPage);
-      displayPage(q, currentPage);
+      const cards = document.querySelector('.catalog__cards') as HTMLElement;
+      displayPage(cards, currentPage);
       updatePaginationButtons();
     }
   });
 
   btnLeft2.addEventListener('click', () => {
     currentPage = 1;
-		const q = document.querySelector('.catalog__items') as HTMLElement;
-    updatePageNumber(currentPage);
-    displayPage(q, currentPage);
+    const cards = document.querySelector('.catalog__cards') as HTMLElement;
+    displayPage(cards, currentPage);
     updatePaginationButtons();
   });
 
   btnRight2.addEventListener('click', () => {
     currentPage = totalPages;
-		const q = document.querySelector('.catalog__items') as HTMLElement;
-    updatePageNumber(currentPage);
-   displayPage(q, currentPage);
+    const cards = document.querySelector('.catalog__cards') as HTMLElement;
+    displayPage(cards, currentPage);
     updatePaginationButtons();
   });
 
