@@ -16,7 +16,7 @@ import { isAuthorizat } from './commerceTools/authorization';
 import { MainPage } from './common/components/molecules/main-page/MainPage';
 import { Header } from './common/components/organisms/header';
 import { renderAboutUsPage } from './pages/about/about';
-import { renderCatalogPage } from './pages/catalog/catalog';
+import { CatalogPage } from './pages/catalog/CatalogPage';
 import { renderContactsPage } from './pages/contacts/contacts';
 import { renderGalleryPage } from './pages/gallery/gallery';
 import { LogInPage } from './pages/log-in/LogIn';
@@ -39,7 +39,7 @@ window.onload = () => {
     if (hash === '#home') {
       renderMainPage();
     } else if (hash === '#catalog') {
-      renderCatalogPage();
+      CatalogPage();
     } else if (hash === '#about') {
       renderAboutUsPage();
     } else if (hash === '#gallery') {
@@ -92,7 +92,7 @@ window.onload = () => {
 
   if (catalogLink) {
     catalogLink.addEventListener('click', () => {
-      renderCatalogPage();
+      CatalogPage();
     });
   }
 
