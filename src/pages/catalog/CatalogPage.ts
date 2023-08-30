@@ -6,6 +6,8 @@ import { createElement } from '../../common/utils/createElement';
 import { CategoriesForm } from '../../common/components/molecules/categories-form/CategoriesForm';
 // import { CatalogItems } from '../../helpers/catalog-items/CatalogItems';
 import { CatalogCards } from '../../helpers/catalog-cards';
+import { displayPage } from '../../helpers/catalog-cards/CatalogCards';
+import { CatalogPagination } from '../../helpers/catalog-pagination';
 
 export const CatalogPage = () => {
   const mainElement = document.querySelector('main');
@@ -46,8 +48,15 @@ export const CatalogPage = () => {
     mainInnerElement.appendChild(navigationChainElement);
     contentElement.appendChild(filtersElement);
 
-    const catalogCards = CatalogCards();
+    const catalogCards = CatalogCards() as HTMLElement;
     contentElement.appendChild(catalogCards);
+
+    console.log(catalogCards);
+
+    const q = CatalogPagination();
+    contentElement.append(q);
+
+    displayPage(catalogCards);
 
     mainInnerElement.appendChild(contentElement);
 
