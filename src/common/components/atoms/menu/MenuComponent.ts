@@ -7,7 +7,7 @@ import { TAGS } from '../../../constants/tags';
 import { createElement } from '../../../utils/createElement';
 
 const menuAttributes = {
-  src: './icons/menu6.svg',
+  src: './icons/menu.svg',
   alt: MENU_ALT_TEXT,
 };
 

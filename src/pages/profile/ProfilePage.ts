@@ -1,10 +1,7 @@
-// import { TAGS } from '@constants/tags';
-// import { createElement } from '@utils/createElement';
-
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
 
-export const renderCatalogPage = () => {
+export const ProfilePage = () => {
   const mainElement = document.querySelector('main');
 
   if (mainElement) {
@@ -25,7 +22,7 @@ export const renderCatalogPage = () => {
       className: 'main__inner-text',
     });
 
-    innerTextElement.textContent = 'Каталог';
+    innerTextElement.textContent = 'Страница профиля';
 
     mainInnerElement.appendChild(innerTextElement);
     containerElement.appendChild(mainInnerElement);

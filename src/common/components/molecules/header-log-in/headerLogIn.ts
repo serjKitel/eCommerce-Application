@@ -19,6 +19,20 @@ export const HeaderLogIn = () => {
     className: 'menu__log-in',
   });
 
+  const profileLinkElement = createElement({
+    tag: TAGS.a,
+    className: 'log__in-link',
+    attributes: {
+      href: '#profile',
+    },
+  });
+
+  profileLinkElement.textContent = 'Профиль';
+
+  profileLinkElement.addEventListener('click', () => {
+    menuLogInElement.classList.remove('active');
+  });
+
   const registrationLinkElement = createElement({
     tag: TAGS.a,
     className: 'log__in-link',
@@ -57,6 +71,7 @@ export const HeaderLogIn = () => {
     }
   });
 
+  menuLogInElement.appendChild(profileLinkElement);
   menuLogInElement.appendChild(registrationLinkElement);
   menuLogInElement.appendChild(loginLinkElement);
   headerLogInElement.appendChild(menuLogInElement);
