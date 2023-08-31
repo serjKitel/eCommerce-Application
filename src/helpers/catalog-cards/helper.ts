@@ -1,90 +1,96 @@
-import { ITEMS_PER_PAGE } from '../../common/constants/common';
-import { itemData } from '../../common/constants/itemData';
+import { getProducts } from '../../commerceTools/products';
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
 
 export const displayPage = (cardsContainer: HTMLElement, page: number = 1) => {
   cardsContainer.innerHTML = '';
-  const startIndex = (page - 1) * ITEMS_PER_PAGE;
-  const endIndex = startIndex + ITEMS_PER_PAGE;
+  console.log(page);
+  // const startIndex = (page - 1) * ITEMS_PER_PAGE;
+  // const endIndex = startIndex + ITEMS_PER_PAGE;
 
-  const itemsToShow = itemData.slice(startIndex, endIndex);
+  // const itemsToShow = itemData.slice(startIndex, endIndex);
 
-  itemsToShow.forEach((item) => {
-    const itemCardDiv = createElement({
-      tag: TAGS.div,
-      className: 'catalog__item',
-    });
+  getProducts().then((data) => {
+    const productsItems = data?.body.results;
 
-    const pdoductItemLink = createElement({
-      tag: TAGS.a,
-      className: 'product__item-link',
-      attributes: {
-        href: '#product',
-      },
-    });
+    if (productsItems) {
+      productsItems.forEach((productsItem) => {
+        const itemCardDiv = createElement({
+          tag: TAGS.div,
+          className: 'catalog__item',
+        });
 
-    itemCardDiv.appendChild(pdoductItemLink);
+        const pdoductItemLink = createElement({
+          tag: TAGS.a,
+          className: 'product__item-link',
+          attributes: {
+            href: '#product',
+          },
+        });
 
-    const itemImgDiv = createElement({
-      tag: TAGS.div,
-      className: 'catalog__item-img',
-    });
+        itemCardDiv.appendChild(pdoductItemLink);
 
-    const itemImg = createElement({
-      tag: TAGS.img,
-      className: 'card__img',
-      attributes: {
-        src: item.imgSrc,
-        alt: item.imgAlt,
-      },
-    });
+        const itemImgDiv = createElement({
+          tag: TAGS.div,
+          className: 'catalog__item-img',
+        });
 
-    itemImgDiv.appendChild(itemImg);
+        const itemImg = createElement({
+          tag: TAGS.img,
+          className: 'card__img',
+          attributes: {
+            src: productsItem.masterData.staged.masterVariant.images![0].url,
+            // alt: item.imgAlt,
+          },
+        });
 
-    pdoductItemLink.appendChild(itemImgDiv);
+        itemImgDiv.appendChild(itemImg);
 
-    const nameDiv = createElement({
-      tag: TAGS.div,
-      className: 'catalog__item-name item__description',
-      textContent: item.name,
-    });
+        pdoductItemLink.appendChild(itemImgDiv);
 
-    pdoductItemLink.appendChild(nameDiv);
+        const nameDiv = createElement({
+          tag: TAGS.div,
+          className: 'catalog__item-name item__description',
+          textContent: productsItem.masterData.current.name['ru-BY'],
+        });
 
-    const itemSize = createElement({
-      tag: TAGS.div,
-      className: 'catalog__item-size item__description',
-      textContent: item.itemSize,
-    });
+        pdoductItemLink.appendChild(nameDiv);
 
-    pdoductItemLink.appendChild(itemSize);
+        // const itemSize = createElement({
+        //   tag: TAGS.div,
+        //   className: 'catalog__item-size item__description',
+        //   textContent: item.itemSize,
+        // });
 
-    const itemUpholstery = createElement({
-      tag: TAGS.div,
-      className: 'catalog__item-upholstery item__description',
-      textContent: item.itemUpholstery,
-    });
+        // pdoductItemLink.appendChild(itemSize);
 
-    pdoductItemLink.appendChild(itemUpholstery);
+        // const itemUpholstery = createElement({
+        //   tag: TAGS.div,
+        //   className: 'catalog__item-upholstery item__description',
+        //   textContent: item.itemUpholstery,
+        // });
 
-    const itemMaterial = createElement({
-      tag: TAGS.div,
-      className: 'catalog__item-material item__description',
-      textContent: item.itemMaterial,
-    });
+        // pdoductItemLink.appendChild(itemUpholstery);
 
-    pdoductItemLink.appendChild(itemMaterial);
+        // const itemMaterial = createElement({
+        //   tag: TAGS.div,
+        //   className: 'catalog__item-material item__description',
+        //   textContent: item.itemMaterial,
+        // });
 
-    const itemPrice = createElement({
-      tag: TAGS.div,
-      className: 'catalog__item-price item__description',
-      textContent: item.itemPrice,
-    });
+        // pdoductItemLink.appendChild(itemMaterial);
 
-    pdoductItemLink.appendChild(itemPrice);
-    // pdoductItemLink.appendChild(itemCardDiv);
-    cardsContainer.appendChild(itemCardDiv);
-    // cardsContainer.appendChild(itemCardDiv);
+        const itemPrice = createElement({
+          tag: TAGS.div,
+          className: 'catalog__item-price item__description',
+          textContent: `
+          ${productsItem.masterData.staged.masterVariant.prices![0].value.centAmount} 
+          ${productsItem.masterData.staged.masterVariant.prices![0].value.currencyCode}`,
+        });
+
+        pdoductItemLink.appendChild(itemPrice);
+        cardsContainer.appendChild(itemCardDiv);
+      });
+    }
   });
 };

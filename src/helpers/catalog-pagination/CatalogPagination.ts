@@ -1,6 +1,5 @@
 import { createElement } from '../../common/utils/createElement';
 import { TAGS } from '../../common/constants/tags';
-import { itemData } from '../../common/constants/itemData';
 import { ITEMS_PER_PAGE } from '../../common/constants/common';
 import { displayPage } from '../catalog-cards/helper';
 
@@ -51,7 +50,7 @@ export const CatalogPagination = () => {
   buttonsContainer.appendChild(btnRight2);
 
   let currentPage = 1;
-  const totalItems = itemData.length;
+  const totalItems = 20;
   const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
 
   const updatePageNumber = (pageNumber: number) => {

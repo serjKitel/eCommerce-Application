@@ -1,3 +1,4 @@
+import { getCatalog } from '../../../../commerceTools/catalog';
 import { TAGS } from '../../../constants/tags';
 import { createElement } from '../../../utils/createElement';
 
@@ -6,47 +7,40 @@ export const CategoriesForm = () => {
     tag: TAGS.form,
   });
 
-  const radioOptions = [
-    {
-      id: 'option1',
-      name: 'choice',
-      value: 'chair',
-      label: 'Стулья',
-    },
-    {
-      id: 'option2',
-      name: 'choice',
-      value: 'sofa',
-      label: 'Диваны',
-    },
-    {
-      id: 'option3',
-      name: 'choice',
-      value: 'table',
-      label: 'Столы',
-    },
-  ];
+  getCatalog().then((data) => {
+    const catalogItems = data?.body.results;
 
-  radioOptions.forEach((option) => {
-    const radioInput = createElement({
-      tag: TAGS.input,
-      attributes: {
-        type: 'radio',
-        id: option.id,
-        name: option.name,
-        value: option.value,
-      },
+    catalogItems?.forEach((catalogItem) => {
+      if (!catalogItem.parent) {
+        const radioInput = createElement({
+          tag: TAGS.input,
+          attributes: {
+            type: 'radio',
+            name: 'catalog',
+            id: catalogItem.slug['en-US'],
+            value: catalogItem.slug['en-US'],
+          },
+        });
+
+        const label = createElement({
+          tag: TAGS.label,
+          attributes: { for: catalogItem.slug['en-US'] },
+          textContent: catalogItem.name['ru-BY'],
+        });
+
+        form.appendChild(radioInput);
+        form.appendChild(label);
+        form.appendChild(document.createElement('br'));
+      }
     });
 
-    const label = createElement({
-      tag: TAGS.label,
-      attributes: { for: option.id },
-      textContent: option.label,
+    const catalogRadioInputs = document.getElementsByName('catalog');
+    catalogRadioInputs.forEach((catalogRadioInput) => {
+      catalogRadioInput.addEventListener('change', () => {
+        const radioInput = catalogRadioInput as HTMLInputElement;
+        console.log(radioInput);
+      });
     });
-
-    form.appendChild(radioInput);
-    form.appendChild(label);
-    form.appendChild(document.createElement('br'));
   });
 
   return form;
