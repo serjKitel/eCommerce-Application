@@ -16,10 +16,12 @@ import { isAuthorizat } from './commerceTools/authorization';
 import { MainPage } from './common/components/molecules/main-page/MainPage';
 import { Header } from './common/components/organisms/header';
 import { renderAboutUsPage } from './pages/about/about';
-import { renderCatalogPage } from './pages/catalog/catalog';
+import { CatalogPage } from './pages/catalog/CatalogPage';
+import { ProductPage } from './pages/product';
 import { renderContactsPage } from './pages/contacts/contacts';
 import { renderGalleryPage } from './pages/gallery/gallery';
 import { LogInPage } from './pages/log-in/LogIn';
+import { ProfilePage } from './pages/profile/ProfilePage';
 import { renderMainPage } from './pages/main/main';
 import { renderNotFoundPage } from './pages/not-found-page/notFoundPage';
 import { renderRegistrationPage } from './pages/registration/registration';
@@ -39,7 +41,9 @@ window.onload = () => {
     if (hash === '#home') {
       renderMainPage();
     } else if (hash === '#catalog') {
-      renderCatalogPage();
+      CatalogPage();
+    } else if (hash === '#product') {
+      ProductPage();
     } else if (hash === '#about') {
       renderAboutUsPage();
     } else if (hash === '#gallery') {
@@ -49,6 +53,8 @@ window.onload = () => {
     } else if (isAuthorizat && hash === '#login') {
       renderMainPage();
       window.location.hash = 'home';
+    } else if (hash === '#profile') {
+      ProfilePage();
     } else if (hash === '#login') {
       LogInPage();
     } else if (isRegist && hash === 'registration') {
@@ -92,7 +98,7 @@ window.onload = () => {
 
   if (catalogLink) {
     catalogLink.addEventListener('click', () => {
-      renderCatalogPage();
+      CatalogPage();
     });
   }
 
