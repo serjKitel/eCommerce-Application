@@ -1,9 +1,10 @@
 import { getCatalog } from '../../../../commerceTools/catalog';
+import { displayPage } from '../../../../helpers/catalog-cards/helper';
 import { TAGS } from '../../../constants/tags';
 import { createElement } from '../../../utils/createElement';
 
 export const CategoriesForm = () => {
-  const form = createElement({
+  const categories = createElement({
     tag: TAGS.form,
   });
 
@@ -18,7 +19,7 @@ export const CategoriesForm = () => {
             type: 'radio',
             name: 'catalog',
             id: catalogItem.slug['en-US'],
-            value: catalogItem.slug['en-US'],
+            value: catalogItem.id,
           },
         });
 
@@ -28,20 +29,28 @@ export const CategoriesForm = () => {
           textContent: catalogItem.name['ru-BY'],
         });
 
-        form.appendChild(radioInput);
-        form.appendChild(label);
-        form.appendChild(document.createElement('br'));
+        categories.appendChild(radioInput);
+        categories.appendChild(label);
+        categories.appendChild(document.createElement('br'));
       }
     });
 
+    const catalogCards = document.querySelector('.catalog__cards') as HTMLElement;
     const catalogRadioInputs = document.getElementsByName('catalog');
+
     catalogRadioInputs.forEach((catalogRadioInput) => {
       catalogRadioInput.addEventListener('change', () => {
         const radioInput = catalogRadioInput as HTMLInputElement;
-        console.log(radioInput);
+        displayPage(catalogCards, radioInput.value);
+
+        catalogItems?.forEach((catalogItem) => {
+          if (catalogItem.parent?.id === radioInput.value) {
+
+          }
+        });
       });
     });
   });
 
-  return form;
+  return categories;
 };

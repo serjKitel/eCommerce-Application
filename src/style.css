@@ -373,6 +373,14 @@ p {
   margin: 5px 2px;
 }
 
+.catalog__item-price {
+	font-size: 18px;
+}
+
+.catalog__item-name {
+	font-size: 20px;
+}
+
 .catalog__pagination {
   margin: 28px auto;
 }
