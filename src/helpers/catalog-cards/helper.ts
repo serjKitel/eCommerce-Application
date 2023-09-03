@@ -4,7 +4,7 @@ import { getProducts } from '../../commerceTools/products';
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
 
-const displayCards = (cardsContainer: { appendChild: (arg0: HTMLElement) => void; }, productsItem: Product) => {
+const displayCards = (cardsContainer: { appendChild: (arg0: HTMLElement) => void }, productsItem: Product) => {
   if (productsItem.masterData.published) {
     const itemCardDiv = createElement({
       tag: TAGS.div,

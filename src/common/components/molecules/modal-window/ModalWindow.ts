@@ -92,8 +92,12 @@ export const ModalWindowSwiper = () => {
 
   if (crossButton) {
     crossButton.addEventListener('click', () => {
-      if (popup) {
+      const overlay = document.querySelector('.overlay') as HTMLElement;
+
+      if (popup && overlay) {
         popup.style.display = 'none';
+        overlay.style.display = 'none';
+        document.body.classList.remove('no-scroll');
       }
     });
   }

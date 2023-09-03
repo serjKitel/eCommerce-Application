@@ -31,7 +31,9 @@ export const displayRadioInputs = (catalogItem: Category, categories: HTMLElemen
 };
 
 export const changeCatalogRadioInputs = (
-  catalogCards: HTMLElement, catalogRadioInput: HTMLElement, catalogItems: Category[],
+  catalogCards: HTMLElement,
+  catalogRadioInput: HTMLElement,
+  catalogItems: Category[],
 ) => {
   catalogCards.innerHTML = '';
 
