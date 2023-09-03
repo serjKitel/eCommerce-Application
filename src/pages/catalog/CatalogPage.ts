@@ -6,7 +6,7 @@ import { createElement } from '../../common/utils/createElement';
 import { CategoriesForm } from '../../common/components/molecules/categories-form/CategoriesForm';
 import { CatalogCards } from '../../helpers/catalog-cards';
 import { displayPage } from '../../helpers/catalog-cards/helper';
-import { SubcategoriesForm } from '../../common/components/molecules/subcategories-form/Subcategory';
+import { SubcategoriesForm } from '../../common/components/molecules/subcategories-form';
 
 export const CatalogPage = () => {
   const mainElement = document.querySelector('main');

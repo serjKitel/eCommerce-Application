@@ -1,68 +1,41 @@
+import { Product } from '@commercetools/platform-sdk';
 import { TAGS } from '../../../constants/tags';
 import { createElement } from '../../../utils/createElement';
 
-export const ProductCharacteristics = () => {
+export const ProductCharacteristics = (product: Product) => {
   const productCharacteristics = createElement({
     tag: TAGS.div,
     className: 'product__characteristics',
   });
 
-  const productName = createElement({
-    tag: TAGS.div,
-    className: 'product__name-block product__desc-block',
-    textContent: 'Стул Jenny, черный',
-  });
+  if (product.masterData.current.name) {
+    const productName = createElement({
+      tag: TAGS.div,
+      className: 'product__name-block product__desc-block',
+      textContent: `${product.masterData.current.name['ru-BY']}`,
+    });
+    productCharacteristics.appendChild(productName);
+  }
 
-  const productPrice = createElement({
-    tag: TAGS.div,
-    className: 'product__price-block product__desc-block',
-    textContent: '1$',
-  });
+  if (product.masterData.staged.masterVariant.prices) {
+    const productPrice = createElement({
+      tag: TAGS.div,
+      className: 'product__desc-block',
+      textContent: `Цена: 
+                ${product.masterData.staged.masterVariant.prices[0].value.centAmount / 100} 
+                ${product.masterData.staged.masterVariant.prices[0].value.currencyCode}`,
+    });
+    productCharacteristics.appendChild(productPrice);
+  }
 
-  const productWidth = createElement({
-    tag: TAGS.div,
-    className: 'product__width product__desc-block',
-    textContent: 'Ширина: 53 см',
-  });
-
-  const productDepth = createElement({
-    tag: TAGS.div,
-    className: 'product__depth product__desc-block',
-    textContent: 'Глубина: 49,5 см',
-  });
-
-  const productHeight = createElement({
-    tag: TAGS.div,
-    className: 'product__height product__desc-block',
-    textContent: 'Высота: 75 см',
-  });
-
-  const productSeatHeight = createElement({
-    tag: TAGS.div,
-    className: 'product__seat-height product__desc-block',
-    textContent: 'Высота сиденья: 46.5 см',
-  });
-
-  const productUpholstery = createElement({
-    tag: TAGS.div,
-    className: 'product__upholstery product__desc-block',
-    textContent: 'Обивка: Экокожа',
-  });
-
-  const productMaterial = createElement({
-    tag: TAGS.div,
-    className: 'product__material product__desc-block',
-    textContent: 'Ножки: Дерево',
-  });
-
-  productCharacteristics.appendChild(productName);
-  productCharacteristics.appendChild(productPrice);
-  productCharacteristics.appendChild(productWidth);
-  productCharacteristics.appendChild(productDepth);
-  productCharacteristics.appendChild(productHeight);
-  productCharacteristics.appendChild(productSeatHeight);
-  productCharacteristics.appendChild(productUpholstery);
-  productCharacteristics.appendChild(productMaterial);
+  if (product.masterData.current.description) {
+    const productInfo = createElement({
+      tag: TAGS.div,
+      className: 'product__desc-block',
+      textContent: `Описание: ${product.masterData.current.description!['ru-BY']}`,
+    });
+    productCharacteristics.appendChild(productInfo);
+  }
 
   return productCharacteristics;
 };

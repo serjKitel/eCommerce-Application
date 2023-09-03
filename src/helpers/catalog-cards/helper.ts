@@ -1,8 +1,8 @@
 import { Product } from '@commercetools/platform-sdk';
-import { getProducts } from '../../commerceTools/products';
 // import { ITEMS_PER_PAGE } from '../../common/constants/common';
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
+import { getProducts } from '../../commerceTools/products';
 
 const displayCards = (cardsContainer: { appendChild: (arg0: HTMLElement) => void }, productsItem: Product) => {
   if (productsItem.masterData.published) {
@@ -15,7 +15,8 @@ const displayCards = (cardsContainer: { appendChild: (arg0: HTMLElement) => void
       tag: TAGS.a,
       className: 'product__item-link',
       attributes: {
-        href: '#product',
+        href: `#product/${productsItem.key}`,
+        id: `${productsItem.key}`,
       },
     });
 

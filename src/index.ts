@@ -37,30 +37,31 @@ window.onload = () => {
   document.body.appendChild(mainPage);
 
   const handleHashChange = (hash: string) => {
-    localStorage.setItem('currentPageHash', hash);
+    localStorage.setItem('currentPageHash', window.location.hash.slice(1));
+    const key: string = window.location.hash.split('#')[1].split('/')[1];
 
-    if (hash === '#home') {
+    if (hash === 'home') {
       renderMainPage();
-    } else if (hash === '#catalog') {
+    } else if (hash === 'catalog') {
       CatalogPage();
-    } else if (hash === '#product') {
-      ProductPage();
-    } else if (hash === '#about') {
+    } else if (window.location.hash.split('#')[1].split('/')[0] === 'product') {
+      ProductPage(key);
+    } else if (hash === 'about') {
       renderAboutUsPage();
-    } else if (hash === '#gallery') {
+    } else if (hash === 'gallery') {
       renderGalleryPage();
-    } else if (hash === '#contacts') {
+    } else if (hash === 'contacts') {
       renderContactsPage();
-    } else if (isAuthorizat && hash === '#login') {
+    } else if (isAuthorizat && hash === 'login') {
       renderMainPage();
       window.location.hash = 'home';
-    } else if (hash === '#profile') {
+    } else if (hash === 'profile') {
       ProfilePage();
-    } else if (hash === '#login') {
+    } else if (hash === 'login') {
       LogInPage();
     } else if (isRegist && hash === 'registration') {
       renderRegistrationPage();
-    } else if (hash === '#registration') {
+    } else if (hash === 'registration') {
       renderRegistrationPage();
     } else {
       renderNotFoundPage();
@@ -74,7 +75,7 @@ window.onload = () => {
   }
 
   window.addEventListener('hashchange', () => {
-    const currentHash = window.location.hash;
+    const currentHash = window.location.hash.split('#')[1].split('/')[0];
     handleHashChange(currentHash);
   });
 

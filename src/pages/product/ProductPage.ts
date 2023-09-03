@@ -8,97 +8,75 @@ import { createElement } from '../../common/utils/createElement';
 import { ProductCharacteristics } from '../../common/components/molecules/catalog-characteristics/ProductCharacteristics';
 import { ProductImagesSwiper } from '../../common/components/molecules/product-swiper/ProductSwiper';
 import { ModalWindowSwiper } from '../../common/components/molecules/modal-window/ModalWindow';
+import { getProduct } from '../../commerceTools/product';
 
-export const ProductPage = () => {
+export const ProductPage = (key: string) => {
   const mainElement = document.querySelector('main');
 
-  if (mainElement) {
-    mainElement.innerHTML = '';
+  const containerElement = createElement({
+    tag: TAGS.div,
+    className: 'container',
+  });
 
-    const containerElement = createElement({
-      tag: TAGS.div,
-      className: 'container',
-    });
+  const mainInnerElement = createElement({
+    tag: TAGS.div,
+    className: 'main__inner',
+  });
 
-    const mainInnerElement = createElement({
-      tag: TAGS.div,
-      className: 'main__inner',
-    });
+  const productContent = createElement({
+    tag: TAGS.div,
+    className: 'product__content',
+  });
 
-    const productContent = createElement({
-      tag: TAGS.div,
-      className: 'product__content',
-    });
+  const productDescription = createElement({
+    tag: TAGS.div,
+    className: 'product__description',
+  });
 
-    const productDescription = createElement({
-      tag: TAGS.div,
-      className: 'product__description',
-    });
+  getProduct(key).then((data) => {
+    if (mainElement && data) {
+      mainElement.innerHTML = '';
 
-    const productImgBlock = ProductImagesSwiper();
-    productImgBlock.classList.add('swiper');
+      const productImgBlock = ProductImagesSwiper(data.body);
+      productImgBlock.classList.add('swiper');
 
-    const modalProductWindow = ModalWindowSwiper();
+      const modalProductWindow = ModalWindowSwiper(data.body);
 
-    const modalWindowOpen = productImgBlock.querySelectorAll('.product__img');
+      const modalWindowOpen = productImgBlock.querySelectorAll('.product__img');
 
-    const productCharacteristics = ProductCharacteristics();
-
-    const productInfoText = 'Стул Jenny черный создан по мотивам стиля 60-х. Обивка из экокожи. Ножки деревянные. '
-      + 'Стулья Jenny украсят современный интерьер и лофт-пространство, непременно подойдут для стиля '
-      + 'Mid Century Modern. Выразительные вогнутые формы спинки и сиденья привлекают внимание, '
-      + 'поэтому композиция со стульями Jenny претендует на акцентную роль в интерьере. '
-      + 'Мы рекомендуем комплектовать стулья Jenny со столами в оттенках ореха для интерьера в стиле '
-      + 'Mid Century или со столами на ножках из черного металла и с деревянной столешницей для '
-      + 'интерьера в стиле лофт.';
-
-    const productInfo = createElement({
-      tag: TAGS.div,
-      className: 'product__info',
-      textContent: productInfoText,
-    });
-
-    const overlay = createElement({
-      tag: TAGS.div,
-      className: 'overlay',
-    });
-
-    productDescription.appendChild(productImgBlock);
-    productDescription.appendChild(productCharacteristics);
-
-    productContent.appendChild(productDescription);
-    productContent.appendChild(productInfo);
-    productContent.appendChild(overlay);
-    productContent.appendChild(modalProductWindow);
-
-    mainInnerElement.appendChild(productContent);
-    containerElement.appendChild(mainInnerElement);
-    mainElement.appendChild(containerElement);
-
-    modalWindowOpen.forEach((modalWindow) => {
-      modalWindow.addEventListener('click', () => {
-        const popup = document.querySelector('.popup') as HTMLElement;
-        // const overlay = document.querySelector('.overlay') as HTMLElement;
-
-        if (popup && overlay) {
-          popup.style.display = 'block';
-          overlay.style.display = 'block';
-          document.body.classList.add('no-scroll');
-        }
+      modalWindowOpen.forEach((modalWindow) => {
+        modalWindow.addEventListener('click', () => {
+          const popup = document.querySelector('.popup') as HTMLElement;
+          if (popup) {
+            popup.style.display = 'block';
+          }
+        });
       });
-    });
 
-    const mySwiper = new Swiper('.swiper', {
-      modules: [Navigation, Pagination],
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  }
+      const productCharacteristics = ProductCharacteristics(data.body);
+      productDescription.appendChild(productImgBlock);
+      productDescription.appendChild(productCharacteristics);
+
+      productContent.appendChild(productDescription);
+      productContent.appendChild(modalProductWindow);
+
+      mainInnerElement.appendChild(productContent);
+      containerElement.appendChild(mainInnerElement);
+      mainElement.appendChild(containerElement);
+
+      const mySwiper = new Swiper('.swiper', {
+        modules: [Navigation, Pagination],
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    }
+  });
+
 };

@@ -3,7 +3,7 @@ import { PROJECT_KEY } from './const';
 import { authMiddlewareOptions, httpMiddlewareOptions } from './BuildClient';
 import { createApiBuilderFromCtpClient } from '@commercetools/platform-sdk';
 
-export function getProducts() {
+export function getProduct(key: string) {
   const ctpClient = new ClientBuilder()
     .withProjectKey(PROJECT_KEY)
     .withClientCredentialsFlow(authMiddlewareOptions)
@@ -12,18 +12,20 @@ export function getProducts() {
     .build();
 
   const apiRoot = createApiBuilderFromCtpClient(ctpClient).withProjectKey({ projectKey: PROJECT_KEY });
-  const getProductsApi = async () => {
+  const getProductApi = async () => {
     try {
-      const answer = await apiRoot.products().get({
-				 queryArgs: {
-         limit: 100
-      },
-			}).execute()
+      const answer = await apiRoot
+        .products()
+        .withKey({
+          key: key,
+        })
+        .get()
+        .execute();
       return answer;
     } catch (e) {
       console.log(e);
     }
   };
 
-  return getProductsApi();
+  return getProductApi();
 }
