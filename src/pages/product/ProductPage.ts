@@ -1,5 +1,13 @@
+import Swiper from 'swiper';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
+import { ProductCharacteristics } from '../../common/components/molecules/catalog-characteristics/ProductCharacteristics';
+import { ProductImagesSwiper } from '../../common/components/molecules/product-swiper/ProductSwiper';
+import { ModalWindowSwiper } from '../../common/components/molecules/modal-window/ModalWindow';
 
 export const ProductPage = () => {
   const mainElement = document.querySelector('main');
@@ -27,41 +35,61 @@ export const ProductPage = () => {
       className: 'product__description',
     });
 
-    const productImgBlock = createElement({
-      tag: TAGS.div,
-      className: 'product__img-block',
+    const productImgBlock = ProductImagesSwiper();
+    productImgBlock.classList.add('swiper');
+
+    const modalProductWindow = ModalWindowSwiper();
+
+    const modalWindowOpen = productImgBlock.querySelectorAll('.product__img');
+    // const modalWindowClose = productImgBlock.querySelector('.cross');
+
+    modalWindowOpen.forEach((modalWindow) => {
+      modalWindow.addEventListener('click', () => {
+        const popup = document.querySelector('.popup') as HTMLElement;
+        if (popup) {
+          popup.style.display = 'block';
+        }
+      });
     });
 
-    const productImg = createElement({
-      tag: TAGS.img,
-      className: 'product__img',
-      attributes: {
-        src: './images/products/product-chair1.jpg',
-        alt: '',
-      },
-    });
+    const productCharacteristics = ProductCharacteristics();
 
-    const productImgCharacteristics = createElement({
-      tag: TAGS.div,
-      className: 'product__img-characteristics',
-    });
+    const productInfoText = 'Стул Jenny черный создан по мотивам стиля 60-х. Обивка из экокожи. Ножки деревянные. '
+      + 'Стулья Jenny украсят современный интерьер и лофт-пространство, непременно подойдут для стиля '
+      + 'Mid Century Modern. Выразительные вогнутые формы спинки и сиденья привлекают внимание, '
+      + 'поэтому композиция со стульями Jenny претендует на акцентную роль в интерьере. '
+      + 'Мы рекомендуем комплектовать стулья Jenny со столами в оттенках ореха для интерьера в стиле '
+      + 'Mid Century или со столами на ножках из черного металла и с деревянной столешницей для '
+      + 'интерьера в стиле лофт.';
 
-    const productInfoElement = createElement({
+    const productInfo = createElement({
       tag: TAGS.div,
       className: 'product__info',
+      textContent: productInfoText,
     });
 
-    productInfoElement.textContent = 'Подробная информация о продукте';
-
-    productImgBlock.appendChild(productImg);
     productDescription.appendChild(productImgBlock);
-    productDescription.appendChild(productImgCharacteristics);
+    productDescription.appendChild(productCharacteristics);
 
     productContent.appendChild(productDescription);
-    productContent.appendChild(productInfoElement);
+    productContent.appendChild(productInfo);
+    productContent.appendChild(modalProductWindow);
 
     mainInnerElement.appendChild(productContent);
     containerElement.appendChild(mainInnerElement);
     mainElement.appendChild(containerElement);
+
+    const mySwiper = new Swiper('.swiper', {
+      modules: [Navigation, Pagination],
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
   }
 };
