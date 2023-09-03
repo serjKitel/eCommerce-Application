@@ -83,7 +83,7 @@ export const CatalogPagination = () => {
     if (currentPage > 1) {
       const cards = document.querySelector('.catalog__cards') as HTMLElement;
       currentPage -= 1;
-      displayPage(cards, currentPage);
+      displayPage(cards);
       updatePaginationButtons();
     }
   });
@@ -92,7 +92,7 @@ export const CatalogPagination = () => {
     if (currentPage < totalPages) {
       currentPage += 1;
       const cards = document.querySelector('.catalog__cards') as HTMLElement;
-      displayPage(cards, currentPage);
+      displayPage(cards);
       updatePaginationButtons();
     }
   });
@@ -100,14 +100,14 @@ export const CatalogPagination = () => {
   btnLeft2.addEventListener('click', () => {
     currentPage = 1;
     const cards = document.querySelector('.catalog__cards') as HTMLElement;
-    displayPage(cards, currentPage);
+    displayPage(cards);
     updatePaginationButtons();
   });
 
   btnRight2.addEventListener('click', () => {
     currentPage = totalPages;
     const cards = document.querySelector('.catalog__cards') as HTMLElement;
-    displayPage(cards, currentPage);
+    displayPage(cards);
     updatePaginationButtons();
   });
 

@@ -1,6 +1,6 @@
 import { Product } from '@commercetools/platform-sdk';
 import { getProducts } from '../../commerceTools/products';
-import { ITEMS_PER_PAGE } from '../../common/constants/common';
+// import { ITEMS_PER_PAGE } from '../../common/constants/common';
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
 
@@ -32,7 +32,7 @@ const displayCards = (cardsContainer: { appendChild: (arg0: HTMLElement) => void
         className: 'card__img',
         attributes: {
           src: productsItem.masterData.staged.masterVariant.images[0].url,
-          // alt: item.imgAlt,
+          alt: productsItem.masterData.current.name['en-US'],
         },
       });
 
@@ -77,14 +77,14 @@ const displayCards = (cardsContainer: { appendChild: (arg0: HTMLElement) => void
   }
 };
 
-export const displayPage = (cardsContainer: HTMLElement, category?: string, page: number = 1) => {
+export const displayPage = (cardsContainer: HTMLElement, category?: string) => {
   cardsContainer.innerHTML = '';
-  const startIndex = (page - 1) * ITEMS_PER_PAGE;
-  const endIndex = startIndex + ITEMS_PER_PAGE;
+  // const startIndex = (page - 1) * ITEMS_PER_PAGE;
+  // const endIndex = startIndex + ITEMS_PER_PAGE;
 
   getProducts().then((data) => {
     const productsItems = data?.body.results;
-    const itemsToShow = productsItems!.slice(startIndex, endIndex);
+    // const itemsToShow = productsItems!.slice(startIndex, endIndex);
 
     if (productsItems) {
       productsItems.forEach((productsItem) => {

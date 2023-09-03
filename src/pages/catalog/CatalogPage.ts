@@ -6,6 +6,7 @@ import { createElement } from '../../common/utils/createElement';
 import { CategoriesForm } from '../../common/components/molecules/categories-form/CategoriesForm';
 import { CatalogCards } from '../../helpers/catalog-cards';
 import { displayPage } from '../../helpers/catalog-cards/helper';
+import { SubcategoriesForm } from '../../common/components/molecules/subcategories-form/Subcategory';
 
 export const CatalogPage = () => {
   const mainElement = document.querySelector('main');
@@ -42,6 +43,9 @@ export const CatalogPage = () => {
 
     const categoriesFormElement = CategoriesForm();
     filtersElement.appendChild(categoriesFormElement);
+
+    const subcategoriesFormElement = SubcategoriesForm();
+    filtersElement.appendChild(subcategoriesFormElement);
 
     mainInnerElement.appendChild(navigationChainElement);
     contentElement.appendChild(filtersElement);

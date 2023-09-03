@@ -324,6 +324,10 @@ p {
 	flex-shrink: 0;
 }
 
+.catalog__filters form {
+	margin-top: 30px;
+}
+
 .catalog__content {
   display: flex;
   justify-content: space-between;
@@ -338,6 +342,29 @@ p {
 .catalog__items {
   display: flex;
   flex-direction: column;
+	width: 100%;
+}
+
+.catalog__filters-form label,
+.catalog__filters-sub-form label {
+	margin-left: 8px;
+}
+
+.catalog__filters-form input,
+.catalog__filters-form label,
+.catalog__filters-sub-form label,
+.catalog__filters-sub-form input{
+	margin-bottom: 10px;
+}
+
+.catalog__filters-form input:hover,
+.catalog__filters-form label:hover,
+.catalog__filters-sub-form label:hover,
+.catalog__filters-sub-form input:hover {
+	cursor: pointer;
+		color: #270c0c;
+		transition: all 0.2s ease-in-out;
+		font-weight: 700;
 }
 
 .catalog__item {

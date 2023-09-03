@@ -1,11 +1,12 @@
 import { getCatalog } from '../../../../commerceTools/catalog';
-import { displayPage } from '../../../../helpers/catalog-cards/helper';
 import { TAGS } from '../../../constants/tags';
 import { createElement } from '../../../utils/createElement';
+import { NameInputs, changeCatalogRadioInputs, displayRadioInputs } from './helpers';
 
 export const CategoriesForm = () => {
   const categories = createElement({
     tag: TAGS.form,
+    className: 'catalog__filters-form',
   });
 
   getCatalog().then((data) => {
@@ -13,41 +14,16 @@ export const CategoriesForm = () => {
 
     catalogItems?.forEach((catalogItem) => {
       if (!catalogItem.parent) {
-        const radioInput = createElement({
-          tag: TAGS.input,
-          attributes: {
-            type: 'radio',
-            name: 'catalog',
-            id: catalogItem.slug['en-US'],
-            value: catalogItem.id,
-          },
-        });
-
-        const label = createElement({
-          tag: TAGS.label,
-          attributes: { for: catalogItem.slug['en-US'] },
-          textContent: catalogItem.name['ru-BY'],
-        });
-
-        categories.appendChild(radioInput);
-        categories.appendChild(label);
-        categories.appendChild(document.createElement('br'));
+        displayRadioInputs(catalogItem, categories, NameInputs.categories);
       }
     });
 
     const catalogCards = document.querySelector('.catalog__cards') as HTMLElement;
-    const catalogRadioInputs = document.getElementsByName('catalog');
+    const catalogRadioInputs = document.getElementsByName(NameInputs.categories);
 
     catalogRadioInputs.forEach((catalogRadioInput) => {
       catalogRadioInput.addEventListener('change', () => {
-        const radioInput = catalogRadioInput as HTMLInputElement;
-        displayPage(catalogCards, radioInput.value);
-
-        catalogItems?.forEach((catalogItem) => {
-          if (catalogItem.parent?.id === radioInput.value) {
-
-          }
-        });
+        changeCatalogRadioInputs(catalogCards, catalogRadioInput, catalogItems!);
       });
     });
   });
