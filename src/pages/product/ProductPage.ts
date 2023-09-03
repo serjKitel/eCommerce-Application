@@ -9,6 +9,7 @@ import { ProductCharacteristics } from '../../common/components/molecules/catalo
 import { ProductImagesSwiper } from '../../common/components/molecules/product-swiper/ProductSwiper';
 import { ModalWindowSwiper } from '../../common/components/molecules/modal-window/ModalWindow';
 import { getProduct } from '../../commerceTools/product';
+import { BreadcrumbProduct } from '../../common/components/molecules/breadcrumb-navigation-product/BreadcrumbProduct';
 
 export const ProductPage = (key: string) => {
   const mainElement = document.querySelector('main');
@@ -33,9 +34,16 @@ export const ProductPage = (key: string) => {
     className: 'product__description',
   });
 
+  const overlay = createElement({
+    tag: TAGS.div,
+    className: 'overlay',
+  });
+
   getProduct(key).then((data) => {
     if (mainElement && data) {
       mainElement.innerHTML = '';
+
+      const navigationChain = BreadcrumbProduct();
 
       const productImgBlock = ProductImagesSwiper(data.body);
       productImgBlock.classList.add('swiper');
@@ -44,25 +52,29 @@ export const ProductPage = (key: string) => {
 
       const modalWindowOpen = productImgBlock.querySelectorAll('.product__img');
 
-      modalWindowOpen.forEach((modalWindow) => {
-        modalWindow.addEventListener('click', () => {
-          const popup = document.querySelector('.popup') as HTMLElement;
-          if (popup) {
-            popup.style.display = 'block';
-          }
-        });
-      });
-
       const productCharacteristics = ProductCharacteristics(data.body);
       productDescription.appendChild(productImgBlock);
       productDescription.appendChild(productCharacteristics);
 
       productContent.appendChild(productDescription);
+      productContent.appendChild(overlay);
       productContent.appendChild(modalProductWindow);
 
+      mainInnerElement.appendChild(navigationChain);
       mainInnerElement.appendChild(productContent);
       containerElement.appendChild(mainInnerElement);
       mainElement.appendChild(containerElement);
+
+      modalWindowOpen.forEach((modalWindow) => {
+        modalWindow.addEventListener('click', () => {
+          const popup = document.querySelector('.popup') as HTMLElement;
+          if (popup && overlay) {
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+            document.body.classList.add('no-scroll');
+          }
+        });
+      });
 
       const mySwiper = new Swiper('.swiper', {
         modules: [Navigation, Pagination],
@@ -78,5 +90,4 @@ export const ProductPage = (key: string) => {
       });
     }
   });
-
 };

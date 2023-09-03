@@ -321,6 +321,35 @@ p {
   /* align-items: start; */
   color: #270c0c;
   font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  background-color: #eee;
+}
+
+.chain__item {
+  display: inline;
+  font-size: 18px;
+}
+
+.breadcrumb li+li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+
+.chain__link {
+  color: #270c0c;
+  text-decoration: none;
+}
+
+.chain__link:hover {
+  color: #270c0c;
+  text-decoration: underline;
+  font-weight: 700;
 }
 
 .catalog__filters {
@@ -554,17 +583,9 @@ p {
 
 /* Modal Product Window */
 
-/* .popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: none;
-} */
-
 .popup {
   position: fixed;
-  z-index: 1; /* Sit on top */
+  z-index: 1;
   left: 50%;
   top: 50%;
   width: 60%;

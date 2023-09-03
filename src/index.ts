@@ -11,7 +11,6 @@
 // import { renderNotFoundPage } from './pages/not-found-page/notFoundPage';
 // import { renderRegistrationPage } from './pages/registration/registration';
 
-// import './slider-swiper/swiper.css';
 import './style.css';
 import { isAuthorizat } from './commerceTools/authorization';
 import { MainPage } from './common/components/molecules/main-page/MainPage';
