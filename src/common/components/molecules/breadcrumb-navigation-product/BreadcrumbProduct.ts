@@ -1,7 +1,8 @@
+import { Product } from '@commercetools/platform-sdk';
 import { createElement } from '../../../utils/createElement';
 import { TAGS } from '../../../constants/tags';
 
-export const BreadcrumbProduct = () => {
+export const BreadcrumbProduct = (product: Product) => {
   const navigationChainElement = createElement({
     tag: TAGS.div,
     className: 'catalog__navigation-chain',
@@ -51,22 +52,19 @@ export const BreadcrumbProduct = () => {
   const productItemElement = createElement({
     tag: TAGS.li,
     className: 'chain__item',
-    textContent: 'Продукт',
   });
 
-  //   const productLinkElement = createElement({
-  //     tag: TAGS.a,
-  //     className: 'chain__link',
-  //     attributes: {
-  //       href: '#product/...',
-  //     },
-  //     textContent: 'Продукт',
-  //   });
+  const productLinkElement = createElement({
+    tag: TAGS.a,
+    className: 'chain__link',
+    attributes: {
+      href: window.location.hash,
+    },
+    textContent: product.masterData.current.name['ru-BY'],
+  });
 
-  //   productItemElement.appendChild(productLinkElement);
-
+  productItemElement.appendChild(productLinkElement);
   breadcrumbElement.appendChild(productItemElement);
-
   navigationChainElement.appendChild(breadcrumbElement);
 
   return navigationChainElement;

@@ -1,5 +1,9 @@
+import { CustomerSignInResult } from '@commercetools/platform-sdk';
+import { getPerson } from '../../commerceTools/person';
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
+
+export let personData: CustomerSignInResult;
 
 export const ProfilePage = () => {
   const mainElement = document.querySelector('main');

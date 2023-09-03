@@ -43,7 +43,7 @@ export const ProductPage = (key: string) => {
     if (mainElement && data) {
       mainElement.innerHTML = '';
 
-      const navigationChain = BreadcrumbProduct();
+      const navigationChain = BreadcrumbProduct(data.body);
 
       const productImgBlock = ProductImagesSwiper(data.body);
       productImgBlock.classList.add('swiper');

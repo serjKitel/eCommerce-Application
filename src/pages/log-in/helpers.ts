@@ -2,9 +2,12 @@
 // import { authorizationFunc } from '@commerceTools/authorization';
 // import { renderMainPage } from '@pages/main/main';
 
+import { CustomerSignInResult } from '@commercetools/platform-sdk';
 import { authorizationFunc } from '../../commerceTools/authorization';
 import { STATUS_CODE } from '../../common/constants/methods';
 import { renderMainPage } from '../main/main';
+
+export let personData: CustomerSignInResult;
 
 export let isAuthorizat: boolean = false;
 
@@ -25,6 +28,7 @@ export function submitAuthForm(): void {
       window.location.hash = '#home';
       isAuthorizat = true;
       alert('Вы авторизировались!');
+      personData = data.body;
     }
   });
 }
