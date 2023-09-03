@@ -54,8 +54,11 @@ window.onload = () => {
     } else if (isAuthorizat && hash === 'login') {
       renderMainPage();
       window.location.hash = 'home';
-    } else if (hash === 'profile') {
+    } else if (isAuthorizat && hash === 'profile') {
       ProfilePage();
+    } else if (!isAuthorizat && hash === 'profile') {
+      LogInPage();
+      window.location.hash = 'login';
     } else if (hash === 'login') {
       LogInPage();
     } else if (isRegist && hash === 'registration') {
