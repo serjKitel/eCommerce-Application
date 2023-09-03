@@ -4,8 +4,6 @@ import { PROJECT_KEY } from './const';
 import { createApiBuilderFromCtpClient } from '@commercetools/platform-sdk';
 import { IRegistration } from '../common/types/commonTypes';
 import { STATUS_CODE } from '../common/constants/methods';
-// import { IRegistration } from '@types/commonTypes';
-// import { STATUS_CODE } from '@constants/methods';
 
 export let isRegist = false;
 

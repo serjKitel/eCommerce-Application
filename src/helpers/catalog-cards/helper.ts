@@ -1,16 +1,11 @@
-import { ITEMS_PER_PAGE } from '../../common/constants/common';
-import { itemData } from '../../common/constants/itemData';
+import { Product } from '@commercetools/platform-sdk';
+import { getProducts } from '../../commerceTools/products';
+// import { ITEMS_PER_PAGE } from '../../common/constants/common';
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
 
-export const displayPage = (cardsContainer: HTMLElement, page: number = 1) => {
-  cardsContainer.innerHTML = '';
-  const startIndex = (page - 1) * ITEMS_PER_PAGE;
-  const endIndex = startIndex + ITEMS_PER_PAGE;
-
-  const itemsToShow = itemData.slice(startIndex, endIndex);
-
-  itemsToShow.forEach((item) => {
+const displayCards = (cardsContainer: { appendChild: (arg0: HTMLElement) => void; }, productsItem: Product) => {
+  if (productsItem.masterData.published) {
     const itemCardDiv = createElement({
       tag: TAGS.div,
       className: 'catalog__item',
@@ -26,65 +21,83 @@ export const displayPage = (cardsContainer: HTMLElement, page: number = 1) => {
 
     itemCardDiv.appendChild(pdoductItemLink);
 
-    const itemImgDiv = createElement({
-      tag: TAGS.div,
-      className: 'catalog__item-img',
-    });
+    if (productsItem.masterData.staged.masterVariant.images) {
+      const itemImgDiv = createElement({
+        tag: TAGS.div,
+        className: 'catalog__item-img',
+      });
 
-    const itemImg = createElement({
-      tag: TAGS.img,
-      className: 'card__img',
-      attributes: {
-        src: item.imgSrc,
-        alt: item.imgAlt,
-      },
-    });
+      const itemImg = createElement({
+        tag: TAGS.img,
+        className: 'card__img',
+        attributes: {
+          src: productsItem.masterData.staged.masterVariant.images[0].url,
+          alt: productsItem.masterData.current.name['en-US'],
+        },
+      });
 
-    itemImgDiv.appendChild(itemImg);
+      itemImgDiv.appendChild(itemImg);
 
-    pdoductItemLink.appendChild(itemImgDiv);
+      pdoductItemLink.appendChild(itemImgDiv);
+    }
 
-    const nameDiv = createElement({
-      tag: TAGS.div,
-      className: 'catalog__item-name item__description',
-      textContent: item.name,
-    });
+    if (productsItem.masterData.current.name) {
+      const nameDiv = createElement({
+        tag: TAGS.div,
+        className: 'catalog__item-name item__description',
+        textContent: productsItem.masterData.current.name['ru-BY'],
+      });
 
-    pdoductItemLink.appendChild(nameDiv);
+      pdoductItemLink.appendChild(nameDiv);
+    }
 
-    const itemSize = createElement({
-      tag: TAGS.div,
-      className: 'catalog__item-size item__description',
-      textContent: item.itemSize,
-    });
+    if (productsItem.masterData.current.description) {
+      const itemDesc = createElement({
+        tag: TAGS.div,
+        className: 'catalog__item-size item__description',
+        textContent: productsItem.masterData.current.description!['ru-BY'],
+      });
 
-    pdoductItemLink.appendChild(itemSize);
+      pdoductItemLink.appendChild(itemDesc);
+    }
 
-    const itemUpholstery = createElement({
-      tag: TAGS.div,
-      className: 'catalog__item-upholstery item__description',
-      textContent: item.itemUpholstery,
-    });
+    if (productsItem.masterData.staged.masterVariant.prices![0].value.centAmount) {
+      const itemPrice = createElement({
+        tag: TAGS.div,
+        className: 'catalog__item-price item__description',
+        textContent: `
+                ${productsItem.masterData.staged.masterVariant.prices![0].value.centAmount / 100} 
+                ${productsItem.masterData.staged.masterVariant.prices![0].value.currencyCode}`,
+      });
 
-    pdoductItemLink.appendChild(itemUpholstery);
+      pdoductItemLink.appendChild(itemPrice);
+    }
 
-    const itemMaterial = createElement({
-      tag: TAGS.div,
-      className: 'catalog__item-material item__description',
-      textContent: item.itemMaterial,
-    });
-
-    pdoductItemLink.appendChild(itemMaterial);
-
-    const itemPrice = createElement({
-      tag: TAGS.div,
-      className: 'catalog__item-price item__description',
-      textContent: item.itemPrice,
-    });
-
-    pdoductItemLink.appendChild(itemPrice);
-    // pdoductItemLink.appendChild(itemCardDiv);
     cardsContainer.appendChild(itemCardDiv);
-    // cardsContainer.appendChild(itemCardDiv);
+  }
+};
+
+export const displayPage = (cardsContainer: HTMLElement, category?: string) => {
+  cardsContainer.innerHTML = '';
+  // const startIndex = (page - 1) * ITEMS_PER_PAGE;
+  // const endIndex = startIndex + ITEMS_PER_PAGE;
+
+  getProducts().then((data) => {
+    const productsItems = data?.body.results;
+    // const itemsToShow = productsItems!.slice(startIndex, endIndex);
+
+    if (productsItems) {
+      productsItems.forEach((productsItem) => {
+        if (category) {
+          for (let i = 0; i < productsItem.masterData.current.categories.length; i += 1) {
+            if (productsItem.masterData.current.categories[i].id === category) {
+              displayCards(cardsContainer, productsItem);
+            }
+          }
+        } else {
+          displayCards(cardsContainer, productsItem);
+        }
+      });
+    }
   });
 };

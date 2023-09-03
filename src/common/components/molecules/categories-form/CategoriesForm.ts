@@ -1,53 +1,32 @@
+import { getCatalog } from '../../../../commerceTools/catalog';
 import { TAGS } from '../../../constants/tags';
 import { createElement } from '../../../utils/createElement';
+import { NameInputs, changeCatalogRadioInputs, displayRadioInputs } from './helpers';
 
 export const CategoriesForm = () => {
-  const form = createElement({
+  const categories = createElement({
     tag: TAGS.form,
+    className: 'catalog__filters-form',
   });
 
-  const radioOptions = [
-    {
-      id: 'option1',
-      name: 'choice',
-      value: 'chair',
-      label: 'Стулья',
-    },
-    {
-      id: 'option2',
-      name: 'choice',
-      value: 'sofa',
-      label: 'Диваны',
-    },
-    {
-      id: 'option3',
-      name: 'choice',
-      value: 'table',
-      label: 'Столы',
-    },
-  ];
+  getCatalog().then((data) => {
+    const catalogItems = data?.body.results;
 
-  radioOptions.forEach((option) => {
-    const radioInput = createElement({
-      tag: TAGS.input,
-      attributes: {
-        type: 'radio',
-        id: option.id,
-        name: option.name,
-        value: option.value,
-      },
+    catalogItems?.forEach((catalogItem) => {
+      if (!catalogItem.parent) {
+        displayRadioInputs(catalogItem, categories, NameInputs.categories);
+      }
     });
 
-    const label = createElement({
-      tag: TAGS.label,
-      attributes: { for: option.id },
-      textContent: option.label,
-    });
+    const catalogCards = document.querySelector('.catalog__cards') as HTMLElement;
+    const catalogRadioInputs = document.getElementsByName(NameInputs.categories);
 
-    form.appendChild(radioInput);
-    form.appendChild(label);
-    form.appendChild(document.createElement('br'));
+    catalogRadioInputs.forEach((catalogRadioInput) => {
+      catalogRadioInput.addEventListener('change', () => {
+        changeCatalogRadioInputs(catalogCards, catalogRadioInput, catalogItems!);
+      });
+    });
   });
 
-  return form;
+  return categories;
 };

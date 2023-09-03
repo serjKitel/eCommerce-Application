@@ -1,6 +1,5 @@
 import { createElement } from '../../common/utils/createElement';
 import { TAGS } from '../../common/constants/tags';
-import { itemData } from '../../common/constants/itemData';
 import { ITEMS_PER_PAGE } from '../../common/constants/common';
 import { displayPage } from '../catalog-cards/helper';
 
@@ -51,7 +50,7 @@ export const CatalogPagination = () => {
   buttonsContainer.appendChild(btnRight2);
 
   let currentPage = 1;
-  const totalItems = itemData.length;
+  const totalItems = 20;
   const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
 
   const updatePageNumber = (pageNumber: number) => {
@@ -84,7 +83,7 @@ export const CatalogPagination = () => {
     if (currentPage > 1) {
       const cards = document.querySelector('.catalog__cards') as HTMLElement;
       currentPage -= 1;
-      displayPage(cards, currentPage);
+      displayPage(cards);
       updatePaginationButtons();
     }
   });
@@ -93,7 +92,7 @@ export const CatalogPagination = () => {
     if (currentPage < totalPages) {
       currentPage += 1;
       const cards = document.querySelector('.catalog__cards') as HTMLElement;
-      displayPage(cards, currentPage);
+      displayPage(cards);
       updatePaginationButtons();
     }
   });
@@ -101,14 +100,14 @@ export const CatalogPagination = () => {
   btnLeft2.addEventListener('click', () => {
     currentPage = 1;
     const cards = document.querySelector('.catalog__cards') as HTMLElement;
-    displayPage(cards, currentPage);
+    displayPage(cards);
     updatePaginationButtons();
   });
 
   btnRight2.addEventListener('click', () => {
     currentPage = totalPages;
     const cards = document.querySelector('.catalog__cards') as HTMLElement;
-    displayPage(cards, currentPage);
+    displayPage(cards);
     updatePaginationButtons();
   });
 
