@@ -9,6 +9,7 @@ import { ProductCharacteristics } from '../../common/components/molecules/catalo
 import { ProductImagesSwiper } from '../../common/components/molecules/product-swiper/ProductSwiper';
 import { ModalWindowSwiper } from '../../common/components/molecules/modal-window/ModalWindow';
 import { getProduct } from '../../commerceTools/product';
+import { BreadcrumbProduct } from '../../common/components/molecules/breadcrumb-navigation-product/BreadcrumbProduct';
 
 export const ProductPage = (key: string) => {
   const mainElement = document.querySelector('main');
@@ -42,6 +43,8 @@ export const ProductPage = (key: string) => {
     if (mainElement && data) {
       mainElement.innerHTML = '';
 
+      const navigationChain = BreadcrumbProduct();
+
       const productImgBlock = ProductImagesSwiper(data.body);
       productImgBlock.classList.add('swiper');
 
@@ -57,6 +60,7 @@ export const ProductPage = (key: string) => {
       productContent.appendChild(overlay);
       productContent.appendChild(modalProductWindow);
 
+      mainInnerElement.appendChild(navigationChain);
       mainInnerElement.appendChild(productContent);
       containerElement.appendChild(mainInnerElement);
       mainElement.appendChild(containerElement);

@@ -7,6 +7,7 @@ import { CategoriesForm } from '../../common/components/molecules/categories-for
 import { CatalogCards } from '../../helpers/catalog-cards';
 import { displayPage } from '../../helpers/catalog-cards/helper';
 import { SubcategoriesForm } from '../../common/components/molecules/subcategories-form';
+import { BreadcrumbCatalog } from '../../common/components/molecules/breadcrumb-navigation-catalog/BreadcrumbCatalog';
 
 export const CatalogPage = () => {
   const mainElement = document.querySelector('main');
@@ -24,12 +25,7 @@ export const CatalogPage = () => {
       className: 'main__inner',
     });
 
-    const navigationChainElement = createElement({
-      tag: 'div',
-      className: 'catalog__navigation-chain',
-    });
-
-    navigationChainElement.textContent = 'Главная / Каталог';
+    const navigationChain = BreadcrumbCatalog();
 
     const contentElement = createElement({
       tag: 'div',
@@ -47,7 +43,7 @@ export const CatalogPage = () => {
     const subcategoriesFormElement = SubcategoriesForm();
     filtersElement.appendChild(subcategoriesFormElement);
 
-    mainInnerElement.appendChild(navigationChainElement);
+    mainInnerElement.appendChild(navigationChain);
     contentElement.appendChild(filtersElement);
 
     const catalogItems = CatalogCards();
