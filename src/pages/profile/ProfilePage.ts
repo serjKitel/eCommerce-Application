@@ -1,5 +1,4 @@
 import { CustomerSignInResult } from '@commercetools/platform-sdk';
-import { getPerson } from '../../commerceTools/person';
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
 
