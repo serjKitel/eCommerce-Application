@@ -41,16 +41,6 @@ export const ProductPage = () => {
     const modalProductWindow = ModalWindowSwiper();
 
     const modalWindowOpen = productImgBlock.querySelectorAll('.product__img');
-    // const modalWindowClose = productImgBlock.querySelector('.cross');
-
-    modalWindowOpen.forEach((modalWindow) => {
-      modalWindow.addEventListener('click', () => {
-        const popup = document.querySelector('.popup') as HTMLElement;
-        if (popup) {
-          popup.style.display = 'block';
-        }
-      });
-    });
 
     const productCharacteristics = ProductCharacteristics();
 
@@ -68,16 +58,35 @@ export const ProductPage = () => {
       textContent: productInfoText,
     });
 
+    const overlay = createElement({
+      tag: TAGS.div,
+      className: 'overlay',
+    });
+
     productDescription.appendChild(productImgBlock);
     productDescription.appendChild(productCharacteristics);
 
     productContent.appendChild(productDescription);
     productContent.appendChild(productInfo);
+    productContent.appendChild(overlay);
     productContent.appendChild(modalProductWindow);
 
     mainInnerElement.appendChild(productContent);
     containerElement.appendChild(mainInnerElement);
     mainElement.appendChild(containerElement);
+
+    modalWindowOpen.forEach((modalWindow) => {
+      modalWindow.addEventListener('click', () => {
+        const popup = document.querySelector('.popup') as HTMLElement;
+        // const overlay = document.querySelector('.overlay') as HTMLElement;
+
+        if (popup && overlay) {
+          popup.style.display = 'block';
+          overlay.style.display = 'block';
+          document.body.classList.add('no-scroll');
+        }
+      });
+    });
 
     const mySwiper = new Swiper('.swiper', {
       modules: [Navigation, Pagination],
