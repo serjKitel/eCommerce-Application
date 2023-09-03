@@ -78,4 +78,5 @@ export const ProductPage = (key: string) => {
       });
     }
   });
+
 };
