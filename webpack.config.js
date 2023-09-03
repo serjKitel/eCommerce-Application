@@ -52,6 +52,9 @@ const baseConfig = {
         {
           from: path.resolve(__dirname, 'src/style.css'),
         },
+        {
+          from: path.resolve(__dirname, 'src/slider-swiper/swiper.css'),
+        },
       ],
     }),
   ],
