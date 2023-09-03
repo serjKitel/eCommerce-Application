@@ -1,7 +1,8 @@
+import { Product } from '@commercetools/platform-sdk';
 import { createElement } from '../../../utils/createElement';
 import { TAGS } from '../../../constants/tags';
 
-export const ModalWindowSwiper = () => {
+export const ModalWindowSwiper = (product: Product) => {
   const popup = createElement({
     tag: TAGS.div,
     className: 'popup',
@@ -34,7 +35,6 @@ export const ModalWindowSwiper = () => {
   const popupContent = createElement({
     tag: TAGS.div,
     className: 'popup__content swiper',
-    // className: 'popup__content',
   });
 
   const swiperWrapper = createElement({
@@ -42,30 +42,28 @@ export const ModalWindowSwiper = () => {
     className: 'swiper-wrapper',
   });
 
-  const imagesModalSwiper = [
-    './images/products/product-chair1.jpg',
-    './images/products/product-chair2.jpg',
-    './images/products/product-chair3.jpg',
-  ];
+  const productImages = product.masterData.staged.masterVariant.images;
 
-  imagesModalSwiper.forEach((imageUrl) => {
-    const imgBlockSwiper = createElement({
-      tag: TAGS.div,
-      className: 'popup__img-block swiper-slide',
+  if (productImages) {
+    productImages.forEach((productImage) => {
+      const imgBlockSwiper = createElement({
+        tag: TAGS.div,
+        className: 'popup__img-block swiper-slide',
+      });
+
+      const imgPopup = createElement({
+        tag: TAGS.img,
+        className: 'popup__img',
+        attributes: {
+          src: productImage.url,
+          alt: product.masterData.current.name['en-US'],
+        },
+      });
+
+      imgBlockSwiper.appendChild(imgPopup);
+      swiperWrapper.appendChild(imgBlockSwiper);
     });
-
-    const imgPopup = createElement({
-      tag: TAGS.img,
-      className: 'popup__img',
-      attributes: {
-        src: imageUrl,
-        alt: '',
-      },
-    });
-
-    imgBlockSwiper.appendChild(imgPopup);
-    swiperWrapper.appendChild(imgBlockSwiper);
-  });
+  }
 
   const pagination = createElement({
     tag: TAGS.div,
