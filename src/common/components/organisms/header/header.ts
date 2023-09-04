@@ -6,6 +6,7 @@ import { createElement } from '../../../utils/createElement';
 import { HeaderLogIn } from '../../molecules/header-log-in';
 import { HeaderLogo } from '../../molecules/header-logo';
 import { NavigationMenu } from '../../molecules/navigation';
+import { ButtonMenu } from '../../molecules/button-menu';
 
 // import { NavigationMenu } from '@molecules/navigation';
 // import { HeaderLogo } from '@molecules/header-logo';
@@ -32,6 +33,9 @@ export const Header = () => {
 
   const navigationElement = NavigationMenu();
   headerInnerElement.appendChild(navigationElement);
+
+  const buttonMenuElement = ButtonMenu();
+  headerInnerElement.appendChild(buttonMenuElement);
 
   containerElement.appendChild(headerInnerElement);
   headerElement.appendChild(containerElement);

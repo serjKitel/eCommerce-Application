@@ -1,10 +1,11 @@
-// import { TAGS } from '@constants/tags';
-// import { createElement } from '@utils/createElement';
-
+import { CustomerSignInResult } from '@commercetools/platform-sdk';
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
+import { BreadcrumbProfile } from '../../common/components/molecules/breadcrumb-navigation-profile/BreadcrumbProfile';
 
-export const renderCatalogPage = () => {
+export let personData: CustomerSignInResult;
+
+export const ProfilePage = () => {
   const mainElement = document.querySelector('main');
 
   if (mainElement) {
@@ -25,9 +26,12 @@ export const renderCatalogPage = () => {
       className: 'main__inner-text',
     });
 
-    innerTextElement.textContent = 'Каталог';
+    innerTextElement.textContent = 'Страница профиля';
+
+    const navigationChain = BreadcrumbProfile();
 
     mainInnerElement.appendChild(innerTextElement);
+    mainInnerElement.appendChild(navigationChain);
     containerElement.appendChild(mainInnerElement);
     mainElement.appendChild(containerElement);
   }

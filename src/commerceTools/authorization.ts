@@ -44,7 +44,7 @@ export function authorizationFunc(USER: IAuthorization) {
 
   const getCustomerAuth = async () => {
     try {
-			isAuthorizat = true;
+      isAuthorizat = true;
       const answer = await getApiRootPass()
         .withProjectKey({ projectKey: PROJECT_KEY })
         .me()

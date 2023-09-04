@@ -4,7 +4,7 @@
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
 
-export const renderNotFoundPage = () => {
+export const NotFoundPage = () => {
   const mainElement = document.querySelector('main');
 
   if (mainElement) {
@@ -22,7 +22,6 @@ export const renderNotFoundPage = () => {
 
     const notFoundTextElement = createElement({
       tag: TAGS.p,
-      // className: 'page__not-found__text',
       className: 'main__inner-text',
     });
 

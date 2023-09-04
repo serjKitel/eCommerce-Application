@@ -1,4 +1,4 @@
-export interface HeaderMenuItem {
+export interface IHeaderMenuItem {
   text: string;
   href: string;
 }
@@ -19,4 +19,15 @@ export interface IInputCheck {
   value: string;
   errorEl: HTMLElement;
   number?: number;
+}
+
+export interface IFurnitureItem {
+  furniture?: string;
+  imgSrc: string;
+  imgAlt: string;
+  name: string;
+  itemSize: string;
+  itemUpholstery: string;
+  itemMaterial: string;
+  itemPrice: string;
 }
