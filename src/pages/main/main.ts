@@ -8,9 +8,6 @@ export const renderMainPage = () => {
 
   if (mainElement) {
     mainElement.innerHTML = '';
-  }
-
-  if (mainElement) {
     mainElement.appendChild(mainPage);
   }
 };

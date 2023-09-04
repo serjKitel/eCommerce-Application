@@ -3,8 +3,9 @@
 
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
+import { BreadcrumbContacts } from '../../common/components/molecules/breadcrumb-navigation-contacts/BreadcrumbContacts';
 
-export const renderContactsPage = () => {
+export const ContactsPage = () => {
   const mainElement = document.querySelector('main');
 
   if (mainElement) {
@@ -27,7 +28,10 @@ export const renderContactsPage = () => {
 
     innerTextElement.textContent = 'Наши контакты';
 
+    const navigationChain = BreadcrumbContacts();
+
     mainInnerElement.appendChild(innerTextElement);
+    mainInnerElement.appendChild(navigationChain);
     containerElement.appendChild(mainInnerElement);
     mainElement.appendChild(containerElement);
   }

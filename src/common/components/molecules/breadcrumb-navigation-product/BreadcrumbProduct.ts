@@ -5,7 +5,7 @@ import { TAGS } from '../../../constants/tags';
 export const BreadcrumbProduct = (product: Product) => {
   const navigationChainElement = createElement({
     tag: TAGS.div,
-    className: 'catalog__navigation-chain',
+    className: 'navigation__chain',
   });
 
   const breadcrumbElement = createElement({

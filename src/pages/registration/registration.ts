@@ -9,8 +9,9 @@ import { ERROR_AUTH_MSG } from '../../common/constants/common';
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
 import { submitRegForm } from './helpers';
+import { BreadcrumbRegistration } from '../../common/components/molecules/breadcrumb-navigation-registration/BreadcrumbRegistration';
 
-export const renderRegistrationPage = () => {
+export const RegistrationPage = () => {
   const mainElement = document.querySelector('main');
 
   if (mainElement) {
@@ -39,6 +40,8 @@ export const renderRegistrationPage = () => {
 
     innerTextElement.textContent = 'Страница для регистрации';
 
+    const navigationChain = BreadcrumbRegistration();
+
     const formReg = FormReg();
     formReg.addEventListener('submit', (event: Event) => {
       event.preventDefault();
@@ -46,6 +49,7 @@ export const renderRegistrationPage = () => {
     });
 
     mainInnerElement.appendChild(innerTextElement);
+    mainInnerElement.appendChild(navigationChain);
     mainInnerElement.appendChild(error);
     mainInnerElement.appendChild(formReg);
     containerElement.appendChild(mainInnerElement);

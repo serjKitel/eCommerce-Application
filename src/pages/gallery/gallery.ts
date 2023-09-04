@@ -3,8 +3,9 @@
 
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
+import { BreadcrumbGallery } from '../../common/components/molecules/breadcrumb-navigation-gallery/BreadcrumbGallery';
 
-export const renderGalleryPage = () => {
+export const GalleryPage = () => {
   const mainElement = document.querySelector('main');
 
   if (mainElement) {
@@ -27,7 +28,10 @@ export const renderGalleryPage = () => {
 
     innerTextElement.textContent = 'Галерея';
 
+    const navigationChain = BreadcrumbGallery();
+
     mainInnerElement.appendChild(innerTextElement);
+    mainInnerElement.appendChild(navigationChain);
     containerElement.appendChild(mainInnerElement);
     mainElement.appendChild(containerElement);
   }

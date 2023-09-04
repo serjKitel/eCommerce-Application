@@ -4,7 +4,7 @@
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
 
-export const renderNotFoundPage = () => {
+export const NotFoundPage = () => {
   const mainElement = document.querySelector('main');
 
   if (mainElement) {
