@@ -3,8 +3,9 @@
 
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
+import { BreadcrumbAbout } from '../../common/components/molecules/breadcrumb-navigation-about/BreadcrumbAbout';
 
-export const renderAboutUsPage = () => {
+export const AboutUsPage = () => {
   const mainElement = document.querySelector('main');
 
   if (mainElement) {
@@ -27,8 +28,13 @@ export const renderAboutUsPage = () => {
 
     innerTextElement.textContent = 'Информация о нас';
 
+    const navigationChain = BreadcrumbAbout();
+
     mainInnerElement.appendChild(innerTextElement);
+    mainInnerElement.appendChild(navigationChain);
     containerElement.appendChild(mainInnerElement);
     mainElement.appendChild(containerElement);
   }
+
+  return mainElement;
 };

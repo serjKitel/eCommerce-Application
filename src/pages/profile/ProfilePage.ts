@@ -1,6 +1,7 @@
 import { CustomerSignInResult } from '@commercetools/platform-sdk';
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
+import { BreadcrumbProfile } from '../../common/components/molecules/breadcrumb-navigation-profile/BreadcrumbProfile';
 
 export let personData: CustomerSignInResult;
 
@@ -27,7 +28,10 @@ export const ProfilePage = () => {
 
     innerTextElement.textContent = 'Страница профиля';
 
+    const navigationChain = BreadcrumbProfile();
+
     mainInnerElement.appendChild(innerTextElement);
+    mainInnerElement.appendChild(navigationChain);
     containerElement.appendChild(mainInnerElement);
     mainElement.appendChild(containerElement);
   }

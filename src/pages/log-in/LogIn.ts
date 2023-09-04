@@ -9,6 +9,7 @@ import { ERROR_AUTH_MSG } from '../../common/constants/common';
 import { TAGS } from '../../common/constants/tags';
 import { createElement } from '../../common/utils/createElement';
 import { submitAuthForm } from './helpers';
+import { BreadcrumbLogIn } from '../../common/components/molecules/breadcrumb-navigation-login/BreadcrumbLogIn';
 
 export const LogInPage = () => {
   const mainElement = document.querySelector('main');
@@ -46,7 +47,10 @@ export const LogInPage = () => {
       submitAuthForm();
     });
 
+    const navigationChain = BreadcrumbLogIn();
+
     mainInnerElement.appendChild(innerTextElement);
+    mainInnerElement.appendChild(navigationChain);
     mainInnerElement.appendChild(error);
     mainInnerElement.appendChild(formAuth);
     containerElement.appendChild(mainInnerElement);

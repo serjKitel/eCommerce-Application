@@ -21,6 +21,6 @@
     // "import/no-relative-parent-imports": "error",
     "import/no-mutable-exports": "off",
     "no-alert": "off",
-    "max-len": ["error", { "code": 125 }]
+    "max-len": ["error", { "code": 135 }]
   }
 }

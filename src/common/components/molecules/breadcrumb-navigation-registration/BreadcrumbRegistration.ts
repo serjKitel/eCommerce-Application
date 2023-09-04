@@ -1,7 +1,7 @@
 import { createElement } from '../../../utils/createElement';
 import { TAGS } from '../../../constants/tags';
 
-export const BreadcrumbCatalog = () => {
+export const BreadcrumbRegistration = () => {
   const navigationChainElement = createElement({
     tag: TAGS.div,
     className: 'navigation__chain',
@@ -39,9 +39,9 @@ export const BreadcrumbCatalog = () => {
     tag: TAGS.a,
     className: 'chain__link',
     attributes: {
-      href: '#catalog',
+      href: '#registration',
     },
-    textContent: 'Каталог',
+    textContent: 'Регистрация',
   });
 
   catalogItemElement.appendChild(catalogLinkElement);
