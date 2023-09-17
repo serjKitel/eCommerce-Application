@@ -175,6 +175,7 @@ p {
   font-size: 44px;
   color: #270c0c;
   margin-bottom: 30px;
+  font-weight: 700;
 }
 
 .input__block {
@@ -669,6 +670,85 @@ p {
   overflow: hidden;
 }
 
+/* About Us */
+
+.team__cards {
+  display: flex;
+  justify-content: space-between;
+}
+
+.teamate__card {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #270c0c;
+  width: 464px;
+  height: auto;
+}
+
+.teamate__photo {
+  /* width: 380px;
+  height: auto; */
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.teamate__name-block {
+  font-size: 27px;
+  font-weight: 700;
+  color: #270c0c;
+  margin: 10px;
+  text-align: center;
+}
+
+.teamate__position-block {
+  font-size: 20px;
+  font-weight: 700;
+  color: #270c0c;
+  /* margin: 10px; */
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.teamate__info {
+  color: #270c0c;
+  font-size: 15px;
+  padding: 5px 10px 5px 10px;
+}
+
+.teamate__github {
+  text-align: center;
+  margin: 13px;
+  /* transition: all ease 0.3s; */
+}
+
+.img__github {
+  transition: all ease 0.3s;
+}
+
+.img__github:hover {
+  transform: scale(1.3);
+}
+
+.description__about-us {
+  font-size: 15px;
+  color: #270c0c;
+  margin: 25px;
+}
+
+.rs__school-block {
+  display: flex;
+  justify-content: center;
+}
+
+.rs__school-img {
+  height: 150px;
+  transition: all ease 0.3s;
+}
+
+.rs__school-img:hover {
+  transform: scale(1.2);
+}
+
 /* media queries */
 
 @media (max-width: 1250px) {
@@ -712,6 +792,25 @@ p {
   .page__not-found__link {
     font-size: 18px;
   }
+
+  .teamate__card {
+    width: 404px;
+    height: auto;
+  }
+
+  .teamate__photo {
+    width: 400px;
+    height: auto;
+  }
+
+  .teamate__name-block {
+    font-size: 23px;
+  }
+  
+  .teamate__position-block {
+    font-size: 19px;
+
+  }
 }
 
 @media (max-width: 1000px) {
@@ -727,12 +826,50 @@ p {
   .product__characteristics {
     width: 100%;
   }
+
+  .teamate__card {
+    width: 384px;
+    height: auto;
+  }
+
+  .teamate__photo {
+    width: 380px;
+    height: auto;
+  }
+
+  .rs__school-img {
+    height: 130px;
+  }
+}
+
+@media (max-width: 900px) {
+
+  .teamate__card {
+    width: 354px;
+    height: auto;
+  }
+
+  .teamate__photo {
+    width: 350px;
+    height: auto;
+  }
 }
 
 @media (max-width: 850px) {
+
   .page__not-found__links {
     display: flex;
     justify-content: space-between;
+  }
+
+  .teamate__card {
+    width: 324px;
+    height: auto;
+  }
+
+  .teamate__photo {
+    width: 320px;
+    height: auto;
   }
 }
 
@@ -784,11 +921,25 @@ p {
 
   .main__inner-text {
     text-align: center;
-    margin: 15pxs auto;
+    margin: 15px auto;
   }
 
   .page__not-found__link {
     padding: 0 60px 0 60px;
+  }
+
+  .teamate__card {
+    width: 294px;
+    height: auto;
+  }
+
+  .teamate__photo {
+    width: 290px;
+    height: auto;
+  }
+
+  .rs__school-img {
+    height: 100px;
   }
 }
 
@@ -810,6 +961,28 @@ p {
   .catalog__item {
     width: 41%;
   }
+
+  .team__cards {
+    flex-direction: column;
+  }
+
+  .teamate__card {
+    margin: 15px auto;
+  }
+
+  .teamate__card {
+    width: 464px;
+    height: auto;
+  }
+
+  .teamate__photo {
+    width: 460px;
+    height: auto;
+  }
+
+  .rs__school-img {
+    height: 90px;
+  }
 }
 
 @media (max-width: 625px) {
@@ -830,6 +1003,20 @@ p {
   .catalog__filters {
     width: 30%;
   }
+
+  .teamate__card {
+    width: 434px;
+    height: auto;
+  }
+
+  .teamate__photo {
+    width: 430px;
+    height: auto;
+  }
+
+  .rs__school-img {
+    height: 80px;
+  }
 }
 
 @media (max-width: 550px) {
@@ -849,6 +1036,20 @@ p {
 
   .catalog__filters {
     width: 40%;
+  }
+
+  .teamate__card {
+    width: 404px;
+    height: auto;
+  }
+
+  .teamate__photo {
+    width: 400px;
+    height: auto;
+  }
+
+  .rs__school-img {
+    height: 70px;
   }
 
 }
@@ -907,6 +1108,20 @@ p {
   .page__not-found__link {
     padding: 0 40px 0 40px;
   }
+
+  .teamate__card {
+    width: 379px;
+    height: auto;
+  }
+
+  .teamate__photo {
+    width: 375px;
+    height: auto;
+  }
+
+  .rs__school-img {
+    height: 60px;
+  }
 }
 
 @media (max-width: 400px) {
@@ -930,10 +1145,39 @@ p {
   .catalog__item {
     width: 100%;
   }
+
+  .teamate__card {
+    width: 327px;
+    height: auto;
+  }
+
+  .teamate__photo {
+    width: 323px;
+    height: auto;
+  }
+
+  .rs__school-img {
+    height: 50px;
+  }
 }
 
 @media (max-width: 350px) {
+
   .main__inner-text {
     font-size: 20px;
+  }
+
+  .teamate__card {
+    width: 284px;
+    height: auto;
+  }
+
+  .teamate__photo {
+    width: 280px;
+    height: auto;
+  }
+
+  .rs__school-img {
+    height: 40px;
   }
 }
